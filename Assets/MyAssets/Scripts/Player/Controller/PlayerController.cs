@@ -2,31 +2,42 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour,PlayerSetup
     {
+        public GameObject GameObject => gameObject;
+
         private PlayerInput input;
+        public PlayerInput Input => input;
 
         [SerializeField]
-        private float speed = 0.05f;
+        private PlayerMovement movement;
+
+        private FireBullet fireBullet;
 
         private void Awake()
         {
             input = GetComponent<PlayerInput>();
+            fireBullet = GetComponentInChildren<FireBullet>();
         }
 
-        // Start is called before the first frame update
         private void Start()
         {
-            
+            movement.Setup(this);
         }
     
         // Update is called once per frame
         private void Update()
         {
-            Vector3 pos = transform.position;
-            pos.x += speed * input.Horizontal * Time.deltaTime;
-            pos.y += speed * input.Vertical * Time.deltaTime;
-            transform.position = pos;
+            Bullet();
+            movement.Move();
+        }
+
+        private void Bullet()
+        {
+            if(input.Attack > 0)
+            {
+                fireBullet.Fire();
+            }
         }
     }
 }
