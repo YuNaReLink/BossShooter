@@ -13,9 +13,9 @@ namespace CreateScript
         [SerializeField]
         private float speed = 5f;
 
-        public void Setup(PlayerController actor)
+        public void Setup(PlayerSetup actor)
         {
-            transform = actor.transform;
+            transform = actor.GameObject.transform;
             Input = actor.Input;
         }
 

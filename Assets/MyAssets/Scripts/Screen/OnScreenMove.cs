@@ -4,7 +4,7 @@ namespace CreateScript
 {
     public class OnScreenMove : MonoBehaviour
     {
-        private Camera camera;
+        private new Camera camera;
 
         [SerializeField]
         private float width;

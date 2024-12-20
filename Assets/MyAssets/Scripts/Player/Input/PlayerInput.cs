@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CreateScript
@@ -21,7 +19,7 @@ namespace CreateScript
         [SerializeField]
         private float speedDown;
 
-        public float SpeedDown => speedDown * 0.5f;
+        public float SpeedDown => Mathf.Abs(speedDown * 0.5f);
 
         [SerializeField]
         private float attack;
