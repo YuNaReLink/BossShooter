@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace CreateScript
 {
-    [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(CircleCollider2D))]
     public class Bullet : MonoBehaviour
     {
-        private Camera camera;
+        private new Camera camera;
 
         private void Awake()
         {
