@@ -131,9 +131,9 @@ GameObject:
   - component: {fileID: 8437114233016304014}
   - component: {fileID: 7745363537580180715}
   - component: {fileID: 8697706793826013050}
-  - component: {fileID: 3107387393701981998}
+  - component: {fileID: 2656198249031245789}
   m_Layer: 0
-  m_Name: RandomBullet
+  m_Name: LockOnBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +216,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.047489736, y: 0}
   serializedVersion: 2
-  m_Radius: 0.046149477
+  m_Radius: 0.5
 --- !u!114 &8697706793826013050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60318364fa71f394db515296da471c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3107387393701981998
+--- !u!114 &2656198249031245789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,7 +238,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5725390795946585385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bf3e7829ae086f4c825d08ae3ebe889, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dd4dee93110c0d45a9288b324d40d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 10
+  effect: {fileID: 2527986827875602783, guid: e6a96269b644ca440a18dd9149edb4bc, type: 3}

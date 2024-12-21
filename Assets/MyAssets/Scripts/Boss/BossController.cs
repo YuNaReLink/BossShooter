@@ -14,14 +14,13 @@ namespace CreateScript
         [SerializeField]
         private PlayerController playerController;
 
-        private FireBullet fireBullet;
+
+        private Launch launch;
 
         [SerializeField]
-        private bool lockOn = false;
-        [SerializeField]
-        private bool randomShot = false;
-        [SerializeField]
-        private bool homing = false;
+        private BossParts[] bossParts;
+
+        private HP hp;
 
         private void Awake()
         {
@@ -29,7 +28,15 @@ namespace CreateScript
 
             playerController = FindObjectOfType<PlayerController>();
 
-            fireBullet = GetComponentInChildren<FireBullet>();
+            launch = GetComponentInChildren<Launch>();
+
+            hp = GetComponent<HP>();
+
+            BossParts[] parts = GetComponentsInChildren<BossParts>();
+            if(parts.Length > 0)
+            {
+                bossParts = parts;
+            }
         }
 
         private void Start()
@@ -43,6 +50,20 @@ namespace CreateScript
             movement.VerticalMove();
 
 
+            if(bossParts.Length <= 2)
+            {
+                //fireBullet.LockOnFire(playerController.transform);
+            }
+            else if(bossParts.Length <= 1)
+            {
+                //fireBullet.RandomShotFire();
+            }
+            else
+            {
+                //fireBullet.HomingFire(playerController.transform);
+            }
+
+            /*
             if (lockOn)
             {
                 fireBullet.LockOnFire(playerController.transform);
@@ -53,8 +74,32 @@ namespace CreateScript
             }
             if (homing)
             {
-
+                fireBullet.HomingFire(playerController.transform);
             }
+             */
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            Damage(collision);
+        }
+
+        private void Damage(Collider2D collision)
+        {
+            BaseBullet bullet = collision.GetComponent<BaseBullet>();
+            if (bullet == null || bullet.ShooterTransform == transform) { return; }
+            hp.DecreaseHP(1);
+            if (hp.Death())
+            {
+                Death();
+            }
+        }
+
+        private void Death()
+        {
+            FormChange formChange = GetComponentInParent<FormChange>();
+            formChange.SetForm(1);
+            Destroy(gameObject);
         }
     }
 }

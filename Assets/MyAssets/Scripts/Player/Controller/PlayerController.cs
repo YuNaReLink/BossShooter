@@ -12,12 +12,14 @@ namespace CreateScript
         [SerializeField]
         private PlayerMovement movement;
 
-        private FireBullet fireBullet;
+        private Launch launch;
 
+        private HP hp;
         private void Awake()
         {
             input = GetComponent<PlayerInput>();
-            fireBullet = GetComponentInChildren<FireBullet>();
+            launch = GetComponentInChildren<Launch>();
+            hp = GetComponent<HP>();
         }
 
         private void Start()
@@ -28,16 +30,28 @@ namespace CreateScript
         // Update is called once per frame
         private void Update()
         {
-            Bullet();
             movement.Move();
         }
 
-        private void Bullet()
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(input.Attack > 0)
+            Damage(collision);
+        }
+
+        private void Damage(Collider2D collision)
+        {
+            BaseBullet bullet = collision.GetComponent<BaseBullet>();
+            if (bullet == null||bullet.ShooterTransform == transform) { return; }
+            hp.DecreaseHP(1);
+            if (hp.Death())
             {
-                fireBullet.Fire();
+                Death();
             }
+        }
+
+        private void Death()
+        {
+            Destroy(gameObject);
         }
     }
 }
