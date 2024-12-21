@@ -4,14 +4,6 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    //弾のリストの要素数に使うタグ
-    public enum BulletType
-    {
-        Straight,
-        LockOn,
-        Random,
-        Homing
-    }
     /// <summary>
     /// 全弾オブジェクトを持つScriptableObject
     /// </summary>

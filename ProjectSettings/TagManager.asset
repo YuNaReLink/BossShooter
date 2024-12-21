@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 2913527259
+    locked: 0
+  - name: Front
+    uniqueID: 624300337
     locked: 0
