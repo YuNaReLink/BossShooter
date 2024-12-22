@@ -30,11 +30,11 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData.Bullets[(int)1].gameObject, transform.position, Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bulletData.Bullets[(int)EnemyBulletType.LockOn].gameObject, transform.position, Quaternion.identity);
             LockOnBullet lockOnBullet = g.GetComponent<LockOnBullet>();
             if (lockOnBullet != null)
             {
-                lockOnBullet.SetShooterTransform(transform);
+                lockOnBullet.SetShooterType(ShopterType.Enemy);
                 lockOnBullet.SetExeclude(transform.gameObject.layer);
                 lockOnBullet.SetPlayerTransform(target);
                 lockOnBullet.SetDirection(direction);

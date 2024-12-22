@@ -29,11 +29,11 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData.Bullets[3].gameObject, transform.position, Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bulletData.Bullets[(int)EnemyBulletType.Homing].gameObject, transform.position, Quaternion.identity);
             HomingBullet homingBullet = g.GetComponent<HomingBullet>();
             if (homingBullet != null)
             {
-                homingBullet.SetShooterTransform(transform);
+                homingBullet.SetShooterType(ShopterType.Enemy);
                 homingBullet.SetExeclude(transform.gameObject.layer);
                 homingBullet.SetHomingTarget(target);
             }

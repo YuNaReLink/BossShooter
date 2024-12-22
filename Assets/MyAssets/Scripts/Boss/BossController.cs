@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 
 namespace CreateScript
@@ -48,35 +47,7 @@ namespace CreateScript
         private void Update()
         {
             movement.VerticalMove();
-
-
-            if(bossParts.Length <= 2)
-            {
-                //fireBullet.LockOnFire(playerController.transform);
-            }
-            else if(bossParts.Length <= 1)
-            {
-                //fireBullet.RandomShotFire();
-            }
-            else
-            {
-                //fireBullet.HomingFire(playerController.transform);
-            }
-
-            /*
-            if (lockOn)
-            {
-                fireBullet.LockOnFire(playerController.transform);
-            }
-            if (randomShot)
-            {
-                fireBullet.RandomShotFire();
-            }
-            if (homing)
-            {
-                fireBullet.HomingFire(playerController.transform);
-            }
-             */
+            if (GameController.Instance.IsGameStop) { return; }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -87,7 +58,7 @@ namespace CreateScript
         private void Damage(Collider2D collision)
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
-            if (bullet == null || bullet.ShooterTransform == transform) { return; }
+            if (bullet == null || bullet.ShopterType == ShopterType.Enemy) { return; }
             hp.DecreaseHP(1);
             if (hp.Death())
             {

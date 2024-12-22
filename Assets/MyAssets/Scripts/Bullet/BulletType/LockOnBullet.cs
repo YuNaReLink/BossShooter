@@ -10,6 +10,8 @@ namespace CreateScript
 
         private Transform playerTransform;
 
+        protected override BulletType BulletType => BulletType.LockOn;
+
         // Start is called before the first frame update
         void Start()
         {

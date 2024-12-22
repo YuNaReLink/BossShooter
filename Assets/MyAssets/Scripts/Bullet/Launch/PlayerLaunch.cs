@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CreateScript
@@ -8,26 +6,32 @@ namespace CreateScript
     public enum PlayerBulletType
     {
         Straight,
+        Bomb
     }
     public class PlayerLaunch : MonoBehaviour
     {
         [SerializeField]
-        private IFireBullet[] fireBullets;
+        private IFireBullet[]       fireBullets;
 
         [SerializeField]
-        private FireStraightBullet fireStraightBullet;
+        private FireStraightBullet  fireStraightBullet;
 
         [SerializeField]
-        private PlayerBulletType bulletType;
+        private FireBomb            fireBomb;
 
-        private PlayerInput input;
+        [SerializeField]
+        private PlayerBulletType    bulletType;
+
+        private PlayerInput         input;
 
         private void Awake()
         {
             input = GetComponentInParent<PlayerInput>();
 
-            IFireBullet[] bullets = new IFireBullet[]{
+            IFireBullet[] bullets = new IFireBullet[]
+            {
                 fireStraightBullet,
+                fireBomb
             };
             fireBullets = bullets;
             foreach (IFireBullet fireBullet in fireBullets)
@@ -36,16 +40,20 @@ namespace CreateScript
             }
         }
 
-        // Start is called before the first frame update
-        void Start()
+
+        private void Start()
         {
             bulletType = PlayerBulletType.Straight;
         }
 
-        // Update is called once per frame
-        void Update()
+
+        private void Update()
         {
-            fireBullets[(int)bulletType].DoUpdate(Time.deltaTime);
+            for(int i = 0; i < fireBullets.Length; i++)
+            {
+                fireBullets[i].DoUpdate(Time.deltaTime);
+            }
+            if (GameController.Instance.IsGameStop) { return; }
 
             BulletFire();
         }
@@ -55,6 +63,12 @@ namespace CreateScript
             if(input.Attack > 0)
             {
                 fireBullets[(int)bulletType].Fire(null);
+            }
+
+            if(input.Bomb)
+            {
+                if(GameController.Instance.BombCount <=0) { return; }
+                fireBullets[(int)PlayerBulletType.Bomb].Fire(null);
             }
         }
     }

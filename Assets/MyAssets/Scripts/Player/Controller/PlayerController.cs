@@ -4,6 +4,8 @@ namespace CreateScript
 {
     public class PlayerController : MonoBehaviour,PlayerSetup
     {
+        private static PlayerController player;
+        public static PlayerController Player => player;
         public GameObject GameObject => gameObject;
 
         private PlayerInput input;
@@ -17,6 +19,8 @@ namespace CreateScript
         private HP hp;
         private void Awake()
         {
+            player = this;
+
             input = GetComponent<PlayerInput>();
             launch = GetComponentInChildren<Launch>();
             hp = GetComponent<HP>();
@@ -27,9 +31,9 @@ namespace CreateScript
             movement.Setup(this);
         }
     
-        // Update is called once per frame
         private void Update()
         {
+            if (GameController.Instance.IsGameStop) { return; }
             movement.Move();
         }
 
@@ -41,7 +45,7 @@ namespace CreateScript
         private void Damage(Collider2D collision)
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
-            if (bullet == null||bullet.ShooterTransform == transform) { return; }
+            if (bullet == null||bullet.ShopterType == ShopterType.Player) { return; }
             hp.DecreaseHP(1);
             if (hp.Death())
             {

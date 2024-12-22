@@ -7,6 +7,7 @@ namespace CreateScript
     public class Timer
     {
         public event Action OnEnd;
+        public event Action OnceEnd;
 
         private float current = 0;
 
@@ -31,6 +32,7 @@ namespace CreateScript
         public void End()
         {
             current = 0;
+            OnceEnd?.Invoke();
             OnEnd?.Invoke();
             OnEnd = null;
         }
