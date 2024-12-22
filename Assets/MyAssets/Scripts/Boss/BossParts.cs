@@ -20,7 +20,7 @@ namespace CreateScript
         private void Damage(Collider2D collision)
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
-            if (bullet == null || bullet.ShooterTransform == transform) { return; }
+            if (bullet == null || bullet.ShopterType == ShopterType.Enemy) { return; }
             hp.DecreaseHP(1);
             if (hp.Death())
             {

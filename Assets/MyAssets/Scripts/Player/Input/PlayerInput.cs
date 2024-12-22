@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace CreateScript
 {
@@ -25,7 +26,11 @@ namespace CreateScript
         private float attack;
         public float Attack => attack;
 
+        [SerializeField]
+        private bool bomb;
+        public bool Bomb => bomb;
 
+        private InputAction bombAction;
         private void Awake()
         {
             inputActions = new InputActionsControls();
@@ -33,6 +38,8 @@ namespace CreateScript
 
         private void Update()
         {
+            if (GameController.Instance.IsGameStop) { return; }
+
             var value = inputActions.Player.Move.ReadValue<Vector2>();
             move.x = value.x;
             move.y = value.y;
@@ -47,16 +54,38 @@ namespace CreateScript
         private void OnEnable()
         {
             inputActions.Enable();
+
+            bombAction = inputActions.Player.Bomb;
+
+            bombAction.performed += OnBomb;
+
+            bombAction.Enable();
         }
 
         private void OnDisable()
         {
+            bombAction.performed -= OnBomb;
+
+            bombAction.Disable();
+
             inputActions.Disable();
         }
 
         private void OnDestroy()
         {
             inputActions.Dispose();
+        }
+
+        private void OnBomb(InputAction.CallbackContext context)
+        {
+            bomb = true;
+            // 一瞬だけtrueにして、次のフレームでfalseに戻す
+            StartCoroutine(BombButtonPress());
+        }
+        private System.Collections.IEnumerator BombButtonPress()
+        {
+            yield return null; // 1フレーム待つ
+            bomb = false;
         }
     }
 }

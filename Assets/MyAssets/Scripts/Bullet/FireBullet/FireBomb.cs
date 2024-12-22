@@ -2,15 +2,8 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    public interface IFireBullet
-    {
-        void Setup(Transform target);
-        void DoUpdate(float time);
-        void Fire(Transform target);
-    }
-
     [System.Serializable]
-    public class FireStraightBullet : IFireBullet
+    public class FireBomb : IFireBullet
     {
         private Transform transform;
 
@@ -38,13 +31,13 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData.Bullets[(int)PlayerBulletType.Straight].gameObject, transform.position,Quaternion.identity);
-            StraightBullet straightBullet = g.GetComponent<StraightBullet>();
-            if(straightBullet != null)
+            GameObject g = GameObject.Instantiate(bulletData.Bullets[(int)PlayerBulletType.Bomb].gameObject, transform.position, Quaternion.identity);
+            AllDestroyBomb bomb = g.GetComponent<AllDestroyBomb>();
+            if (bomb != null)
             {
-                straightBullet.SetExeclude(transform.gameObject.layer);
-                straightBullet.SetShooterType(ShopterType.Player);
-                straightBullet.SetDirection(direction);
+                bomb.SetExeclude(transform.gameObject.layer);
+                bomb.SetShooterType(ShopterType.Player);
+                bomb.SetDirection(direction);
             }
             timer.Start(fireCoolDownCount);
         }

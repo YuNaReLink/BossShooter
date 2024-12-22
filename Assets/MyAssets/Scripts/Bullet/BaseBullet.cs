@@ -2,6 +2,21 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    public enum ShopterType
+    {
+        Player,
+        Enemy
+    }
+
+    public enum BulletType
+    {
+        Null = -1,
+        Straight,
+        LockOn,
+        Random,
+        Homing
+    }
+
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CircleCollider2D))]
     public class BaseBullet : MonoBehaviour
@@ -10,18 +25,20 @@ namespace CreateScript
         protected float bulletSpeed;
 
         [SerializeField]
-        private ImageEffect effect;
+        protected ImageEffect effect;
 
         protected new Rigidbody2D rigidbody2D;
 
         protected BulletImage bulletImage;
 
-        protected Transform shooterTransform;
-        public Transform ShooterTransform => shooterTransform;
+        protected ShopterType shopterType;
+        public ShopterType ShopterType => shopterType;
 
-        public void SetShooterTransform(Transform t)
+        protected virtual BulletType BulletType => BulletType.Null;
+
+        public void SetShooterType(ShopterType s)
         {
-            shooterTransform = t;
+            shopterType = s;
         }
 
         protected virtual void Awake()
@@ -37,11 +54,11 @@ namespace CreateScript
 
         protected void OnTriggerEnter2D(Collider2D collision)
         {
-            BodyHit(collision);
+            CharacterHit(collision);
             Bullethit(collision);
         }
 
-        private void BodyHit(Collider2D collision)
+        private void CharacterHit(Collider2D collision)
         {
             HP hp = collision.GetComponent<HP>();
             if (hp == null || collision.transform.gameObject.layer == gameObject.layer) { return; }
@@ -54,15 +71,24 @@ namespace CreateScript
             if (bullet == null || collision.transform.gameObject.layer == gameObject.layer) { return; }
             Erase(collision.ClosestPoint(transform.position));
         }
-        private void Erase(Vector2 pos)
+        protected virtual void Erase(Vector2 pos)
         {
+            AddScore();
             Destroy(gameObject);
             Instantiate(effect.gameObject, pos, Quaternion.identity);
         }
 
+        public void AddScore()
+        {
+            if (ShopterType == ShopterType.Enemy)
+            {
+                ScoreSystem.Instance.AddScore(BulletType);
+            }
+        }
+
         protected void OnCollisionEnter2D(Collision2D collision)
         {
-            BodyHit(collision.collider);
+            CharacterHit(collision.collider);
         }
 
     }

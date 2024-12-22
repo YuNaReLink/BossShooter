@@ -24,6 +24,7 @@ namespace CreateScript
         [SerializeField]
         private float homingAngleLimit = 30f;
 
+        protected override BulletType BulletType => BulletType.Homing;
         private void Start()
         {
             Homing();

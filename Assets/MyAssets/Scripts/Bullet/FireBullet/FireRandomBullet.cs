@@ -36,13 +36,13 @@ namespace CreateScript
             Quaternion rotation = Quaternion.Euler(0, 0, randomAngle);
 
             // íeÇê∂ê¨
-            GameObject bullet = GameObject.Instantiate(bulletData.Bullets[2].gameObject, transform.position, transform.rotation * rotation);
+            GameObject bullet = GameObject.Instantiate(bulletData.Bullets[(int)EnemyBulletType.Random].gameObject, transform.position, transform.rotation * rotation);
 
             StraightBullet straightBullet = bullet.GetComponent<StraightBullet>();
             if (straightBullet != null)
             {
-                straightBullet.SetShooterTransform(transform);
                 straightBullet.SetExeclude(transform.gameObject.layer);
+                straightBullet.SetShooterType(ShopterType.Enemy);
                 straightBullet.SetDirection(rotation * Vector2.left);
             }
             timer.Start(fireCoolDownCount);

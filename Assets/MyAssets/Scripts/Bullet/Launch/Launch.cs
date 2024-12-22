@@ -4,8 +4,8 @@ namespace CreateScript
 {
     public enum EnemyBulletType
     {
-        LockOn,
         Random,
+        LockOn,
         Homing
     }
 
@@ -61,14 +61,15 @@ namespace CreateScript
         void Update()
         {
             fireBullets[(int)bulletType].DoUpdate(Time.deltaTime);
+            if (GameController.Instance.IsGameStop) { return; }
 
             FireBulletsUpdate();
         }
 
         private void FireBulletsUpdate()
         {
-            if (targetTransform == null) { return; }
-            fireBullets[(int)bulletType].Fire(targetTransform);
+            if (PlayerController.Player == null) { return; }
+            fireBullets[(int)bulletType].Fire(PlayerController.Player.transform);
         }
     }
 }
