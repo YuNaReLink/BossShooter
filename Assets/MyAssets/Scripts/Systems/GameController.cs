@@ -2,14 +2,6 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    public enum GameMode
-    {
-        Null = -1,
-        Title,
-        Game,
-        GameOver,
-        GameClear
-    }
 
     public class GameController : MonoBehaviour
     {
@@ -38,9 +30,6 @@ namespace CreateScript
         [SerializeField]
         private PlayerController currentPlayer;
 
-        [SerializeField]
-        private GameMode gameMode;
-
         private Timer revivalTimer = new Timer();
 
         private bool gameStop = false;
@@ -64,10 +53,12 @@ namespace CreateScript
         void Start()
         {
             gameStop = true;
+
+            GlobalManager.Instance.SetGameMode(GameMode.Game);
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             revivalTimer.Update(Time.deltaTime);
 
@@ -86,7 +77,10 @@ namespace CreateScript
             playerRemainingLives--;
             if(playerRemainingLives <= 0)
             {
-                gameMode = GameMode.GameOver;
+                GlobalManager.Instance.SetResultType(ResultType.GameOver);
+                GameUIController.Instance.CreateResultText("GAMEOVER");
+                SceneChanger.Instance.SetNextScene(SceneList.Result);
+                SceneChanger.Instance.ReadySceneChange();
             }
             else
             {
