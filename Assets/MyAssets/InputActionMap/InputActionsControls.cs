@@ -160,24 +160,88 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
             ""id"": ""7e98cb65-401f-42b2-8ee2-be8d8900a1e7"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""76247470-0f94-483e-a22d-bc788f1eb3a4"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""Select"",
+                    ""type"": ""Value"",
+                    ""id"": ""bac447c0-979e-410f-b643-b53aec253bc9"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Deside"",
+                    ""type"": ""Value"",
+                    ""id"": ""cbf80cea-a632-4323-864e-c35d5589caf4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""9b128a40-9684-4cc1-a2a0-11cf8c6aacef"",
-                    ""path"": """",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""689405ff-4e02-4fd8-b27e-1e3d1fbb52cd"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Select"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""76124f6e-9cd6-427d-b284-1d64f0b37c96"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard&Mouse"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5a77b4ce-d158-4bad-81f3-c6450ff89538"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard&Mouse"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""9ebe6baf-a576-455b-9cb0-ff07d898b60a"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard&Mouse"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""23856816-6a23-448d-8dc5-b3041e0946c8"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard&Mouse"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94b4cc96-69f6-4157-8408-03708f4d2546"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard&Mouse"",
+                    ""action"": ""Deside"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -200,7 +264,8 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
         m_Player_Bomb = m_Player.FindAction("Bomb", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
+        m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
+        m_UI_Deside = m_UI.FindAction("Deside", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -332,12 +397,14 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_Newaction;
+    private readonly InputAction m_UI_Select;
+    private readonly InputAction m_UI_Deside;
     public struct UIActions
     {
         private @InputActionsControls m_Wrapper;
         public UIActions(@InputActionsControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
+        public InputAction @Select => m_Wrapper.m_UI_Select;
+        public InputAction @Deside => m_Wrapper.m_UI_Deside;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -347,16 +414,22 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
+            @Deside.started += instance.OnDeside;
+            @Deside.performed += instance.OnDeside;
+            @Deside.canceled += instance.OnDeside;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
+            @Deside.started -= instance.OnDeside;
+            @Deside.performed -= instance.OnDeside;
+            @Deside.canceled -= instance.OnDeside;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -392,6 +465,7 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
     }
     public interface IUIActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
+        void OnDeside(InputAction.CallbackContext context);
     }
 }

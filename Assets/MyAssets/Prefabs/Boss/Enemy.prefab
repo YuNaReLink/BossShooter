@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a99fa6f45e924ea551170dd7d2b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
+  maxHP: 25
   hp: 0
 --- !u!1 &7367828971354272824
 GameObject:
@@ -163,6 +163,8 @@ GameObject:
   - component: {fileID: 9122645071606686442}
   - component: {fileID: 6454788032169179310}
   - component: {fileID: 8845151265864991459}
+  - component: {fileID: 4710227189458120179}
+  - component: {fileID: 9159675093738280846}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -326,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a99fa6f45e924ea551170dd7d2b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
+  maxHP: 50
   hp: 0
 --- !u!114 &8845151265864991459
 MonoBehaviour:
@@ -341,6 +343,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateCount: 3
+--- !u!114 &4710227189458120179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367828971354272824}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5402f2666587ee14e966c850d3a70100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appearanceTypeX: 1
+  appearanceTypeY: -1
+--- !u!114 &9159675093738280846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367828971354272824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea700faa2057524687ff2e3cbfc200d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameClear: 1
 --- !u!1 &8759213206699206563
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a99fa6f45e924ea551170dd7d2b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
+  maxHP: 25
   hp: 0
 --- !u!1001 &48256585959355064
 PrefabInstance:
@@ -536,6 +565,22 @@ PrefabInstance:
     - target: {fileID: 5988336187987017877, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
+      propertyPath: bulletType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
+      propertyPath: fireHomingBullet.fireCoolDownCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
+      propertyPath: fireLockOnBullet.fireCoolDownCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
+      propertyPath: fireRandomBullet.fireCoolDownCount
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8987249328755924125, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
       propertyPath: m_Name
