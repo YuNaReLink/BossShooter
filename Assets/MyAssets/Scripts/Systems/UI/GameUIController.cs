@@ -4,14 +4,14 @@ namespace CreateScript
 {
     public class GameUIController : MonoBehaviour
     {
-        private static GameUIController instance;
-        public static GameUIController Instance => instance;
+        private static GameUIController     instance;
+        public static GameUIController      Instance => instance;
 
 
-        private Canvas canvas;
+        private Canvas                      canvas;
 
         [SerializeField]
-        private TextOutput resultTextOutput;
+        private TextOutput                  resultTextOutput;
 
         public void CreateResultText(string t)
         {
@@ -25,17 +25,6 @@ namespace CreateScript
             instance = this;
 
             canvas = FindObjectOfType<Canvas>();
-        }
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 }

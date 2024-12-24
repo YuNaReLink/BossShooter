@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
@@ -18,15 +16,18 @@ namespace CreateScript
         GameOver,
         GameClear
     }
+    /// <summary>
+    /// 全てのシーンのオブジェクト管理を行うクラス
+    /// シングルトンパターンでDontDestroyOnLoadにしてシーンをまたいで処理を行う
+    /// </summary>
     public class GlobalManager : MonoBehaviour
     {
-        private static GlobalManager instance;
-        public static GlobalManager Instance => instance;
+        private static GlobalManager    instance;
+        public static GlobalManager     Instance => instance;
 
         [SerializeField]
         [ReadOnly]
-        private GameMode gameMode;
-        public GameMode GameMode => gameMode;
+        private GameMode                gameMode;
 
         public void SetGameMode(GameMode mode)
         {
@@ -36,7 +37,6 @@ namespace CreateScript
         [SerializeField]
         [ReadOnly]
         private ResultType resultType;
-        public ResultType ResultType => resultType;
 
         public void SetResultType(ResultType type)
         {

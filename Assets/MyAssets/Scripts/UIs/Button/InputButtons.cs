@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// 複数あるボタンのオブジェクトをまとめて管理するクラス
+    /// ボタンの親オブジェクトにアタッチする想定
+    /// </summary>
     public class InputButtons : MonoBehaviour
     {
         private InputActionsControls inputActions;
@@ -48,18 +52,26 @@ namespace CreateScript
         {
             if(select.x < 0)
             {
-                selectIndex = 0;
-                SetSelectImagePosition(0);
+                selectIndex--;
+                if(selectIndex < 0)
+                {
+                    selectIndex = 0;
+                }
+                SetSelectImagePosition(selectIndex);
             }
             else if(select.x > 0)
             {
-                selectIndex = 1;
-                SetSelectImagePosition(1);
+                selectIndex++;
+                if(selectIndex >= buttons.Length)
+                {
+                    selectIndex = buttons.Length - 1;
+                }
+                SetSelectImagePosition(selectIndex);
             }
 
             if (deside)
             {
-                buttons[selectIndex].OnInputButton();
+                buttons[selectIndex].OnButtonInput();
             }
         }
 

@@ -226,6 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5d44404934c034eac6bd35f385650e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalButton: {fileID: 21300014, guid: 56d84991286850f428b4e7df0cca7380, type: 3}
+  pressButton: {fileID: 21300016, guid: 56d84991286850f428b4e7df0cca7380, type: 3}
   onInput:
     m_PersistentCalls:
       m_Calls:
