@@ -1,16 +1,13 @@
 using CreateScript;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreSystem : MonoBehaviour
 {
-    private static ScoreSystem instance;
-    public static ScoreSystem Instance => instance;
+    private static ScoreSystem  instance;
+    public static ScoreSystem   Instance => instance;
 
     [SerializeField]
-    private int currentCount;
-    public int CurrentCount => currentCount;
+    private int                 currentCount;
 
     private void Awake()
     {

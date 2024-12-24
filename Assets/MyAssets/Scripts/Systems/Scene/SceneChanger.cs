@@ -12,14 +12,17 @@ namespace CreateScript
         Count
     }
 
+    /// <summary>
+    /// シーン遷移の処理を行うシングルトンパターンのクラス
+    /// </summary>
     public class SceneChanger : MonoBehaviour
     {
-        private static SceneChanger instance;
-        public static SceneChanger Instance => instance;
+        private static SceneChanger     instance;
+        public static SceneChanger      Instance => instance;
 
-        private Timer sceneChangeTimer = new Timer();
+        private Timer                   sceneChangeTimer = new Timer();
 
-        private SceneList nextScene;
+        private SceneList               nextScene;
 
         public void SetNextScene(SceneList scene)
         {
@@ -27,7 +30,7 @@ namespace CreateScript
         }
 
         [SerializeField]
-        private float changeCount = 3f;
+        private float                   changeCount = 3f;
 
         private void Awake()
         {

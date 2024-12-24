@@ -5,9 +5,9 @@ namespace CreateScript
     public class StraightBullet : BaseBullet
     {
 
-        private Vector2 direction = Vector2.zero;
+        private Vector2                 direction = Vector2.zero;
 
-        protected override BulletType BulletType => BulletType.Straight;
+        protected override BulletType   BulletType => BulletType.Straight;
         private void Start()
         {
             GetComponent<Rigidbody2D>().AddForce(direction * bulletSpeed, ForceMode2D.Impulse);

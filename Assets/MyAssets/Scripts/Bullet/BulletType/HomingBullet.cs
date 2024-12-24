@@ -6,23 +6,23 @@ namespace CreateScript
     {
         //弾の制限速度
         [SerializeField] 
-        private float limitSpeed;
+        private float       limitSpeed;
 
-        private Transform targetTransform;
+        private Transform   targetTransform;
         public void SetHomingTarget(Transform t)
         {
             targetTransform = t;
             timer.Start(homingCount);
         }
 
-        private Timer timer = new();
+        private Timer       timer = new();
 
         [SerializeField]
-        private float homingCount = 5.0f;
+        private float       homingCount = 5.0f;
 
         // 誘導可能な角度（度数法）
         [SerializeField]
-        private float homingAngleLimit = 30f;
+        private float       homingAngleLimit = 30f;
 
         protected override BulletType BulletType => BulletType.Homing;
         private void Start()

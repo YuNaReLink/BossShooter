@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e01b4845afdf6449847503dab5887d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endCount: 2
+  endCount: 1
 --- !u!114 &171033197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5d44404934c034eac6bd35f385650e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalButton: {fileID: 21300014, guid: 56d84991286850f428b4e7df0cca7380, type: 3}
+  pressButton: {fileID: 21300016, guid: 56d84991286850f428b4e7df0cca7380, type: 3}
   onInput:
     m_PersistentCalls:
       m_Calls:
@@ -834,6 +836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5d44404934c034eac6bd35f385650e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalButton: {fileID: 21300014, guid: 56d84991286850f428b4e7df0cca7380, type: 3}
+  pressButton: {fileID: 21300016, guid: 56d84991286850f428b4e7df0cca7380, type: 3}
   onInput:
     m_PersistentCalls:
       m_Calls:
