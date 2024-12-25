@@ -11,6 +11,7 @@ namespace CreateScript
 
         [SerializeField]
         private int playerRemainingLives;
+        public int PlayerLife => playerRemainingLives;
 
         [SerializeField]
         private int bombCount;
@@ -68,14 +69,14 @@ namespace CreateScript
         private void PlayerCheck()
         {
             if (currentPlayer != null||!revivalTimer.IsEnd()||
-                playerRemainingLives <= 0) { return; }
+                playerRemainingLives < 0) { return; }
             revivalTimer.Start(3f);
         }
 
         public void RevivalPlayer()
         {
             playerRemainingLives--;
-            if(playerRemainingLives <= 0)
+            if(playerRemainingLives < 0)
             {
                 GlobalManager.Instance.SetResultType(ResultType.GameOver);
                 GameUIController.Instance.CreateResultText("GAMEOVER");

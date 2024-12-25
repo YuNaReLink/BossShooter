@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a99fa6f45e924ea551170dd7d2b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 25
-  hp: 0
+  max: 15
+  current: 0
 --- !u!1 &7367828971354272824
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 8845151265864991459}
   - component: {fileID: 4710227189458120179}
   - component: {fileID: 9159675093738280846}
+  - component: {fileID: 5878273687844223407}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -328,8 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a99fa6f45e924ea551170dd7d2b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 50
-  hp: 0
+  max: 25
+  current: 0
 --- !u!114 &8845151265864991459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +371,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameClear: 1
+--- !u!114 &5878273687844223407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367828971354272824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0299810c3fb434ab9cfe99b6d69120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossHPUI: {fileID: 4568917578355058339, guid: b84a5468347071a4b945997da70db8a5, type: 3}
 --- !u!1 &8759213206699206563
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,8 +530,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a99fa6f45e924ea551170dd7d2b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 25
-  hp: 0
+  max: 15
+  current: 0
 --- !u!1001 &48256585959355064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,6 +580,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
+      propertyPath: bulletData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e407d73aea046a48b873ab40f104989, type: 2}
     - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
       propertyPath: bulletType
       value: 1

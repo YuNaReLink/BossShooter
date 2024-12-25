@@ -98,15 +98,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireLockOnBullet:
-    bulletData: {fileID: 11400000, guid: 6e407d73aea046a48b873ab40f104989, type: 2}
-    fireCoolDownCount: 0.5
+    fireCoolDownCount: 1
     direction: {x: 0, y: 0}
-    spreadAngle: 60
   fireRandomBullet:
-    bulletData: {fileID: 11400000, guid: 6e407d73aea046a48b873ab40f104989, type: 2}
-    fireCoolDownCount: 0.5
+    fireCoolDownCount: 0.2
     spreadAngle: 60
   fireHomingBullet:
-    bulletData: {fileID: 11400000, guid: 6e407d73aea046a48b873ab40f104989, type: 2}
-    fireCoolDownCount: 0.5
-  bulletType: 0
+    fireCoolDownCount: 1
+  bulletType: 1
+  bulletData: {fileID: 11400000, guid: 6e407d73aea046a48b873ab40f104989, type: 2}

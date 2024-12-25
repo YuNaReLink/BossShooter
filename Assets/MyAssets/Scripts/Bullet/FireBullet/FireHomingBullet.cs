@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.WSA;
 
 namespace CreateScript
 {
@@ -9,15 +10,24 @@ namespace CreateScript
 
         private Timer timer = new Timer();
 
-        [SerializeField]
         private BulletData bulletData;
 
         [SerializeField]
         private float fireCoolDownCount = 0.1f;
-
-        public void Setup(Transform t)
+        private float minCount = 0.2f;
+        public void DecreaseCoolDownCount(float count)
         {
-            transform = t;
+            fireCoolDownCount -= count;
+            if (fireCoolDownCount <= minCount)
+            {
+                fireCoolDownCount = minCount;
+            }
+        }
+
+        public void Setup(IBaseLaunch launch)
+        {
+            transform = launch.GameObject.transform;
+            bulletData = launch.BulletData;
         }
         public void DoUpdate(float time)
         {

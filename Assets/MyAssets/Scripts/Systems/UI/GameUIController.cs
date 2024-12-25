@@ -15,6 +15,7 @@ namespace CreateScript
 
         public void CreateResultText(string t)
         {
+            if(canvas == null) { return; }
             GameObject g = Instantiate(resultTextOutput.gameObject,canvas.transform);
             TextOutput textOutput = g.GetComponent<TextOutput>();
             textOutput.SetText(t);

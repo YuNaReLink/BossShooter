@@ -9,17 +9,26 @@ namespace CreateScript
 
         private Timer timer = new Timer();
 
-        [SerializeField]
         private BulletData bulletData;
 
         [SerializeField]
         private float fireCoolDownCount = 0.1f;
+        private float minCount = 0.2f;
+        public void DecreaseCoolDownCount(float count)
+        {
+            fireCoolDownCount -= count;
+            if (fireCoolDownCount <= minCount)
+            {
+                fireCoolDownCount = minCount;
+            }
+        }
 
         [SerializeField]
         private float spreadAngle = 60.0f;
-        public void Setup(Transform t)
+        public void Setup(IBaseLaunch launch)
         {
-            transform = t;
+            transform = launch.GameObject.transform;
+            bulletData = launch.BulletData;
         }
         public void DoUpdate(float time)
         {
