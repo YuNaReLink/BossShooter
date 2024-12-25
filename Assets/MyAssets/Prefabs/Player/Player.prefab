@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a99fa6f45e924ea551170dd7d2b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 1
-  hp: 0
+  max: 0
+  current: 0
 --- !u!61 &2568252204453741529
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -239,7 +239,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 806690139059405080}
     m_Modifications:
     - target: {fileID: -7087611521659955586, guid: 4717d90faf4660b4a9983babc6c775d2, type: 3}
-      propertyPath: fireBomb.bulletData
+      propertyPath: bulletData
       value: 
       objectReference: {fileID: 11400000, guid: 235b8c7f258c08e41b8f8a6387132b1e, type: 2}
     - target: {fileID: -7087611521659955586, guid: 4717d90faf4660b4a9983babc6c775d2, type: 3}
@@ -247,12 +247,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7087611521659955586, guid: 4717d90faf4660b4a9983babc6c775d2, type: 3}
-      propertyPath: fireStraightBullet.bulletData
-      value: 
-      objectReference: {fileID: 11400000, guid: 235b8c7f258c08e41b8f8a6387132b1e, type: 2}
+      propertyPath: fireBomb.fireCoolDownCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7087611521659955586, guid: 4717d90faf4660b4a9983babc6c775d2, type: 3}
       propertyPath: fireStraightBullet.fireCoolDownCount
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5988336187987017877, guid: 4717d90faf4660b4a9983babc6c775d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,10 +297,6 @@ PrefabInstance:
     - target: {fileID: 8987249328755924125, guid: 4717d90faf4660b4a9983babc6c775d2, type: 3}
       propertyPath: m_Name
       value: PlayerLaunchPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 8987249328755924125, guid: 4717d90faf4660b4a9983babc6c775d2, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

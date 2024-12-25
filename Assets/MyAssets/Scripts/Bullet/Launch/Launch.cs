@@ -9,7 +9,7 @@ namespace CreateScript
         Homing
     }
 
-    public class Launch : MonoBehaviour
+    public class Launch : MonoBehaviour, IBaseLaunch
     {
         [SerializeField]
         private IFireBullet[] fireBullets;
@@ -25,6 +25,12 @@ namespace CreateScript
 
         [SerializeField]
         private EnemyBulletType bulletType;
+
+        [SerializeField]
+        private BulletData bulletData;
+        public BulletData BulletData => bulletData;
+
+        public GameObject GameObject => gameObject;
 
         public void SetBulleyType(EnemyBulletType type)
         {
@@ -46,19 +52,12 @@ namespace CreateScript
             fireBullets = bullets;
             foreach (IFireBullet fireBullet in fireBullets)
             {
-                fireBullet.Setup(transform.parent);
+                fireBullet.Setup(this);
             }
         }
 
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
             fireBullets[(int)bulletType].DoUpdate(Time.deltaTime);
             if (GameController.Instance.IsGameStop) { return; }

@@ -20,6 +20,7 @@ namespace CreateScript
         private BossParts[] bossParts;
 
         private HP hp;
+        public HP HP => hp;
 
         private void Awake()
         {

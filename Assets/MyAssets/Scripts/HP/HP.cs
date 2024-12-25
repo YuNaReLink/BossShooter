@@ -5,23 +5,30 @@ namespace CreateScript
     public class HP : MonoBehaviour
     {
         [SerializeField]
-        private int maxHP;
+        private int max;
+        public int Max => max;
         [SerializeField]
-        private int hp;
+        private int current;
+        public int Current => current;
+
+        public float GetHPProgress()
+        {
+            return (float)current / max;
+        }
 
         public void DecreaseHP(int d)
         {
-            hp -= d;
+            current -= d;
         }
 
         public bool Death()
         {
-            return hp <= 0;
+            return current <= 0;
         }
 
         private void Start()
         {
-            hp = maxHP;
+            current = max;
         }
     }
 }

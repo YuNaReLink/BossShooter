@@ -98,7 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireStraightBullet:
-    bulletData: {fileID: 11400000, guid: 6e407d73aea046a48b873ab40f104989, type: 2}
-    fireCoolDownCount: 0.1
+    fireCoolDownCount: 0.5
+    direction: {x: 1, y: 0}
+  fireBomb:
+    fireCoolDownCount: 1
     direction: {x: 1, y: 0}
   bulletType: 0
+  bulletData: {fileID: 11400000, guid: 235b8c7f258c08e41b8f8a6387132b1e, type: 2}

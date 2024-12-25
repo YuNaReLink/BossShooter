@@ -6,6 +6,7 @@ namespace CreateScript
     {
 
         private HP hp;
+        public HP HP => hp;    
 
         private void Awake()
         {
