@@ -176,6 +176,15 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Value"",
+                    ""id"": ""76b0edb4-f161-4a70-82fb-5dce02d7c6aa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -244,6 +253,17 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
                     ""action"": ""Deside"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""261ae172-f688-40f8-a9bf-2878f86ee322"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -266,6 +286,7 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
         m_UI_Deside = m_UI.FindAction("Deside", throwIfNotFound: true);
+        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -399,12 +420,14 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Select;
     private readonly InputAction m_UI_Deside;
+    private readonly InputAction m_UI_Pause;
     public struct UIActions
     {
         private @InputActionsControls m_Wrapper;
         public UIActions(@InputActionsControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Select => m_Wrapper.m_UI_Select;
         public InputAction @Deside => m_Wrapper.m_UI_Deside;
+        public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -420,6 +443,9 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
             @Deside.started += instance.OnDeside;
             @Deside.performed += instance.OnDeside;
             @Deside.canceled += instance.OnDeside;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -430,6 +456,9 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
             @Deside.started -= instance.OnDeside;
             @Deside.performed -= instance.OnDeside;
             @Deside.canceled -= instance.OnDeside;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -467,5 +496,6 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
     {
         void OnSelect(InputAction.CallbackContext context);
         void OnDeside(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

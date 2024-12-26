@@ -31,8 +31,8 @@ namespace CreateScript
                 GlobalManager.Instance.SetResultType(ResultType.GameOver);
             }
             GameUIController.Instance.CreateResultText(SetGameResult());
-            SceneChanger.Instance.SetNextScene(SceneList.Result);
-            SceneChanger.Instance.ReadySceneChange();
+            SceneChanger.Instance?.SetNextScene(SceneList.Result);
+            SceneChanger.Instance?.OnChangeScene();
         }
     }
 }

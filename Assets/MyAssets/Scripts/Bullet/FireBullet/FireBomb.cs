@@ -11,6 +11,8 @@ namespace CreateScript
 
         private BulletData bulletData;
 
+        private SEManager seManager;
+
         [SerializeField]
         private float fireCoolDownCount = 0.1f;
         private float minCount = 0.2f;
@@ -30,6 +32,7 @@ namespace CreateScript
         {
             transform = launch.GameObject.transform;
             bulletData = launch.BulletData;
+            seManager = launch.SEManager;
         }
 
         public void DoUpdate(float time)

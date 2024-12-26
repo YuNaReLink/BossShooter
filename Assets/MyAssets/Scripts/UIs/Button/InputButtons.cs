@@ -10,28 +10,21 @@ namespace CreateScript
     /// </summary>
     public class InputButtons : MonoBehaviour
     {
-        private InputActionsControls inputActions;
+
+        //選択してる場所が分かる画像を有効にするかしないかのフラグ
+        [SerializeField]
+        private bool activateSelect = true;
 
         [SerializeField]
         private Image selectImage;
 
+        private int selectIndex = 0;
+
         [SerializeField]
         private InputActionButton[] buttons;
 
-        private InputAction SelectAction;
-
-        private Vector2 select;
-
-        private int selectIndex = 0;
-
-        private InputAction desideAction;
-
-        private bool deside;
-
-
         private void Awake()
         {
-            inputActions = new InputActionsControls();
 
             InputActionButton[] b = GetComponentsInChildren<InputActionButton>();
             buttons = b;
@@ -44,13 +37,14 @@ namespace CreateScript
         }
         private void SetSelectImagePosition(int index)
         {
+            if(!activateSelect||selectImage == null) { return; }
             Vector2 pos = buttons[index].RectTransform.anchoredPosition;
             pos.x -= 300f;
             selectImage.rectTransform.anchoredPosition = pos;
         }
         private void Update()
         {
-            if(select.x < 0)
+            if(InputUIAction.Instance.Select.x < 0)
             {
                 selectIndex--;
                 if(selectIndex < 0)
@@ -59,7 +53,7 @@ namespace CreateScript
                 }
                 SetSelectImagePosition(selectIndex);
             }
-            else if(select.x > 0)
+            else if(InputUIAction.Instance.Select.x > 0)
             {
                 selectIndex++;
                 if(selectIndex >= buttons.Length)
@@ -69,69 +63,10 @@ namespace CreateScript
                 SetSelectImagePosition(selectIndex);
             }
 
-            if (deside)
+            if (InputUIAction.Instance.Deside)
             {
                 buttons[selectIndex].OnButtonInput();
             }
-        }
-
-        private void OnVectorKey(InputAction.CallbackContext context)
-        {
-            select = inputActions.UI.Select.ReadValue<Vector2>();
-            // 一瞬だけtrueにして、次のフレームでfalseに戻す
-            StartCoroutine(VectorKeyPress());
-        }
-        private System.Collections.IEnumerator VectorKeyPress()
-        {
-            yield return null; // 1フレーム待つ
-            select = Vector2.zero;
-        }
-
-        private void OnDeside(InputAction.CallbackContext context)
-        {
-            deside = true;
-            // 一瞬だけtrueにして、次のフレームでfalseに戻す
-            StartCoroutine(DesidePress());
-        }
-        private System.Collections.IEnumerator DesidePress()
-        {
-            yield return null; // 1フレーム待つ
-            deside = false;
-        }
-
-        private void OnEnable()
-        {
-            inputActions.Enable();
-
-            SelectAction = inputActions.UI.Select;
-
-            SelectAction.performed += OnVectorKey;
-
-            SelectAction.Enable();
-
-            desideAction = inputActions.UI.Deside;
-
-            desideAction.performed += OnDeside;
-
-            desideAction.Enable();
-        }
-
-        private void OnDisable()
-        {
-            SelectAction.performed -= OnVectorKey;
-
-            SelectAction.Disable();
-
-            desideAction.performed -= OnDeside;
-
-            desideAction.Disable();
-
-            inputActions.Disable();
-        }
-
-        private void OnDestroy()
-        {
-            inputActions.Dispose();
         }
     }
 }

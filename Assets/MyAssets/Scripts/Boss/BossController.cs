@@ -22,6 +22,12 @@ namespace CreateScript
         private HP hp;
         public HP HP => hp;
 
+        private EffectManager effectManager;
+        public EffectManager EffectManager => effectManager;
+
+        private SEManager seManager;
+        public SEManager SEManager => seManager;
+
         private void Awake()
         {
             movement.Setup(this);
@@ -31,6 +37,10 @@ namespace CreateScript
             launch = GetComponentInChildren<Launch>();
 
             hp = GetComponent<HP>();
+
+            effectManager = GetComponent<EffectManager>();
+
+            seManager = GetComponent<SEManager>();
 
             BossParts[] parts = GetComponentsInChildren<BossParts>();
             if(parts.Length > 0)
@@ -63,6 +73,8 @@ namespace CreateScript
             hp.DecreaseHP(1);
             if (hp.Death())
             {
+                seManager.Play();
+                effectManager.Create(transform.position, transform.localScale);
                 Death();
             }
         }

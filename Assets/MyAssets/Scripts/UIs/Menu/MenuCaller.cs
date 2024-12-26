@@ -1,0 +1,90 @@
+using UnityEngine;
+
+namespace CreateScript
+{
+    public class MenuCaller : MonoBehaviour
+    {
+        /*Serialized*/
+
+        //メニューを召喚するためのキャンバス
+        //キャンバスが複数ある場合など、勝手に設定されると困る場合は手動で設定するべし。
+        //キャンバスが単体なら未設定でも問題なく動く。
+        [SerializeField]
+        private Canvas canvas;
+
+        private Canvas TargetCanvas
+        {
+            get
+            {
+                if (canvas == null)
+                {
+                    /*トランジション用のキャンバスを除外して選択*/
+
+                    Canvas c = FindObjectOfType<Canvas>();
+                    if (c != null)
+                    {
+                        canvas = c;
+                    }
+                }
+                return canvas;
+            }
+        }
+
+        //召喚するメニューのプレハブ
+        [SerializeField]
+        private PauseMenu menuPrefab;
+
+        //召喚するメニューが戻る先のシーン
+        //選択画面から選択画面に戻ることを防ぐため。
+        [SerializeField]
+        private SceneList returnTo = SceneList.Title;
+
+        /*Event*/
+
+        /*
+         */
+        private void Update()
+        {
+            ////Escキー以外の処理は行わないため、該当しない場合はここで中断している。
+            //if (!InputUIAction.Instance.Pause)
+            //{
+            //    return;
+            //}
+            //
+            ///*
+            // * Escキーが押された場合、以下の条件に従って処理を行う。
+            // * ・メニューが存在しない場合、メニューを呼び出す。
+            // * ・メニューが存在する場合、メニューを閉じる。
+            // */
+            //
+            //if (PauseMenu.Instance == null)
+            //{
+            //    Call();
+            //}
+            //else
+            //{
+            //    Close();
+            //}
+        }
+
+        //メニュー呼び出し
+        public void Call()
+        {
+            //publicで作成しているためnullチェックを挟む。
+            if (PauseMenu.Instance != null)
+            {
+                return;
+            }
+
+            //対象のキャンバスに生成する。
+            PauseMenu menu = Instantiate(menuPrefab, TargetCanvas.transform);
+        }
+
+        //メニューの終了
+        public void Close()
+        {
+            //publicで作成しているためnullチェックを挟みながら閉じる。
+            PauseMenu.Instance?.Close();
+        }
+    }
+}

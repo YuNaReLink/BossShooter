@@ -36,6 +36,8 @@ namespace CreateScript
 
         protected virtual BulletType BulletType => BulletType.Null;
 
+        protected SEManager seManager;
+
         public void SetShooterType(ShopterType s)
         {
             shopterType = s;
@@ -45,6 +47,7 @@ namespace CreateScript
         {
             rigidbody2D = GetComponent<Rigidbody2D>();
             bulletImage = GetComponentInChildren<BulletImage>();
+            seManager = GetComponent<SEManager>();
         }
 
         public void SetExeclude(int layer)
@@ -76,6 +79,7 @@ namespace CreateScript
             AddScore();
             Destroy(gameObject);
             Instantiate(effect.gameObject, pos, Quaternion.identity);
+            seManager.Play();
         }
 
         public void AddScore()

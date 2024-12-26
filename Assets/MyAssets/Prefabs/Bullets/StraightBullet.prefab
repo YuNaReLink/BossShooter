@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 7745363537580180715}
   - component: {fileID: 8697706793826013050}
   - component: {fileID: 4107381162265040606}
+  - component: {fileID: 8490111406226137145}
   m_Layer: 0
   m_Name: StraightBullet
   m_TagString: Untagged
@@ -243,3 +244,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   effect: {fileID: 2527986827875602783, guid: e6a96269b644ca440a18dd9149edb4bc, type: 3}
+--- !u!114 &8490111406226137145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725390795946585385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3887fc82ce4644faa8ff1ef77ce492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: c9ae230253818d0459be6b4cbc40ec3e, type: 2}
