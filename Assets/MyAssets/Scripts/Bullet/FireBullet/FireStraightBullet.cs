@@ -19,6 +19,8 @@ namespace CreateScript
 
         private BulletData bulletData;
 
+        private SEManager   seManager;
+
         [SerializeField]
         private float fireCoolDownCount = 0.1f;
 
@@ -39,6 +41,7 @@ namespace CreateScript
         {
             transform = launch.GameObject.transform;
             bulletData = launch.BulletData;
+            seManager = launch.SEManager;
         }
 
         public void DoUpdate(float time)
@@ -58,6 +61,7 @@ namespace CreateScript
                 straightBullet.SetDirection(direction);
             }
             timer.Start(fireCoolDownCount);
+            seManager.Play();
         }
     }
 }

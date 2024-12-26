@@ -30,6 +30,9 @@ namespace CreateScript
         private BulletData bulletData;
         public BulletData BulletData => bulletData;
 
+        private SEManager seManager;
+        public SEManager SEManager => seManager;
+
         public GameObject GameObject => gameObject;
 
         public void SetBulleyType(EnemyBulletType type)
@@ -43,6 +46,8 @@ namespace CreateScript
         {
             PlayerController player = FindObjectOfType<PlayerController>();
             targetTransform = player.transform;
+
+            seManager = GetComponent<SEManager>();
 
             IFireBullet[] bullets = new IFireBullet[]{
                 fireLockOnBullet,

@@ -8,6 +8,8 @@ namespace CreateScript
     {
         BulletData BulletData { get; }
 
+        SEManager   SEManager { get; }
+
         GameObject GameObject { get; }
     }
 

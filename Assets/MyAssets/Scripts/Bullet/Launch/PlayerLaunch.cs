@@ -28,11 +28,16 @@ namespace CreateScript
         private BulletData          bulletData;
         public BulletData           BulletData => bulletData;
 
+        private SEManager           seManager;
+        public SEManager            SEManager => seManager;
+
         public GameObject           GameObject => gameObject;
 
         private void Awake()
         {
             input = GetComponentInParent<PlayerInput>();
+
+            seManager = GetComponent<SEManager>();
 
             IFireBullet[] bullets = new IFireBullet[]
             {

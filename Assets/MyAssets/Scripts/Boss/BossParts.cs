@@ -6,10 +6,13 @@ namespace CreateScript
     {
 
         private HP hp;
-        public HP HP => hp;    
+        public HP HP => hp;
+
+        private BossController boss;
 
         private void Awake()
         {
+            boss = GetComponentInParent<BossController>();
             hp = GetComponent<HP>();
         }
 
@@ -25,6 +28,8 @@ namespace CreateScript
             hp.DecreaseHP(1);
             if (hp.Death())
             {
+                boss.SEManager.Play();
+                boss.EffectManager.Create(transform.position, boss.transform.localScale);
                 Death();
             }
         }

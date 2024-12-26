@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5988336187987017877}
   - component: {fileID: 2658585122006251680}
   - component: {fileID: 8903690536952453722}
+  - component: {fileID: 7528739796056338589}
   m_Layer: 7
   m_Name: EnemyLaunchPoint
   m_TagString: Untagged
@@ -98,12 +99,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireLockOnBullet:
-    fireCoolDownCount: 1
+    fireCoolDownCount: 0.5
     direction: {x: 0, y: 0}
   fireRandomBullet:
     fireCoolDownCount: 0.2
     spreadAngle: 60
   fireHomingBullet:
-    fireCoolDownCount: 1
+    fireCoolDownCount: 0.5
   bulletType: 1
   bulletData: {fileID: 11400000, guid: 6e407d73aea046a48b873ab40f104989, type: 2}
+--- !u!114 &7528739796056338589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8987249328755924125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3887fc82ce4644faa8ff1ef77ce492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: 2a349c8323753a3489c784f5eedf8c8e, type: 2}

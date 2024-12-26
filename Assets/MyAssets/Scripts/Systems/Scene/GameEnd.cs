@@ -7,29 +7,18 @@ namespace CreateScript
     /// </summary>
     public class GameEnd : MonoBehaviour
     {
-        private Timer gameEndTimer = new Timer();
 
         [SerializeField]
         private float endCount = 2f;
 
-        private void Awake()
-        {
-            gameEndTimer.OnceEnd += End;
-        }
 
-        public void Update()
+        private void ReadyEnd()
         {
-            gameEndTimer.Update(Time.deltaTime);
+            StartCoroutine(End());
         }
-
-        public void ReadyEnd()
+        private System.Collections.IEnumerator End()
         {
-            if (!gameEndTimer.IsEnd()) { return; }
-            gameEndTimer.Start(endCount);
-        }
-
-        private void End()
-        {
+            yield return new WaitForSecondsRealtime(endCount); // 1フレーム待つ
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
 #else

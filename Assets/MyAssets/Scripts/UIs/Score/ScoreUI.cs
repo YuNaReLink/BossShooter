@@ -24,6 +24,7 @@ namespace CreateScript
         // Start is called before the first frame update
         private void Start()
         {
+            if(ScoreSystem.Instance == null) { return; }
             ScoreTextOutput(ScoreSystem.Instance.CurrentCount);
         }
 
@@ -44,6 +45,7 @@ namespace CreateScript
 
         private void Update()
         {
+            if (ScoreSystem.Instance == null) { return; }
             ScoreTextOutput(ScoreSystem.Instance.CurrentCount);
         }
     }

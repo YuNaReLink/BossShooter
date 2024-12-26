@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4876549913223771422}
   - component: {fileID: 2877249419312176001}
   - component: {fileID: 7216975810457997852}
+  - component: {fileID: 1324168313861243265}
   m_Layer: 7
   m_Name: EnemyParts00
   m_TagString: Untagged
@@ -148,6 +149,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max: 15
   current: 0
+--- !u!114 &1324168313861243265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660649853613497492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee9e3281ad39484293fc58708f8dca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: 491747c5a9f7ec6449ab2e1641123f78, type: 2}
 --- !u!1 &7367828971354272824
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +180,8 @@ GameObject:
   - component: {fileID: 4710227189458120179}
   - component: {fileID: 9159675093738280846}
   - component: {fileID: 5878273687844223407}
+  - component: {fileID: -564113574054380795}
+  - component: {fileID: 7260953628493525278}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -384,6 +400,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHPUI: {fileID: 4568917578355058339, guid: b84a5468347071a4b945997da70db8a5, type: 3}
+--- !u!114 &-564113574054380795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367828971354272824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee9e3281ad39484293fc58708f8dca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: 491747c5a9f7ec6449ab2e1641123f78, type: 2}
+--- !u!114 &7260953628493525278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367828971354272824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3887fc82ce4644faa8ff1ef77ce492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: ee9b3ad5485f0ac409a560d21b20a077, type: 2}
 --- !u!1 &8759213206699206563
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +439,7 @@ GameObject:
   - component: {fileID: 3791163543503158567}
   - component: {fileID: 4591723622168188153}
   - component: {fileID: 4435121740126697130}
+  - component: {fileID: 1389798336632841376}
   m_Layer: 7
   m_Name: EnemyParts01
   m_TagString: Untagged
@@ -532,6 +575,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max: 15
   current: 0
+--- !u!114 &1389798336632841376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759213206699206563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee9e3281ad39484293fc58708f8dca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: 491747c5a9f7ec6449ab2e1641123f78, type: 2}
 --- !u!1001 &48256585959355064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -581,24 +637,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
-      propertyPath: bulletData
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e407d73aea046a48b873ab40f104989, type: 2}
-    - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
-      propertyPath: bulletType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
       propertyPath: fireHomingBullet.fireCoolDownCount
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
       propertyPath: fireLockOnBullet.fireCoolDownCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8903690536952453722, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
-      propertyPath: fireRandomBullet.fireCoolDownCount
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8987249328755924125, guid: 1a7aaa0bd3758004c8702d0863245e9c, type: 3}
       propertyPath: m_Name

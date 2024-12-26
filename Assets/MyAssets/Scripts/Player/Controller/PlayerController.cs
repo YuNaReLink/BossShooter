@@ -17,6 +17,10 @@ namespace CreateScript
         private Launch launch;
 
         private HP hp;
+
+        private EffectManager effectManager;
+
+        private SEManager       seManager;
         private void Awake()
         {
             player = this;
@@ -24,6 +28,8 @@ namespace CreateScript
             input = GetComponent<PlayerInput>();
             launch = GetComponentInChildren<Launch>();
             hp = GetComponent<HP>();
+            effectManager = GetComponent<EffectManager>();
+            seManager = GetComponent<SEManager>();
         }
 
         private void Start()
@@ -49,6 +55,8 @@ namespace CreateScript
             hp.DecreaseHP(1);
             if (hp.Death())
             {
+                seManager.Play();
+                effectManager.Create(transform.position,transform.localScale);
                 Death();
             }
         }

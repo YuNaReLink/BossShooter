@@ -20,8 +20,6 @@ namespace CreateScript
         private static SceneChanger     instance;
         public static SceneChanger      Instance => instance;
 
-        private Timer                   sceneChangeTimer = new Timer();
-
         private SceneList               nextScene;
 
         public void SetNextScene(SceneList scene)
@@ -35,13 +33,6 @@ namespace CreateScript
         private void Awake()
         {
             instance = this;
-
-            sceneChangeTimer.OnceEnd += ChangeScene;
-        }
-
-        private void Update()
-        {
-            sceneChangeTimer.Update(Time.deltaTime);
         }
 
         private string GetSceneName(SceneList scene)
@@ -71,10 +62,16 @@ namespace CreateScript
             SceneManager.LoadScene(GetSceneName(nextScene));
         }
 
-        public void ReadySceneChange()
+        //0.1秒たったらシーン遷移
+        public void OnChangeScene()
         {
-            if (!sceneChangeTimer.IsEnd()) { return; }
-            sceneChangeTimer.Start(changeCount);
+            if(instance == null) { return; }
+            StartCoroutine(ChangeStart());
+        }
+        private System.Collections.IEnumerator ChangeStart()
+        {
+            yield return new WaitForSecondsRealtime(0.1f); // 1フレーム待つ
+            ChangeScene();
         }
     }
 }
