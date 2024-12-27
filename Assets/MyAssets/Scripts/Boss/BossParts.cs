@@ -2,13 +2,17 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ボスのパーツ部分の管理を行うクラス
+    /// 主にHP処理とダメージ処理のみ
+    /// </summary>
     public class BossParts : MonoBehaviour
     {
 
-        private HP hp;
-        public HP HP => hp;
+        private HP              hp;
+        public HP               HP => hp;
 
-        private BossController boss;
+        private BossController  boss;
 
         private void Awake()
         {

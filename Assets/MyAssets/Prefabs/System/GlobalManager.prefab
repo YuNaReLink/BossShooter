@@ -62,3 +62,6 @@ MonoBehaviour:
   currentCount: 0
   scoreLine: 100
   addScoreLine: 100
+  smallScore: 10
+  middleScore: 15
+  bigScore: 20

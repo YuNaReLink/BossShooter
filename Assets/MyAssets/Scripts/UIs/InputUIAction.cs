@@ -3,27 +3,31 @@ using UnityEngine.InputSystem;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// UIのボタン入力を管理するクラス
+    /// シングルトンパターンでどこらでもアクセスが可能
+    /// </summary>
     public class InputUIAction : MonoBehaviour
     {
-        private static InputUIAction instance;
-        public static InputUIAction Instance => instance;
+        private static InputUIAction    instance;
+        public static InputUIAction     Instance => instance;
 
-        private InputActionsControls inputActions;
+        private InputActionsControls    inputActions;
 
-        private InputAction SelectAction;
+        private InputAction             SelectAction;
 
-        private Vector2 select;
-        public Vector2 Select => select;
+        private Vector2                 select;
+        public Vector2                  Select => select;
 
-        private InputAction desideAction;
+        private InputAction             desideAction;
 
-        private bool deside;
-        public bool Deside => deside;
+        private bool                    deside;
+        public bool                     Deside => deside;
 
-        private InputAction pauseAciton;
+        private InputAction             pauseAciton;
 
-        private bool pause;
-        public bool Pause => pause;
+        private bool                    pause;
+        public bool                     Pause => pause;
 
         private void Awake()
         {

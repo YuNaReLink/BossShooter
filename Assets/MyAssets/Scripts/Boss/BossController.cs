@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ボス本体の管理クラス
+    /// </summary>
     public class BossController : MonoBehaviour,BossSetup
     {
         public GameObject GameObject => gameObject;
@@ -83,6 +86,8 @@ namespace CreateScript
         {
             FormChange formChange = GetComponentInParent<FormChange>();
             formChange.SetForm(1);
+            ActivateResult result = GetComponent<ActivateResult>();
+            result.GameOverResult();
             Destroy(gameObject);
         }
     }

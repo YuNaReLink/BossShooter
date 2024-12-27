@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// 撃破タイプのゲームオーバー判定を行うクラス
+    /// アタッチしたオブジェクトが非表示になった時に処理を行う
+    /// </summary>
     public class ActivateResult : MonoBehaviour
     {
         [SerializeField]
@@ -20,7 +24,8 @@ namespace CreateScript
             }
             return result;
         } 
-        private void OnDisable()
+
+        public void GameOverResult()
         {
             if (gameClear)
             {
@@ -32,6 +37,7 @@ namespace CreateScript
             }
             GameUIController.Instance.CreateResultText(SetGameResult());
             SceneChanger.Instance?.SetNextScene(SceneList.Result);
+            SceneChanger.Instance?.SetChangeCount(5f);
             SceneChanger.Instance?.OnChangeScene();
         }
     }

@@ -2,31 +2,35 @@ using UnityEngine;
 
 namespace CreateScript
 {
+
     public class PlayerController : MonoBehaviour,PlayerSetup
     {
-        private static PlayerController player;
-        public static PlayerController Player => player;
-        public GameObject GameObject => gameObject;
-
-        private PlayerInput input;
-        public PlayerInput Input => input;
-
+        /*Serialized*/
         [SerializeField]
-        private PlayerMovement movement;
+        private PlayerMovement              movement;
 
-        private Launch launch;
+        /*Component*/
+        public GameObject                   GameObject => gameObject;
+        
+        private static PlayerController     player;
+        public static PlayerController      Player => player;
 
-        private HP hp;
+        private PlayerInput                 input;
+        public PlayerInput                  Input => input;
 
-        private EffectManager effectManager;
+        private HP                          hp;
 
-        private SEManager       seManager;
+        private EffectManager               effectManager;
+
+        private SEManager                   seManager;
+
+        /*Method*/
+
         private void Awake()
         {
             player = this;
 
             input = GetComponent<PlayerInput>();
-            launch = GetComponentInChildren<Launch>();
             hp = GetComponent<HP>();
             effectManager = GetComponent<EffectManager>();
             seManager = GetComponent<SEManager>();

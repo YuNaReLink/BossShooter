@@ -7,15 +7,15 @@ namespace CreateScript
     public class ScoreUI : MonoBehaviour
     {
         [SerializeField]
-        private int count;
+        private int         count;
 
         [SerializeField]
-        private int viewCount;
+        private int         viewCount;
 
-        private Text text;
+        private Text        text;
 
         [SerializeField]
-        private string baseText;
+        private string      baseText;
 
         private void Awake()
         {

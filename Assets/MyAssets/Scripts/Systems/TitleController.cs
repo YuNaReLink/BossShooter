@@ -8,6 +8,7 @@ namespace CreateScript
         private void Start()
         {
             GlobalManager.Instance.SetGameMode(GameMode.Title);
+            ScoreSystem.Instance.ResetScore();
         }
     }
 }

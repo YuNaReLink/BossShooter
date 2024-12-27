@@ -2,23 +2,28 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// バックグランドのスクロールを行うクラス
+    /// backGroundsにセットした画像を右から左へスクロールする
+    /// </summary>
     public class BGScroll : MonoBehaviour
     {
+        /*SerializeField*/
         //背景をスクロールさせるスピード
         [SerializeField] 
-        private float scrollSpeed; 
+        private float           scrollSpeed; 
         //背景のスクロールを開始する位置
         [SerializeField] 
-        private float startLine;
+        private float           startLine;
         //背景のスクロールが終了する位置
         [SerializeField] 
-        private float deadLine;
+        private float           deadLine;
 
         [SerializeField]
-        private float backGroundImageInterval = 19f;
+        private float           backGroundImageInterval = 19f;
 
         [SerializeField]
-        private GameObject[] backGrounds = new GameObject[2];
+        private GameObject[]    backGrounds = new GameObject[2];
 
         private void Start()
         {
@@ -28,7 +33,7 @@ namespace CreateScript
             }
         }
 
-        void Update()
+        private void Update()
         {
             for(int i = 0;i < backGrounds.Length; i++)
             {

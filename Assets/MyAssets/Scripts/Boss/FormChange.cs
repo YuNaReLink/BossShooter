@@ -1,20 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// “G‚Ìó‘Ô‚ğ•ÏX‚·‚éƒNƒ‰ƒX
+    /// å‚É“G‚Ì’e‚Ìó‘Ô‚ğ•ÏX‚µ‚Ä‚¢‚é
+    /// </summary>
     public class FormChange : MonoBehaviour
     {
         [SerializeField]
         private int stateCount = 3;
 
-        private Launch launch;
+        private Launch[] launches;
 
         private EnemyBulletType bulletType;
         private void Awake()
         {
-            launch = GetComponentInChildren<Launch>();
+            launches = GetComponentsInChildren<Launch>();
         }
 
         private void Start()
@@ -40,7 +42,10 @@ namespace CreateScript
                 default:
                     break;
             }
-            launch.SetBulleyType(bulletType);
+            for(int i = 0; i < launches.Length; i++)
+            {
+                launches[i].SetBulleyType(bulletType);
+            }
         }
     }
 }

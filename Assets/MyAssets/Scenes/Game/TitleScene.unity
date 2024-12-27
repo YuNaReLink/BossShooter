@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8400bda911a43e1499c7730da276e512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 02194e4ea202f4ceba74890a32a14947, type: 3}
+  clip: {fileID: 8300000, guid: 197d380763ad2c84dab1a1454a2fc0e1, type: 3}
 --- !u!4 &526512825
 Transform:
   m_ObjectHideFlags: 0
@@ -2430,6 +2430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710672548}
   - component: {fileID: 1710672549}
+  - component: {fileID: 1710672550}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -2472,8 +2473,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateSelect: 1
+  horizontal: 1
   selectImage: {fileID: 1158924435}
   buttons: []
+--- !u!114 &1710672550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710672547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3887fc82ce4644faa8ff1ef77ce492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: ca010fe1dccfed348a92463ea8675388, type: 2}
 --- !u!1 &1791043913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,6 +2878,10 @@ PrefabInstance:
     - target: {fileID: 1232393076440076095, guid: eeb9436a789923f44ad1c53e85736321, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142760096162659504, guid: eeb9436a789923f44ad1c53e85736321, type: 3}
+      propertyPath: changeCount
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5408217328274768043, guid: eeb9436a789923f44ad1c53e85736321, type: 3}
       propertyPath: m_Name

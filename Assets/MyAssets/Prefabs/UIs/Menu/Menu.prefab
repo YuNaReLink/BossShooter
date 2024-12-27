@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5226343195343616685}
   - component: {fileID: 7496652059564438812}
+  - component: {fileID: 7325812367664704782}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -186,8 +187,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateSelect: 1
+  horizontal: 0
   selectImage: {fileID: 6124139539359687847}
   buttons: []
+--- !u!114 &7325812367664704782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417065205684300411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3887fc82ce4644faa8ff1ef77ce492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: ca010fe1dccfed348a92463ea8675388, type: 2}
 --- !u!1 &1732795613126612764
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673255f57bf65ef4a8e5f2f7f04422bd, type: 3}
+  m_Name: EffectLedger
+  m_EditorClassIdentifier: 
+  values:
+  - {fileID: 8261599466713796642, guid: 71b67393930db0e418a931a3024914c6, type: 3}

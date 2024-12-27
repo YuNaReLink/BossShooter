@@ -16,27 +16,30 @@ namespace CreateScript
         Random,
         Homing
     }
-
+    /// <summary>
+    /// ゲームに登場する弾すべてが継承してるベースのクラス
+    /// 全弾に共通する処理、変数を持っている
+    /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CircleCollider2D))]
     public class BaseBullet : MonoBehaviour
     {
         [SerializeField]
-        protected float bulletSpeed;
+        protected float                 bulletSpeed;
 
         [SerializeField]
-        protected ImageEffect effect;
+        protected ImageEffect           effect;
 
-        protected new Rigidbody2D rigidbody2D;
+        protected new Rigidbody2D       rigidbody2D;
 
-        protected BulletImage bulletImage;
+        protected BulletImage           bulletImage;
 
-        protected ShopterType shopterType;
-        public ShopterType ShopterType => shopterType;
+        protected ShopterType           shopterType;
+        public ShopterType              ShopterType => shopterType;
 
-        protected virtual BulletType BulletType => BulletType.Null;
+        protected virtual BulletType    BulletType => BulletType.Null;
 
-        protected SEManager seManager;
+        protected SEManager             seManager;
 
         public void SetShooterType(ShopterType s)
         {

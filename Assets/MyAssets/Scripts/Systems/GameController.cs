@@ -2,20 +2,33 @@ using UnityEngine;
 
 namespace CreateScript
 {
-
+    /// <summary>
+    /// ゲームシーンで全体的に使う処理を行うクラス
+    /// </summary>
     public class GameController : MonoBehaviour
     {
-        private static GameController instance;
-        public static GameController Instance => instance;
+        private static GameController       instance;
+        public static GameController        Instance => instance;
 
 
         [SerializeField]
-        private int playerRemainingLives;
-        public int PlayerLife => playerRemainingLives;
+        private int                         playerRemainingLives;
+        public int                          PlayerLife => playerRemainingLives;
 
         [SerializeField]
-        private int bombCount;
-        public int BombCount => bombCount;
+        private int                         bombCount;
+        public int                          BombCount => bombCount;
+
+        [SerializeField]
+        private PlayerController            playerController;
+
+        [SerializeField]
+        private PlayerController            currentPlayer;
+
+        private Timer                       revivalTimer = new Timer();
+
+        private bool                        gameStop = false;
+        public bool                         IsGameStop => gameStop;
         public void DecreaseBombCount()
         {
             bombCount--;
@@ -24,17 +37,6 @@ namespace CreateScript
                 bombCount = 0;
             }
         }
-
-        [SerializeField]
-        private PlayerController playerController;
-
-        [SerializeField]
-        private PlayerController currentPlayer;
-
-        private Timer revivalTimer = new Timer();
-
-        private bool gameStop = false;
-        public bool IsGameStop => gameStop;
         public void SetGameStop(bool b) { gameStop = b; }
 
         public void Awake()
@@ -51,14 +53,14 @@ namespace CreateScript
             currentPlayer = FindObjectOfType<PlayerController>();
         }
 
-        void Start()
+        private void Start()
         {
             gameStop = true;
 
             GlobalManager.Instance.SetGameMode(GameMode.Game);
         }
 
-        // Update is called once per frame
+
         private void Update()
         {
             revivalTimer.Update(Time.deltaTime);
@@ -81,6 +83,7 @@ namespace CreateScript
                 GlobalManager.Instance.SetResultType(ResultType.GameOver);
                 GameUIController.Instance.CreateResultText("GAMEOVER");
                 SceneChanger.Instance?.SetNextScene(SceneList.Result);
+                SceneChanger.Instance?.SetChangeCount(2.5f);
                 SceneChanger.Instance?.OnChangeScene();
             }
             else

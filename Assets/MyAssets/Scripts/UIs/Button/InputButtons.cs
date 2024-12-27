@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace CreateScript
@@ -13,21 +12,26 @@ namespace CreateScript
 
         //選択してる場所が分かる画像を有効にするかしないかのフラグ
         [SerializeField]
-        private bool activateSelect = true;
+        private bool                activateSelect = true;
+        //ボタン操作が横方向か縦方向か設定するフラグ
+        [SerializeField]
+        private bool                horizontal;
 
         [SerializeField]
-        private Image selectImage;
+        private Image               selectImage;
 
-        private int selectIndex = 0;
+        private int                 selectIndex = 0;
 
         [SerializeField]
         private InputActionButton[] buttons;
 
+        private SEManager seManager;
+
         private void Awake()
         {
-
             InputActionButton[] b = GetComponentsInChildren<InputActionButton>();
             buttons = b;
+            seManager = GetComponent<SEManager>();
         }
 
         private void Start()
@@ -44,28 +48,45 @@ namespace CreateScript
         }
         private void Update()
         {
-            if(InputUIAction.Instance.Select.x < 0)
+            float select;
+            if (horizontal)
+            {
+                select = InputUIAction.Instance.Select.x;
+            }
+            else
+            {
+                select = -InputUIAction.Instance.Select.y;
+            }
+            Input(select);
+        }
+
+        private void Input(float action)
+        {
+            if (action < 0)
             {
                 selectIndex--;
-                if(selectIndex < 0)
+                if (selectIndex < 0)
                 {
                     selectIndex = 0;
                 }
                 SetSelectImagePosition(selectIndex);
+                seManager.Play();
             }
-            else if(InputUIAction.Instance.Select.x > 0)
+            else if (action > 0)
             {
                 selectIndex++;
-                if(selectIndex >= buttons.Length)
+                if (selectIndex >= buttons.Length)
                 {
                     selectIndex = buttons.Length - 1;
                 }
                 SetSelectImagePosition(selectIndex);
+                seManager.Play();
             }
 
             if (InputUIAction.Instance.Deside)
             {
                 buttons[selectIndex].OnButtonInput();
+                seManager.Play(1);
             }
         }
     }

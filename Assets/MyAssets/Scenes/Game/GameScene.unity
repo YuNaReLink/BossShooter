@@ -1101,6 +1101,7 @@ GameObject:
   - component: {fileID: 1649112104}
   - component: {fileID: 1649112106}
   - component: {fileID: 1649112105}
+  - component: {fileID: 1649112107}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -1222,7 +1223,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   menuPrefab: {fileID: 1880522379156951457, guid: c456982b5a8584d47b6fbdb46443ccf0, type: 3}
-  returnTo: 0
+--- !u!114 &1649112107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649112099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3887fc82ce4644faa8ff1ef77ce492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: ca010fe1dccfed348a92463ea8675388, type: 2}
 --- !u!1001 &1697227080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1274,6 +1287,10 @@ PrefabInstance:
     - target: {fileID: 7367828971354272824, guid: 58b81a91b4173474a999c0365599dfa0, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159675093738280846, guid: 58b81a91b4173474a999c0365599dfa0, type: 3}
+      propertyPath: gameClear
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

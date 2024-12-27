@@ -30,6 +30,11 @@ namespace CreateScript
         [SerializeField]
         private float                   changeCount = 3f;
 
+        public void SetChangeCount(float count)
+        {
+            changeCount = count;
+        }
+
         private void Awake()
         {
             instance = this;
@@ -70,7 +75,7 @@ namespace CreateScript
         }
         private System.Collections.IEnumerator ChangeStart()
         {
-            yield return new WaitForSecondsRealtime(0.1f); // 1フレーム待つ
+            yield return new WaitForSecondsRealtime(changeCount); // 1フレーム待つ
             ChangeScene();
         }
     }

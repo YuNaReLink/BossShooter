@@ -37,6 +37,7 @@ namespace CreateScript
         [SerializeField]
         [ReadOnly]
         private ResultType resultType;
+        public ResultType ResultType => resultType;
 
         public void SetResultType(ResultType type)
         {

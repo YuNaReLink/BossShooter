@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// Sprite型のエフェクトをオブジェクトとして生成するクラス
+    /// </summary>
     public class EffectManager : MonoBehaviour
     {
         /*Serialized*/

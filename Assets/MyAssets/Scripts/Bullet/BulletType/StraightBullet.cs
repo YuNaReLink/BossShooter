@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// 真っすぐ進む弾本体のクラス
+    /// </summary>
     public class StraightBullet : BaseBullet
     {
 

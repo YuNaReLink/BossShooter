@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// SEをオブジェクトとして生成するクラス
+    /// </summary>
     public class SEManager : MonoBehaviour
     {
         /*Serialized*/

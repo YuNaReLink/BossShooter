@@ -7,10 +7,17 @@ namespace CreateScript
         /*Serialized*/
 
         //メニューを召喚するためのキャンバス
-        //キャンバスが複数ある場合など、勝手に設定されると困る場合は手動で設定するべし。
-        //キャンバスが単体なら未設定でも問題なく動く。
+        //キャンバスが複数ある場合など、勝手に設定されると困る場合は手動で設定。
+        //キャンバスが単体なら未設定でも参照して取得。
         [SerializeField]
         private Canvas canvas;
+
+        private SEManager seManager;
+
+        private void Awake()
+        {
+            seManager = GetComponent<SEManager>();
+        }
 
         private Canvas TargetCanvas
         {
@@ -34,39 +41,6 @@ namespace CreateScript
         [SerializeField]
         private PauseMenu menuPrefab;
 
-        //召喚するメニューが戻る先のシーン
-        //選択画面から選択画面に戻ることを防ぐため。
-        [SerializeField]
-        private SceneList returnTo = SceneList.Title;
-
-        /*Event*/
-
-        /*
-         */
-        private void Update()
-        {
-            ////Escキー以外の処理は行わないため、該当しない場合はここで中断している。
-            //if (!InputUIAction.Instance.Pause)
-            //{
-            //    return;
-            //}
-            //
-            ///*
-            // * Escキーが押された場合、以下の条件に従って処理を行う。
-            // * ・メニューが存在しない場合、メニューを呼び出す。
-            // * ・メニューが存在する場合、メニューを閉じる。
-            // */
-            //
-            //if (PauseMenu.Instance == null)
-            //{
-            //    Call();
-            //}
-            //else
-            //{
-            //    Close();
-            //}
-        }
-
         //メニュー呼び出し
         public void Call()
         {
@@ -75,7 +49,7 @@ namespace CreateScript
             {
                 return;
             }
-
+            seManager.Play(1);
             //対象のキャンバスに生成する。
             PauseMenu menu = Instantiate(menuPrefab, TargetCanvas.transform);
         }
@@ -83,6 +57,7 @@ namespace CreateScript
         //メニューの終了
         public void Close()
         {
+            seManager.Play(1);
             //publicで作成しているためnullチェックを挟みながら閉じる。
             PauseMenu.Instance?.Close();
         }
