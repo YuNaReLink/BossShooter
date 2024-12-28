@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// 各シーンのリスト
+    /// </summary>
     public enum SceneList
     {
         Title,
@@ -39,7 +42,11 @@ namespace CreateScript
         {
             instance = this;
         }
-
+        /// <summary>
+        /// ここで各シーンの名前をリスト別に取得
+        /// </summary>
+        /// <param name="scene"></param>
+        /// <returns></returns>
         private string GetSceneName(SceneList scene)
         {
             string temp;
@@ -61,18 +68,19 @@ namespace CreateScript
             }
             return temp;
         }
-
+        //取得したシーンへ遷移
         public void ChangeScene()
         {
             SceneManager.LoadScene(GetSceneName(nextScene));
         }
 
-        //0.1秒たったらシーン遷移
+        //シーン遷移ボタンを決定した時に呼び出されるメソッド
         public void OnChangeScene()
         {
             if(instance == null) { return; }
             StartCoroutine(ChangeStart());
         }
+        //指定したcount後にシーンを遷移するメソッド
         private System.Collections.IEnumerator ChangeStart()
         {
             yield return new WaitForSecondsRealtime(changeCount); // 1フレーム待つ

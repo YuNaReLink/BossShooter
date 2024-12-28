@@ -22,6 +22,11 @@ namespace CreateScript
         [SerializeField]
         private float height = 1f;
 
+        public void SetSpeed(float s)
+        {
+            speed = s;
+        }
+
         public void Setup(BossSetup actor)
         {
             transform = actor.GameObject.transform;

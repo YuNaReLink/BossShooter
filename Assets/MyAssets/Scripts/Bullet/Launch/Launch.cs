@@ -4,36 +4,39 @@ namespace CreateScript
 {
     public enum EnemyBulletType
     {
-        Random,
         LockOn,
+        Random,
         Homing
     }
 
     public class Launch : MonoBehaviour, IBaseLaunch
     {
         [SerializeField]
-        private IFireBullet[] fireBullets;
+        private bool launchOff;
 
         [SerializeField]
-        private FireLockOnBullet fireLockOnBullet;
+        private IFireBullet[]       fireBullets;
 
         [SerializeField]
-        private FireRandomBullet fireRandomBullet;
+        private FireLockOnBullet    fireLockOnBullet;
 
         [SerializeField]
-        private FireHomingBullet fireHomingBullet;
+        private FireRandomBullet    fireRandomBullet;
 
         [SerializeField]
-        private EnemyBulletType bulletType;
+        private FireHomingBullet    fireHomingBullet;
 
         [SerializeField]
-        private BulletData bulletData;
-        public BulletData BulletData => bulletData;
+        private EnemyBulletType     bulletType;
 
-        private SEManager seManager;
-        public SEManager SEManager => seManager;
+        [SerializeField]
+        private BulletData          bulletData;
+        public BulletData           BulletData => bulletData;
 
-        public GameObject GameObject => gameObject;
+        private SEManager           seManager;
+        public SEManager            SEManager => seManager;
+
+        public GameObject           GameObject => gameObject;
 
         public void SetBulleyType(EnemyBulletType type)
         {
@@ -64,6 +67,7 @@ namespace CreateScript
 
         private void Update()
         {
+            if (launchOff) { return; }
             fireBullets[(int)bulletType].DoUpdate(Time.deltaTime);
             if (GameController.Instance.IsGameStop) { return; }
 

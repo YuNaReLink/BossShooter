@@ -11,12 +11,19 @@ namespace CreateScript
         [SerializeField]
         private int stateCount = 3;
 
+        private BossSetup boss;
+
+        private EnemyMovement movement;
+
         private Launch[] launches;
 
         private EnemyBulletType bulletType;
         private void Awake()
         {
+            boss = GetComponent<BossSetup>();
             launches = GetComponentsInChildren<Launch>();
+
+            movement = boss.Movement;
         }
 
         private void Start()
@@ -30,14 +37,17 @@ namespace CreateScript
             stateCount -= count;
             switch (stateCount)
             {
-                case 1:
-                    bulletType = EnemyBulletType.Homing;
+                case 3:
+                    bulletType = EnemyBulletType.LockOn;
+                    movement.SetSpeed(2f);
                     break;
                 case 2:
                     bulletType = EnemyBulletType.Random;
+                    movement.SetSpeed(2.5f);
                     break;
-                case 3:
-                    bulletType = EnemyBulletType.LockOn;
+                case 1:
+                    bulletType = EnemyBulletType.Homing;
+                    movement.SetSpeed(3f);
                     break;
                 default:
                     break;

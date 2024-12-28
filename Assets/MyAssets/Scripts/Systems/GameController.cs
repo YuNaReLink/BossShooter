@@ -80,11 +80,7 @@ namespace CreateScript
             playerRemainingLives--;
             if(playerRemainingLives < 0)
             {
-                GlobalManager.Instance.SetResultType(ResultType.GameOver);
-                GameUIController.Instance.CreateResultText("GAMEOVER");
-                SceneChanger.Instance?.SetNextScene(SceneList.Result);
-                SceneChanger.Instance?.SetChangeCount(2.5f);
-                SceneChanger.Instance?.OnChangeScene();
+                SetResult(ResultType.GameOver);
             }
             else
             {
@@ -92,6 +88,29 @@ namespace CreateScript
                 currentPlayer = g.GetComponent<PlayerController>();
                 gameStop = true;
             }
+        }
+
+        private string SetGameResult()
+        {
+            string result = "";
+            if (playerRemainingLives >= 0)
+            {
+                result = "GAMECLEAR";
+            }
+            else
+            {
+                result = "GAMEOVER";
+            }
+            return result;
+        }
+
+        public void SetResult(ResultType type)
+        {
+            GlobalManager.Instance.SetResultType(type);
+            GameUIController.Instance.CreateResultText(SetGameResult());
+            SceneChanger.Instance?.SetNextScene(SceneList.Result);
+            SceneChanger.Instance?.SetChangeCount(5f);
+            SceneChanger.Instance?.OnChangeScene();
         }
     }
 }

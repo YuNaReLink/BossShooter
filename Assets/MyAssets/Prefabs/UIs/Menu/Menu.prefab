@@ -190,6 +190,7 @@ MonoBehaviour:
   horizontal: 0
   selectImage: {fileID: 6124139539359687847}
   buttons: []
+  selectImageOffsetX: 250
 --- !u!114 &7325812367664704782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ledger: {fileID: 11400000, guid: ca010fe1dccfed348a92463ea8675388, type: 2}
+  volum: 0.1
 --- !u!1 &1732795613126612764
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +555,7 @@ GameObject:
   - component: {fileID: 6070891086632812167}
   - component: {fileID: 5850536741778734493}
   - component: {fileID: 1880522379156951457}
+  - component: {fileID: 8156051179874732002}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -607,6 +610,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: 0
+  seManager: {fileID: 0}
+--- !u!114 &8156051179874732002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6984559092106952535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3887fc82ce4644faa8ff1ef77ce492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: ca010fe1dccfed348a92463ea8675388, type: 2}
+  volum: 0.1
 --- !u!1 &8354834502537651963
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,7 +659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: 61}
+  m_AnchoredPosition: {x: -250, y: 61}
   m_SizeDelta: {x: 96, y: 99.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4037412255308903435

@@ -2,14 +2,15 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ポーズした時にゲーム時間を止める＆進める処理を行うクラス
+    /// </summary>
     public class Pause : MonoBehaviour
     {
-        /*Member*/
 
         //ポーズ解除までの待機時間
         private float wait = 0;
 
-        /*Event*/
 
         private void Update()
         {
@@ -34,8 +35,6 @@ namespace CreateScript
         {
             Disable();
         }
-
-        /*Method*/
 
         //ポーズの有効化
         //Time.timeScaleを0に設定することで、ほぼ全てのオブジェクトの動作を停止できる。

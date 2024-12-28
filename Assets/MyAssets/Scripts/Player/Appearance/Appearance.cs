@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CreateScript
@@ -39,9 +37,13 @@ namespace CreateScript
 
         private Vector2 goalPostion = Vector2.zero;
 
+        private new Collider2D collider;
+
         private void Awake()
         {
             camera = Camera.main;
+            collider = GetComponent<Collider2D>();
+            collider.enabled = false;
         }
         // Start is called before the first frame update
         void Start()
@@ -79,6 +81,7 @@ namespace CreateScript
             Vector2 sub = (Vector2)transform.position - goalPostion;
             if(sub.magnitude < 0.01f)
             {
+                collider.enabled = true;
                 GameController.Instance.SetGameStop(false);
                 Destroy(this);
             }

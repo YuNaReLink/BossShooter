@@ -242,9 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b55dee4a09eaa45b60a0e82c846954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 30
+  bulletSpeed: 15
   effect: {fileID: 2527986827875602783, guid: e6a96269b644ca440a18dd9149edb4bc, type: 3}
-  limitSpeed: 10
+  power: 1
+  limitSpeed: 5
   homingCount: 3
   homingAngleLimit: 30
 --- !u!114 &7094580570480668539

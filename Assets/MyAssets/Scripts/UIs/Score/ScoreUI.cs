@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// スコアUIの表示を行うクラス
+    /// </summary>
     public class ScoreUI : MonoBehaviour
     {
         [SerializeField]
@@ -17,11 +20,13 @@ namespace CreateScript
         [SerializeField]
         private string      baseText;
 
+        private int         maxViewScore = 999999;
+
         private void Awake()
         {
             text = GetComponent<Text>();
         }
-        // Start is called before the first frame update
+
         private void Start()
         {
             if(ScoreSystem.Instance == null) { return; }
@@ -32,6 +37,13 @@ namespace CreateScript
         {
             if(score == viewCount) { return; }
             count = score;
+            //最大スコア越え対策
+            if(count >= maxViewScore)
+            {
+                count = maxViewScore;
+                viewCount = count;
+            }
+            //取得スコア分1ずつ加算する
             if(count >= viewCount) 
             {
                 viewCount++;
@@ -40,6 +52,7 @@ namespace CreateScript
                     viewCount = count;
                 }
             }
+            //テキストに出力
             text.text = baseText + String.Format("{0:D6}", viewCount);
         }
 

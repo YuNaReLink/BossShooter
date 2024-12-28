@@ -8,12 +8,12 @@ namespace CreateScript
     [RequireComponent(typeof(AudioSource))]
     public class SEPlayer : MonoBehaviour
     {
-        /*Component*/
+
 
         //本体
         private AudioSource source = null;
 
-        /*Event*/
+
 
         private void Awake()
         {
@@ -30,12 +30,13 @@ namespace CreateScript
             }
         }
 
-        /*Method*/
+
 
         //クリップを指定して再生する。
-        public void Play(AudioClip clip)
+        public void Play(AudioClip clip,float volum)
         {
             source.clip = clip;
+            source.volume = volum;
             source.Play();
         }
     }

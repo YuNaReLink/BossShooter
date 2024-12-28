@@ -4,20 +4,12 @@ namespace CreateScript
 {
     public class MenuCaller : MonoBehaviour
     {
-        /*Serialized*/
 
         //メニューを召喚するためのキャンバス
         //キャンバスが複数ある場合など、勝手に設定されると困る場合は手動で設定。
         //キャンバスが単体なら未設定でも参照して取得。
         [SerializeField]
         private Canvas canvas;
-
-        private SEManager seManager;
-
-        private void Awake()
-        {
-            seManager = GetComponent<SEManager>();
-        }
 
         private Canvas TargetCanvas
         {
@@ -49,7 +41,6 @@ namespace CreateScript
             {
                 return;
             }
-            seManager.Play(1);
             //対象のキャンバスに生成する。
             PauseMenu menu = Instantiate(menuPrefab, TargetCanvas.transform);
         }
@@ -57,7 +48,6 @@ namespace CreateScript
         //メニューの終了
         public void Close()
         {
-            seManager.Play(1);
             //publicで作成しているためnullチェックを挟みながら閉じる。
             PauseMenu.Instance?.Close();
         }

@@ -16,9 +16,9 @@ namespace CreateScript
             return (float)current / max;
         }
 
-        public void DecreaseHP(int d)
+        public void DecreaseHP()
         {
-            current -= d;
+            current--;
         }
 
         public bool Death()

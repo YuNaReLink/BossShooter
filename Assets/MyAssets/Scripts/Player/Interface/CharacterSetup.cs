@@ -15,7 +15,7 @@ namespace CreateScript
 
     public interface BossSetup : CharacterSetup
     {
-
+        EnemyMovement Movement {  get; }
     }
 }
 

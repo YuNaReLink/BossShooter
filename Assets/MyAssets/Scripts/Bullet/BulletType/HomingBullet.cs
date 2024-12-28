@@ -27,9 +27,13 @@ namespace CreateScript
         {
             targetTransform = t;
             timer.Start(homingCount);
+            float raito = Random.Range(1.0f, 2.1f);
+            bulletSpeed *= raito;
+            limitSpeed *= raito;
         }
         private void Start()
         {
+            timer.OnEnd += TimerEndAddPower;
             Homing();
         }
 
@@ -84,6 +88,11 @@ namespace CreateScript
             }
 
             return true;
+        }
+        //タイマーが終わった時に進んでいる方向にスピード分力を加える
+        private void TimerEndAddPower()
+        {
+            rigidbody2D.AddForce(rigidbody2D.velocity * bulletSpeed);
         }
     }
 }
