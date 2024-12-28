@@ -25,6 +25,9 @@ namespace CreateScript
         [SerializeField]
         private InputActionButton[] buttons;
 
+        [SerializeField]
+        private float selectImageOffsetX;
+
         private SEManager seManager;
 
         private void Awake()
@@ -43,7 +46,7 @@ namespace CreateScript
         {
             if(!activateSelect||selectImage == null) { return; }
             Vector2 pos = buttons[index].RectTransform.anchoredPosition;
-            pos.x -= 300f;
+            pos.x -= selectImageOffsetX;
             selectImage.rectTransform.anchoredPosition = pos;
         }
         private void Update()

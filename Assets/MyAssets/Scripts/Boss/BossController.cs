@@ -12,6 +12,7 @@ namespace CreateScript
 
         [SerializeField]
         private EnemyMovement movement;
+        public EnemyMovement Movement => movement;
 
         [SerializeField]
         private PlayerController playerController;
@@ -73,7 +74,7 @@ namespace CreateScript
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
             if (bullet == null || bullet.ShopterType == ShopterType.Enemy) { return; }
-            hp.DecreaseHP(1);
+            hp.DecreaseHP();
             if (hp.Death())
             {
                 seManager.Play();
@@ -87,7 +88,7 @@ namespace CreateScript
             FormChange formChange = GetComponentInParent<FormChange>();
             formChange.SetForm(1);
             ActivateResult result = GetComponent<ActivateResult>();
-            result.GameOverResult();
+            result.GameClearResult();
             Destroy(gameObject);
         }
     }

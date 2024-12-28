@@ -9,6 +9,7 @@ namespace CreateScript
     /// </summary>
     public class InputUIAction : MonoBehaviour
     {
+
         private static InputUIAction    instance;
         public static InputUIAction     Instance => instance;
 

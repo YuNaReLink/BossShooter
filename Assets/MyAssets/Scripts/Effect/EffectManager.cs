@@ -7,13 +7,11 @@ namespace CreateScript
     /// </summary>
     public class EffectManager : MonoBehaviour
     {
-        /*Serialized*/
 
         //台帳
         [SerializeField]
         private EffectLedger ledger;
 
-        /*Method*/
 
         //再生するためだけのオブジェクトを生成する。
         //番号指定なので間違いに注意。

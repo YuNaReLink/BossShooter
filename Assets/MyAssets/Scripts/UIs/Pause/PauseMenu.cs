@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace CreateScript
 {
     [RequireComponent(typeof(Pause))]
     public class PauseMenu : MonoBehaviour
     {
-        /*static*/
 
         //シングルトン
         public static PauseMenu Instance { get; private set; }
@@ -17,16 +13,14 @@ namespace CreateScript
         [SerializeField]
         private SceneList next;
 
-
-        /*Component*/
-
         //効果音再生用のコンポーネント
         //private SEManager se;
 
         //時を止めるためのコンポーネント
         private Pause pause;
 
-        /*Event*/
+        [SerializeField]
+        private SEManager seManager;
 
         private void Awake()
         {
@@ -35,14 +29,14 @@ namespace CreateScript
 
             /*各コンポーネントの取得*/
 
-            //se = GetComponent<SEManager>();
+            seManager = GetComponent<SEManager>();
             pause = GetComponent<Pause>();
         }
 
         private void Start()
         {
             //開始時に音を鳴らす。
-            //se.Play();
+            seManager.Play(1);
 
             //ポーズを有効化する。
             pause.Enable();
@@ -67,7 +61,7 @@ namespace CreateScript
             //pause.Disable();
 
             //効果音の再生
-            //se.Play();
+            seManager.Play(1);
 
             //オブジェクトの破棄
             Destroy(gameObject);

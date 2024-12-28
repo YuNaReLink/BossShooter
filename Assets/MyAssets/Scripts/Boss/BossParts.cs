@@ -29,7 +29,7 @@ namespace CreateScript
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
             if (bullet == null || bullet.ShopterType == ShopterType.Enemy) { return; }
-            hp.DecreaseHP(1);
+            hp.DecreaseHP();
             if (hp.Death())
             {
                 boss.SEManager.Play();

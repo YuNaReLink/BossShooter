@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// 結果シーンの管理を行うクラス
+    /// </summary>
     public class ResultController : MonoBehaviour
     {
         [SerializeField]

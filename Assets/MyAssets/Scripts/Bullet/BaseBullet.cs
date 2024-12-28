@@ -30,6 +30,10 @@ namespace CreateScript
         [SerializeField]
         protected ImageEffect           effect;
 
+        [SerializeField]
+        private int power = 1;
+        public int Power => power;
+
         protected new Rigidbody2D       rigidbody2D;
 
         protected BulletImage           bulletImage;
@@ -61,7 +65,7 @@ namespace CreateScript
         protected void OnTriggerEnter2D(Collider2D collision)
         {
             CharacterHit(collision);
-            Bullethit(collision);
+            BulletHit(collision);
         }
 
         private void CharacterHit(Collider2D collision)
@@ -71,15 +75,18 @@ namespace CreateScript
             Erase(collision.ClosestPoint(transform.position));
         }
 
-        private void Bullethit(Collider2D collision)
+        private void BulletHit(Collider2D collision)
         {
             Bullet bullet = collision.GetComponent<Bullet>();
             if (bullet == null || collision.transform.gameObject.layer == gameObject.layer) { return; }
+            if(ShopterType == ShopterType.Player)
+            {
+                AddScore();
+            }
             Erase(collision.ClosestPoint(transform.position));
         }
         protected virtual void Erase(Vector2 pos)
         {
-            AddScore();
             Destroy(gameObject);
             Instantiate(effect.gameObject, pos, Quaternion.identity);
             seManager.Play();
@@ -87,10 +94,7 @@ namespace CreateScript
 
         public void AddScore()
         {
-            if (ShopterType == ShopterType.Enemy)
-            {
-                ScoreSystem.Instance.AddScore(BulletType);
-            }
+            ScoreSystem.Instance.AddScore(BulletType);
         }
 
         protected void OnCollisionEnter2D(Collision2D collision)

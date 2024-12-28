@@ -63,11 +63,11 @@ namespace CreateScript
             int count = 0;
             switch (type)
             {
-                case BulletType.Random:
+                case BulletType.LockOn:
                 case BulletType.Straight:
                     count = smallScore;
                     break;
-                case BulletType.LockOn:
+                case BulletType.Random:
                     count = middleScore;
                     break;
                 case BulletType.Homing:

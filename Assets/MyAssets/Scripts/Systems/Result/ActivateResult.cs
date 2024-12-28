@@ -8,37 +8,10 @@ namespace CreateScript
     /// </summary>
     public class ActivateResult : MonoBehaviour
     {
-        [SerializeField]
-        private bool gameClear = false;
 
-        private string SetGameResult()
+        public void GameClearResult()
         {
-            string result = "";
-            if (gameClear)
-            {
-                result = "GAMECLEAR";
-            }
-            else
-            {
-                result = "GAMEOVER";
-            }
-            return result;
-        } 
-
-        public void GameOverResult()
-        {
-            if (gameClear)
-            {
-                GlobalManager.Instance.SetResultType(ResultType.GameClear);
-            }
-            else
-            {
-                GlobalManager.Instance.SetResultType(ResultType.GameOver);
-            }
-            GameUIController.Instance.CreateResultText(SetGameResult());
-            SceneChanger.Instance?.SetNextScene(SceneList.Result);
-            SceneChanger.Instance?.SetChangeCount(5f);
-            SceneChanger.Instance?.OnChangeScene();
+            GameController.Instance.SetResult(ResultType.GameClear);
         }
     }
 }

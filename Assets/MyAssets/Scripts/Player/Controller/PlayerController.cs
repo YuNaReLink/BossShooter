@@ -5,11 +5,10 @@ namespace CreateScript
 
     public class PlayerController : MonoBehaviour,PlayerSetup
     {
-        /*Serialized*/
         [SerializeField]
         private PlayerMovement              movement;
 
-        /*Component*/
+
         public GameObject                   GameObject => gameObject;
         
         private static PlayerController     player;
@@ -24,7 +23,8 @@ namespace CreateScript
 
         private SEManager                   seManager;
 
-        /*Method*/
+        private Animator                    animator;
+
 
         private void Awake()
         {
@@ -34,6 +34,7 @@ namespace CreateScript
             hp = GetComponent<HP>();
             effectManager = GetComponent<EffectManager>();
             seManager = GetComponent<SEManager>();
+            animator = GetComponent<Animator>();
         }
 
         private void Start()
@@ -45,6 +46,7 @@ namespace CreateScript
         {
             if (GameController.Instance.IsGameStop) { return; }
             movement.Move();
+            animator.SetFloat("Vertical",input.Move.y);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -54,15 +56,23 @@ namespace CreateScript
 
         private void Damage(Collider2D collision)
         {
-            BaseBullet bullet = collision.GetComponent<BaseBullet>();
-            if (bullet == null||bullet.ShopterType == ShopterType.Player) { return; }
-            hp.DecreaseHP(1);
+            if (!NoActiveDamageCheck(collision)) { return; }
+            hp.DecreaseHP();
             if (hp.Death())
             {
                 seManager.Play();
                 effectManager.Create(transform.position,transform.localScale);
                 Death();
             }
+        }
+
+        private bool NoActiveDamageCheck(Collider2D collision)
+        {
+            BaseBullet bullet = collision.GetComponent<BaseBullet>();
+            BossController boss = collision.GetComponent<BossController>();
+            BossParts parts = collision.GetComponent<BossParts>();
+            return  ((bullet != null && bullet.ShopterType != ShopterType.Player)||
+                    boss != null || parts != null);
         }
 
         private void Death()

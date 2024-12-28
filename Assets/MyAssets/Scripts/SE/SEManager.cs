@@ -7,13 +7,14 @@ namespace CreateScript
     /// </summary>
     public class SEManager : MonoBehaviour
     {
-        /*Serialized*/
 
         //台帳
         [SerializeField]
         private AudioLedger ledger;
 
-        /*Method*/
+        [SerializeField]
+        private float volum = 1.0f;
+
 
         //再生するためだけのオブジェクトを生成する。
         //番号指定なので間違いに注意。
@@ -33,7 +34,7 @@ namespace CreateScript
             SEPlayer se = o.AddComponent<SEPlayer>();
 
             //鳴らす。
-            se.Play(ledger[i]);
+            se.Play(ledger[i],volum);
         }
     }
 }
