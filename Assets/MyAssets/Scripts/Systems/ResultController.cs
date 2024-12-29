@@ -8,9 +8,9 @@ namespace CreateScript
     public class ResultController : MonoBehaviour
     {
         [SerializeField]
-        private AudioClip clearClip;
+        private AudioClip   clearClip;
         [SerializeField]
-        private AudioClip overClip;
+        private AudioClip   overClip;
 
         private void Awake()
         {

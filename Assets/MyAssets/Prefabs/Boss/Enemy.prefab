@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2877249419312176001}
   - component: {fileID: 7216975810457997852}
   - component: {fileID: 1324168313861243265}
+  - component: {fileID: 7661564520955535243}
   m_Layer: 7
   m_Name: EnemyParts00
   m_TagString: Untagged
@@ -190,6 +191,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ledger: {fileID: 11400000, guid: 491747c5a9f7ec6449ab2e1641123f78, type: 2}
+--- !u!114 &7661564520955535243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660649853613497492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3121554a81e5a8c43ab9160993961eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  changeCount: 1
+  loopCount: 0.1
+  changeColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7367828971354272824
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +227,7 @@ GameObject:
   - component: {fileID: 5878273687844223407}
   - component: {fileID: -564113574054380795}
   - component: {fileID: 7260953628493525278}
+  - component: {fileID: 5331078437615016226}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -387,8 +405,6 @@ MonoBehaviour:
     speed: 2
     reverse: 0
     height: 1
-  playerController: {fileID: 0}
-  bossParts: []
 --- !u!114 &6454788032169179310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,6 +432,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateCount: 3
+  formMoveSpeeds:
+  - 2
+  - 2.5
+  - 3
 --- !u!114 &9159675093738280846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +488,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ledger: {fileID: 11400000, guid: ee9b3ad5485f0ac409a560d21b20a077, type: 2}
   volum: 1
+--- !u!114 &5331078437615016226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367828971354272824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3121554a81e5a8c43ab9160993961eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  changeCount: 1
+  loopCount: 0.1
+  changeColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &8759213206699206563
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +519,7 @@ GameObject:
   - component: {fileID: 4591723622168188153}
   - component: {fileID: 4435121740126697130}
   - component: {fileID: 1389798336632841376}
+  - component: {fileID: 8479893580800173565}
   m_Layer: 7
   m_Name: EnemyParts01
   m_TagString: Untagged
@@ -658,6 +695,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ledger: {fileID: 11400000, guid: 491747c5a9f7ec6449ab2e1641123f78, type: 2}
+--- !u!114 &8479893580800173565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759213206699206563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3121554a81e5a8c43ab9160993961eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  changeCount: 1
+  loopCount: 0.1
+  changeColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &48256585959355064
 PrefabInstance:
   m_ObjectHideFlags: 0

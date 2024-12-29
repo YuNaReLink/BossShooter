@@ -18,17 +18,18 @@ namespace CreateScript
         [SerializeField]
         private int                         bombCount;
         public int                          BombCount => bombCount;
-
+        //プレハブからセットし復帰時に生成する用のPlayer
         [SerializeField]
         private PlayerController            playerController;
-
+        //ゲーム開始時、生成時にプレイヤーがゲームシーンにいるかを確認する用のPlayer
         [SerializeField]
         private PlayerController            currentPlayer;
-
+        //プレイヤーが復帰出来るまでのタイマー
         private Timer                       revivalTimer = new Timer();
-
+        //ゲームを止めるフラグ
         private bool                        gameStop = false;
         public bool                         IsGameStop => gameStop;
+        //ボムのカウントを減らすメソッド
         public void DecreaseBombCount()
         {
             bombCount--;
@@ -37,6 +38,7 @@ namespace CreateScript
                 bombCount = 0;
             }
         }
+        //ゲームを止めるbool型を外部から設定するメソッド
         public void SetGameStop(bool b) { gameStop = b; }
 
         public void Awake()
@@ -48,7 +50,7 @@ namespace CreateScript
             }
             instance = this;
 
-            revivalTimer.OnceEnd += RevivalPlayer;
+            revivalTimer.OnEnd += RevivalPlayer;
 
             currentPlayer = FindObjectOfType<PlayerController>();
         }
@@ -103,7 +105,7 @@ namespace CreateScript
             }
             return result;
         }
-
+        //結果のenum別に結果画面に遷移させる
         public void SetResult(ResultType type)
         {
             GlobalManager.Instance.SetResultType(type);

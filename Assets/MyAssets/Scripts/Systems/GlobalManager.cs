@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    //現在がどのシーンなのかを各シーンの管理クラスで設定するもの
     public enum GameMode
     {
         Null = -1,
@@ -10,7 +11,7 @@ namespace CreateScript
         Game,
         Result
     }
-
+    //結果画面でのOverかClearかを判定する
     public enum ResultType
     {
         GameOver,
@@ -36,8 +37,8 @@ namespace CreateScript
 
         [SerializeField]
         [ReadOnly]
-        private ResultType resultType;
-        public ResultType ResultType => resultType;
+        private ResultType              resultType;
+        public ResultType               ResultType => resultType;
 
         public void SetResultType(ResultType type)
         {

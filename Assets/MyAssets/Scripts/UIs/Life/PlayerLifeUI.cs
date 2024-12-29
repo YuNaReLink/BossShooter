@@ -3,17 +3,20 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// プレイヤーの残機を表示するUI
+    /// </summary>
     public class PlayerLifeUI : MonoBehaviour
     {
 
-        private int keepLife = 0;
+        private int     life = 0;
 
-        private Text text;
+        private Text    text;
 
         [SerializeField]
-        private string baseText;
+        private string  baseText;
 
-        private int noActivateLife = -1;
+        private int     noActivateLife = -1;
 
         private void Awake()
         {
@@ -23,8 +26,8 @@ namespace CreateScript
         // Start is called before the first frame update
         void Start()
         {
-            keepLife = GameController.Instance.PlayerLife;
-            LifeTextOutput(keepLife);
+            life = GameController.Instance.PlayerLife;
+            LifeTextOutput(life);
         }
 
         public void LifeTextOutput(int life)
@@ -34,10 +37,10 @@ namespace CreateScript
 
         private void Update()
         {
-            if (keepLife == GameController.Instance.PlayerLife) { return; }
-            keepLife = GameController.Instance.PlayerLife;
-            if(keepLife <= noActivateLife) { return; }
-            LifeTextOutput(keepLife);
+            if (life == GameController.Instance.PlayerLife) { return; }
+            life = GameController.Instance.PlayerLife;
+            if(life <= noActivateLife) { return; }
+            LifeTextOutput(life);
         }
     }
 }

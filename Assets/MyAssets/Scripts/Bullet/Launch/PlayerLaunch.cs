@@ -8,6 +8,9 @@ namespace CreateScript
         Straight,
         Bomb
     }
+    /// <summary>
+    /// プレイヤーの発射口のクラス
+    /// </summary>
     public class PlayerLaunch : MonoBehaviour,IBaseLaunch
     {
         [SerializeField]
@@ -86,13 +89,13 @@ namespace CreateScript
 
         private void ChangeBulletCoolTimeByCurrentScore()
         {
-            if (!ScoreSystem.Instance.ChangeAttack) { return; }
+            if (!ScoreSystem.Instance.ChangePlayerBullet) { return; }
             Change();
         }
 
         private void Change()
         {
-            fireBullets[(int)bulletType].DecreaseCoolDownCount(0.05f);
+            fireBullets[(int)bulletType].DecreaseFireCountCoolDown(0.05f);
             ScoreSystem.Instance.NoActivateChangeAttack();
         }
     }

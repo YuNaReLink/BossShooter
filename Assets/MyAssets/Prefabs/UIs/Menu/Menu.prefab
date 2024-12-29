@@ -183,7 +183,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 417065205684300411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e06dccacb3271c242a39281141891112, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d2413a3dea698041ae1153133741ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activateSelect: 1
@@ -609,7 +609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27c53e5cbad08c418dad20e829accee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  next: 0
   seManager: {fileID: 0}
 --- !u!114 &8156051179874732002
 MonoBehaviour:

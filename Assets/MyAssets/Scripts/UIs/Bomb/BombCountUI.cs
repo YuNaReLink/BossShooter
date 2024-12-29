@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ボムのカウント数を表示するクラス
+    /// </summary>
     public class BombCountUI : MonoBehaviour
     {
         [SerializeField]
@@ -18,13 +21,13 @@ namespace CreateScript
             text = GetComponent<Text>();
         }
 
-        // Start is called before the first frame update
+
         private void Start()
         {
             BombCountTextOutput(GameController.Instance.BombCount);
         }
 
-        // Update is called once per frame
+
         private void Update()
         {
             BombCountTextOutput(GameController.Instance.BombCount);

@@ -10,23 +10,26 @@ namespace CreateScript
     /// </summary>
     public class InputActionButton : MonoBehaviour
     {
-        private RectTransform rectTransform;
-        public RectTransform RectTransform => rectTransform;
+        private InputButtonController    inputButtons;
+
+        private RectTransform   rectTransform;
+        public RectTransform    RectTransform => rectTransform;
 
         [SerializeField]
-        private Sprite normalButton;
+        private Sprite          normalButton;
         [SerializeField]
-        private Sprite pressButton;
+        private Sprite          pressButton;
 
-        private Image image;
+        private Image           image;
 
         [SerializeField]
-        private UnityEvent onInput;
-        public UnityEvent OnInput => onInput;
+        private UnityEvent      onInput;
+        public UnityEvent       OnInput => onInput;
 
 
         private void Awake()
         {
+            inputButtons = GetComponentInParent<InputButtonController>();
             rectTransform = GetComponent<RectTransform>();
             image = GetComponent<Image>();
         }

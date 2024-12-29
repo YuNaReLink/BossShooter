@@ -2,14 +2,19 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ボスのHPUIを生成するクラス
+    /// ボス本体のオブジェクトにアタッチし生成し
+    /// 終わったら削除
+    /// </summary>
     public class CreateBossHPUI : MonoBehaviour
     {
-        private BossController boss;
+        private BossController  boss;
 
-        private BossParts[] parts;
+        private BossParts[]     parts;
 
         [SerializeField]
-        private BossHPUI bossHPUI;
+        private BossHPUI        bossHPUI;
 
         private void Awake()
         {

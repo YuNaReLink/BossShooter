@@ -2,26 +2,29 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// 敵の弾をすべて消すボムの"発射"を行うクラス
+    /// </summary>
     [System.Serializable]
     public class FireBomb : IFireBullet
     {
-        private Transform transform;
+        private Transform   transform;
 
-        private Timer timer = new Timer();
+        private Timer       timer = new Timer();
 
-        private BulletData bulletData;
+        private BulletData  bulletData;
 
-        private SEManager seManager;
+        private SEManager   seManager;
 
         [SerializeField]
-        private float fireCoolDownCount = 0.1f;
-        private float minCount = 0.2f;
-        public void DecreaseCoolDownCount(float count)
+        private float       fireCoolDownCount = 0.1f;
+        public float        MinFireCount => 0.25f;
+        public void DecreaseFireCountCoolDown(float count)
         {
             fireCoolDownCount -= count;
-            if (fireCoolDownCount <= minCount)
+            if (fireCoolDownCount <= MinFireCount)
             {
-                fireCoolDownCount = minCount;
+                fireCoolDownCount = MinFireCount;
             }
         }
 
@@ -43,7 +46,7 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData.Bullets[(int)PlayerBulletType.Bomb].gameObject, transform.position, Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bulletData[(int)PlayerBulletType.Bomb].gameObject, transform.position, Quaternion.identity);
             AllDestroyBomb bomb = g.GetComponent<AllDestroyBomb>();
             if (bomb != null)
             {
@@ -51,6 +54,7 @@ namespace CreateScript
                 bomb.SetShooterType(ShopterType.Player);
                 bomb.SetDirection(direction);
             }
+            seManager.Play(2);
             timer.Start(fireCoolDownCount);
         }
     }

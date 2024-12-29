@@ -2,13 +2,17 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    //“G‚ª”­ŽË‚·‚é’e‚ðŽ¯•Ê‚·‚é‚½‚ß‚Ìenum
     public enum EnemyBulletType
     {
         LockOn,
         Random,
         Homing
     }
-
+    /// <summary>
+    /// “G‚Ì”­ŽËŒû‚ÌƒNƒ‰ƒX
+    /// ’e‚ðƒ^ƒCƒv•Ê‚É”­ŽË‚·‚é
+    /// </summary>
     public class Launch : MonoBehaviour, IBaseLaunch
     {
         [SerializeField]
@@ -43,12 +47,8 @@ namespace CreateScript
             bulletType = type;
         }
 
-        private Transform targetTransform;
-
         private void Awake()
         {
-            PlayerController player = FindObjectOfType<PlayerController>();
-            targetTransform = player.transform;
 
             seManager = GetComponent<SEManager>();
 

@@ -2,14 +2,17 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ゲームのUIを管理するクラス
+    /// </summary>
     public class GameUIController : MonoBehaviour
     {
         private static GameUIController     instance;
         public static GameUIController      Instance => instance;
 
-
+        
         private Canvas                      canvas;
-
+        //結果画面で使うクラス
         [SerializeField]
         private TextOutput                  resultTextOutput;
 

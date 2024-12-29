@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// メニューで使用するボタン単体の処理
+    /// </summary>
     public class MenuButton : MonoBehaviour
     {
         [SerializeField]

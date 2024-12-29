@@ -2,26 +2,29 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ターゲットに向かってホーミングの"発射"を行う処理を実行するクラス
+    /// </summary>
     [System.Serializable]
     public class FireHomingBullet : IFireBullet
     {
-        private Transform transform;
+        private Transform   transform;
 
-        private Timer timer = new Timer();
+        private Timer       timer = new Timer();
 
-        private BulletData bulletData;
+        private BulletData  bulletData;
 
-        private SEManager seManager;
+        private SEManager   seManager;
 
         [SerializeField]
-        private float fireCoolDownCount = 0.1f;
-        private float minCount = 0.2f;
-        public void DecreaseCoolDownCount(float count)
+        private float       fireCoolDownCount = 0.1f;
+        public float        MinFireCount => 0.25f;
+        public void DecreaseFireCountCoolDown(float count)
         {
             fireCoolDownCount -= count;
-            if (fireCoolDownCount <= minCount)
+            if (fireCoolDownCount <= MinFireCount)
             {
-                fireCoolDownCount = minCount;
+                fireCoolDownCount = MinFireCount;
             }
         }
 
@@ -39,7 +42,7 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData.Bullets[(int)EnemyBulletType.Homing].gameObject, transform.position, Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bulletData[(int)EnemyBulletType.Homing].gameObject, transform.position, Quaternion.identity);
             HomingBullet homingBullet = g.GetComponent<HomingBullet>();
             if (homingBullet != null)
             {
