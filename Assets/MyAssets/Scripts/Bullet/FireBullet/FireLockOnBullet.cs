@@ -2,27 +2,30 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ターゲットに向かって弾を発射する処理を実行するクラス
+    /// </summary>
     [System.Serializable ]
     public class FireLockOnBullet : IFireBullet
     {
-        private Transform transform;
+        private Transform   transform;
 
-        private Timer timer = new Timer();
+        private Timer       timer = new Timer();
 
-        private BulletData bulletData;
+        private BulletData  bulletData;
 
-        private SEManager seManager;
+        private SEManager   seManager;
 
         [SerializeField]
-        private float fireCoolDownCount = 0.1f;
+        private float       fireCoolDownCount = 0.1f;
 
-        private float minCount = 0.2f;
-        public void DecreaseCoolDownCount(float count)
+        public float        MinFireCount => 0.25f;
+        public void DecreaseFireCountCoolDown(float count)
         {
             fireCoolDownCount -= count;
-            if (fireCoolDownCount <= minCount)
+            if (fireCoolDownCount <= MinFireCount)
             {
-                fireCoolDownCount = minCount;
+                fireCoolDownCount = MinFireCount;
             }
         }
 
@@ -43,7 +46,7 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData.Bullets[(int)EnemyBulletType.LockOn].gameObject, transform.position, Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bulletData[(int)EnemyBulletType.LockOn].gameObject, transform.position, Quaternion.identity);
             LockOnBullet lockOnBullet = g.GetComponent<LockOnBullet>();
             if (lockOnBullet != null)
             {

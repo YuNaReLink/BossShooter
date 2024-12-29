@@ -2,16 +2,19 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// “G‚Ì’e‚ð‘S‚Ä”j‰ó‚·‚éƒ{ƒ€–{‘Ì‚ÌƒNƒ‰ƒX
+    /// </summary>
     public class AllDestroyBomb : BaseBullet
     {
-        private Vector2 direction = Vector2.zero;
+        private Vector2                 direction = Vector2.zero;
 
-        private Timer explosionTimer = new Timer();
+        private Timer                   explosionTimer = new Timer();
 
         [SerializeField]
-        private float explosionCount;
+        private float                   explosionCount;
 
-        protected override BulletType BulletType => BulletType.Null;
+        protected override BulletType   BulletType => BulletType.Bomb;
         private void Start()
         {
             GetComponent<Rigidbody2D>().AddForce(direction * bulletSpeed, ForceMode2D.Impulse);

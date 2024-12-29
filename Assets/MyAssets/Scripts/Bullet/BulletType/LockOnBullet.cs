@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ターゲットに向かって飛ぶ弾本体のクラス
+    /// </summary>
     public class LockOnBullet : BaseBullet
     {
 

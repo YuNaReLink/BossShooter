@@ -19,7 +19,7 @@ namespace CreateScript
 
         [SerializeField]
         private string      baseText;
-
+        //取得、表示できる最大のスコア数値
         private int         maxViewScore = 999999;
 
         private void Awake()

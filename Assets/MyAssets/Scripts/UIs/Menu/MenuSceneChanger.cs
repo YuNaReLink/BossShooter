@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// メニューが生成された時と同時にボタンにシーン遷移イベントを設定するクラス
+    /// </summary>
     public class MenuSceneChanger : MonoBehaviour
     {
         [SerializeField]

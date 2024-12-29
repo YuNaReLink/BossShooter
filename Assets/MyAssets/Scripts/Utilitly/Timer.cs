@@ -1,43 +1,62 @@
 using System;
-using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// 全クラスで生成して共通で使えるタイマークラス
+    /// </summary>
     [System.Serializable]
     public class Timer
     {
-        public event Action OnEnd;
-        public event Action OnceEnd;
+        //タイマーが終わった時に一度だけ実行させるAction
+        public event Action     OnEnd;
+        //タイマー終了時に何回でも呼び出されるAction
+        public event Action     OnOnceEnd;
 
         private float current = 0;
 
+        private float time = 0;
+
+        private float endTime = 0;
+
         public float Current => current;
 
-        public void Start(float time)
+        private bool loop = false;
+        public void SetLoop(bool l) { loop = l; }
+
+        public void Start(float _time)
         {
-            current = time;
+            current = _time;
+            time = _time;
         }
 
-        public void Update(float time)
+        public void AddCurrent(float _time)
         {
-            if (current <= 0) { return; }
-            current -= time;
-            if (current <= 0)
+            current += _time;
+        }
+
+        public void Update(float t)
+        {
+            if (current <= endTime) { return; }
+            current -= t;
+            if (current <= endTime)
             {
-                current = 0;
+                if (loop)
+                {
+                    current += time;
+                }
                 End();
             }
         }
 
         public void End()
         {
-            current = 0;
-            OnceEnd?.Invoke();
             OnEnd?.Invoke();
-            OnEnd = null;
+            OnOnceEnd?.Invoke();
+            OnOnceEnd = null;
         }
 
-        public bool IsEnd() { return current <= 0; }
+        public bool IsEnd() { return current <= endTime; }
     }
 
 }

@@ -2,23 +2,22 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ポーズを有効、無効にする処理を行うクラス
+    /// SEや時間を止める処理もここで行う
+    /// </summary>
     [RequireComponent(typeof(Pause))]
     public class PauseMenu : MonoBehaviour
     {
 
-        //シングルトン
+
         public static PauseMenu Instance { get; private set; }
 
-        /*Serialized*/
-        [SerializeField]
-        private SceneList next;
-
-        //効果音再生用のコンポーネント
-        //private SEManager se;
 
         //時を止めるためのコンポーネント
         private Pause pause;
 
+        //効果音再生用のコンポーネント
         [SerializeField]
         private SEManager seManager;
 
@@ -27,7 +26,7 @@ namespace CreateScript
             //シングルトン用の変数に代入する。
             Instance = this;
 
-            /*各コンポーネントの取得*/
+
 
             seManager = GetComponent<SEManager>();
             pause = GetComponent<Pause>();
@@ -52,13 +51,11 @@ namespace CreateScript
             }
         }
 
-        /*Method*/
+
 
         //メニュー終了処理
         public void Close()
         {
-            //ポーズの解除はPause.OnDestroyに含まれているため、ここで書く必要は無い。
-            //pause.Disable();
 
             //効果音の再生
             seManager.Play(1);

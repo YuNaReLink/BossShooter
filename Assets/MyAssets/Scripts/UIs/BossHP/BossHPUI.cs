@@ -3,18 +3,22 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// ボスとパーツ2つのHPをまとめて表示するクラス
+    /// </summary>
     public class BossHPUI : MonoBehaviour
     {
-        private BossController boss;
-
-        private BossParts[] bossParts;
-
-        private int maxHP;
-
-        private int currentHP;
-
+        //ボス本体
+        private BossController  boss;
+        //ボスのパーツ
+        private BossParts[]     bossParts;
+        //最大HP
+        private int             maxHP;
+        //現在のHP
+        private int             currentHP;
+        //HPのImage
         [SerializeField]
-        private Image hpFill;
+        private Image           hpFill;
 
         public void SetBoss(BossController b,BossParts[] parts)
         {

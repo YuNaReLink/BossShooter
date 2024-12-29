@@ -11,7 +11,7 @@ namespace CreateScript
         [SerializeField]
         private float endCount = 2f;
 
-
+        //ƒ{ƒ^ƒ“‚ÌUnityEvent‚Éİ’è
         private void ReadyEnd()
         {
             StartCoroutine(End());

@@ -2,26 +2,29 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /// <summary>
+    /// —Ë’e‚ğ"”­Ë"‚·‚éˆ—‚ğs‚¤ƒNƒ‰ƒX
+    /// </summary>
     [System.Serializable]
     public class FireRandomBullet : IFireBullet
     {
-        private Transform transform;
+        private Transform   transform;
 
-        private Timer timer = new Timer();
+        private Timer       timer = new Timer();
 
-        private BulletData bulletData;
+        private BulletData  bulletData;
 
-        private SEManager seManager;
+        private SEManager   seManager;
 
         [SerializeField]
-        private float fireCoolDownCount = 0.1f;
-        private float minCount = 0.2f;
-        public void DecreaseCoolDownCount(float count)
+        private float       fireCoolDownCount = 0.1f;
+        public float        MinFireCount => 0.25f;
+        public void DecreaseFireCountCoolDown(float count)
         {
             fireCoolDownCount -= count;
-            if (fireCoolDownCount <= minCount)
+            if (fireCoolDownCount <= MinFireCount)
             {
-                fireCoolDownCount = minCount;
+                fireCoolDownCount = MinFireCount;
             }
         }
 
@@ -48,7 +51,7 @@ namespace CreateScript
             Quaternion rotation = Quaternion.Euler(0, 0, randomAngle);
 
             // ’e‚ğ¶¬
-            GameObject bullet = GameObject.Instantiate(bulletData.Bullets[(int)EnemyBulletType.Random].gameObject, transform.position, transform.rotation * rotation);
+            GameObject bullet = GameObject.Instantiate(bulletData[(int)EnemyBulletType.Random].gameObject, transform.position, transform.rotation * rotation);
 
             StraightBullet straightBullet = bullet.GetComponent<StraightBullet>();
             if (straightBullet != null)

@@ -16,17 +16,19 @@ namespace CreateScript
         private InputActionsControls    inputActions;
 
         private InputAction             SelectAction;
-
+        [SerializeField]
         private Vector2                 select;
         public Vector2                  Select => select;
+        [SerializeField]
+        private bool valueSetThisFrame;
 
         private InputAction             desideAction;
-
+        [SerializeField]
         private bool                    deside;
         public bool                     Deside => deside;
 
         private InputAction             pauseAciton;
-
+        [SerializeField]
         private bool                    pause;
         public bool                     Pause => pause;
 
@@ -37,28 +39,29 @@ namespace CreateScript
             inputActions = new InputActionsControls();
         }
 
-        private void OnVectorKey(InputAction.CallbackContext context)
+        private void Start()
         {
-            select = inputActions.UI.Select.ReadValue<Vector2>();
-            // 一瞬だけtrueにして、次のフレームでfalseに戻す
-            StartCoroutine(VectorKeyPress());
+            valueSetThisFrame = false;
         }
-        private System.Collections.IEnumerator VectorKeyPress()
+        private void Update()
         {
-            yield return null; // 1フレーム待つ
-            select = Vector2.zero;
-        }
+            if (SelectAction.IsPressed())
+            {
+                select = Vector2.zero;
+            }
+            if (SelectAction.WasPressedThisFrame())
+            {
+                select = inputActions.UI.Select.ReadValue<Vector2>();
+            }
 
-        private void OnDeside(InputAction.CallbackContext context)
-        {
-            deside = true;
-            // 一瞬だけtrueにして、次のフレームでfalseに戻す
-            StartCoroutine(DesidePress());
-        }
-        private System.Collections.IEnumerator DesidePress()
-        {
-            yield return null; // 1フレーム待つ
-            deside = false;
+            if (desideAction.IsPressed())
+            {
+                deside = false;
+            }
+            if (desideAction.WasPressedThisFrame())
+            {
+                deside = true;
+            }
         }
         private void OnPause(InputAction.CallbackContext context)
         {
@@ -78,13 +81,9 @@ namespace CreateScript
 
             SelectAction = inputActions.UI.Select;
 
-            SelectAction.performed += OnVectorKey;
-
             SelectAction.Enable();
 
             desideAction = inputActions.UI.Deside;
-
-            desideAction.performed += OnDeside;
 
             desideAction.Enable();
 
@@ -97,11 +96,8 @@ namespace CreateScript
 
         private void OnDisable()
         {
-            SelectAction.performed -= OnVectorKey;
 
             SelectAction.Disable();
-
-            desideAction.performed -= OnDeside;
 
             desideAction.Disable();
 

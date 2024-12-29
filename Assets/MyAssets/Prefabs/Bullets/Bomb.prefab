@@ -205,7 +205,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5725390795946585385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60318364fa71f394db515296da471c82, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee73911480b3d748928a5469bee3b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &59235363776280905
@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 5
   effect: {fileID: 8261599466713796642, guid: 71b67393930db0e418a931a3024914c6, type: 3}
+  power: 1
   explosionCount: 1
 --- !u!114 &-3959124251128442831
 MonoBehaviour:
@@ -236,3 +237,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ledger: {fileID: 11400000, guid: c9ae230253818d0459be6b4cbc40ec3e, type: 2}
+  volum: 1

@@ -2,35 +2,30 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    public interface IFireBullet
-    {
-        void Setup(IBaseLaunch launch);
-        void DoUpdate(float time);
-        void Fire(Transform target);
-        public void DecreaseCoolDownCount(float count);
-    }
-
+    /// <summary>
+    /// w’è‚µ‚½•ûŒü‚É^‚Á‚·‚®”ò‚Ô’e‚ğ"”­Ë"‚·‚éˆ—‚ğs‚¤ƒNƒ‰ƒX
+    /// </summary>
     [System.Serializable]
     public class FireStraightBullet : IFireBullet
     {
-        private Transform transform;
+        private Transform   transform;
 
-        private Timer timer = new Timer();
+        private Timer       timer = new Timer();
 
-        private BulletData bulletData;
+        private BulletData  bulletData;
 
         private SEManager   seManager;
 
         [SerializeField]
-        private float fireCoolDownCount = 0.1f;
-
-        private float minCount = 0.2f;
-        public void DecreaseCoolDownCount(float count)
+        private float       fireCoolDownCount = 0.1f;
+        //’e”­ËŠÔŠu‚ÌÅ’áŠÔŠu
+        public float        MinFireCount => 0.25f;
+        public void DecreaseFireCountCoolDown(float count)
         {
             fireCoolDownCount -= count;
-            if(fireCoolDownCount <= minCount)
+            if(fireCoolDownCount <= MinFireCount)
             {
-                fireCoolDownCount = minCount;
+                fireCoolDownCount = MinFireCount;
             }
         }
 
@@ -52,7 +47,7 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData.Bullets[(int)PlayerBulletType.Straight].gameObject, transform.position,Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bulletData[(int)PlayerBulletType.Straight].gameObject, transform.position,Quaternion.identity);
             StraightBullet straightBullet = g.GetComponent<StraightBullet>();
             if(straightBullet != null)
             {

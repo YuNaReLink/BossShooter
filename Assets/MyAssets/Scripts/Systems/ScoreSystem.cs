@@ -11,17 +11,17 @@ namespace CreateScript
     {
         private static ScoreSystem  instance;
         public static ScoreSystem   Instance => instance;
-
+        //現在取得中のスコア
         [SerializeField]
         private int                 currentCount;
         public int                  CurrentCount => currentCount;
-
-        private bool                changeAttack;
-        public bool                 ChangeAttack => changeAttack;
-
+        //プレイヤーの弾の発射間隔を変更していいかのフラグ
+        private bool                changePlayerBullet;
+        public bool                 ChangePlayerBullet => changePlayerBullet;
+        //プレイヤーの攻撃間隔を上げるかどうかラインの数値
         [SerializeField]
-        private int                 scoreLine;
-
+        private int                 currentScoreLine;
+        //ラインよりもスコアが増加したらaddScoreLineでLineを増加
         [SerializeField]
         private int                 addScoreLine;
 
@@ -34,13 +34,13 @@ namespace CreateScript
         private int                 bigScore;
         public void NoActivateChangeAttack()
         {
-            changeAttack = false;
+            changePlayerBullet = false;
         }
 
         public void ResetScore()
         {
             currentCount = 0;
-            scoreLine = 100;
+            currentScoreLine = 100;
         }
 
         private void Awake()
@@ -55,7 +55,7 @@ namespace CreateScript
 
         private void Start()
         {
-            scoreLine = addScoreLine;
+            currentScoreLine = addScoreLine;
         }
 
         public void AddScore(BulletType type)
@@ -80,11 +80,11 @@ namespace CreateScript
 
         private void CurrentScoreCheck()
         {
-            if (changeAttack) { return; }
-            if(currentCount >= scoreLine)
+            if (changePlayerBullet) { return; }
+            if(currentCount >= currentScoreLine)
             {
-                changeAttack = true;
-                scoreLine += addScoreLine;
+                changePlayerBullet = true;
+                currentScoreLine += addScoreLine;
             }
         }
     }

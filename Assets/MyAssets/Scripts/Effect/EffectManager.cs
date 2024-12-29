@@ -7,8 +7,6 @@ namespace CreateScript
     /// </summary>
     public class EffectManager : MonoBehaviour
     {
-
-        //‘ä’ 
         [SerializeField]
         private EffectLedger ledger;
 
