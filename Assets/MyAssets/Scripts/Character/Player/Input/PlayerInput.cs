@@ -9,23 +9,23 @@ namespace CreateScript
     public class PlayerInput : MonoBehaviour
     {
         private InputActionsControls    inputActions;
-
+        //*ˆÚ“®“ü—ÍŠÖŒW*//
         [SerializeField]
         private Vector2     move;
 
         public Vector2      Move => move;
         public float        Horizontal => move.x;
         public float        Vertical => move.y;
-
+        //*Œ¸‘¬“ü—ÍŠÖŒW*//
         [SerializeField]
         private float       speedDown;
 
         public float        SpeedDown => Mathf.Abs(speedDown * 0.5f);
-
+        //*UŒ‚“ü—ÍŠÖŒW*//
         [SerializeField]
         private float       attack;
         public float        Attack => attack;
-
+        //*ƒ{ƒ€“ü—ÍŠÖŒW*//
         [SerializeField]
         private bool        bomb;
         public bool         Bomb => bomb;

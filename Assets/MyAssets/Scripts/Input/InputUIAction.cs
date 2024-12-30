@@ -14,19 +14,17 @@ namespace CreateScript
         public static InputUIAction     Instance => instance;
 
         private InputActionsControls    inputActions;
-
+        //*‘I‘ğ“ü—ÍŠÖŒW*//
         private InputAction             SelectAction;
         [SerializeField]
         private Vector2                 select;
         public Vector2                  Select => select;
-        [SerializeField]
-        private bool valueSetThisFrame;
-
+        //*Œˆ’è“ü—ÍŠÖŒW*//
         private InputAction             desideAction;
         [SerializeField]
         private bool                    deside;
         public bool                     Deside => deside;
-
+        //*ƒ|[ƒY“ü—ÍŠÖŒW*//
         private InputAction             pauseAciton;
         [SerializeField]
         private bool                    pause;
@@ -37,11 +35,6 @@ namespace CreateScript
             instance = this;
 
             inputActions = new InputActionsControls();
-        }
-
-        private void Start()
-        {
-            valueSetThisFrame = false;
         }
         private void Update()
         {

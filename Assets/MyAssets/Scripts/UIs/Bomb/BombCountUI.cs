@@ -8,12 +8,13 @@ namespace CreateScript
     /// </summary>
     public class BombCountUI : MonoBehaviour
     {
+        //数値の前に出力する文字列
         [SerializeField]
-        private string baseText;
+        private string  baseText;
 
-        private Text text;
-
-        private int keepCount;
+        private Text    text;
+        //現在のボムのカウントを保存してる数値
+        private int     count;
 
 
         private void Awake()
@@ -35,9 +36,9 @@ namespace CreateScript
 
         private void BombCountTextOutput(int count)
         {
-            if (keepCount == count) { return; }
-            keepCount = count;
-            text.text = baseText + keepCount.ToString();
+            if (this.count == count) { return; }
+            this.count = count;
+            text.text = baseText + this.count.ToString();
         }
     }
 }

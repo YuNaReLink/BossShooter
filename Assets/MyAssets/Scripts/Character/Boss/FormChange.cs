@@ -8,15 +8,16 @@ namespace CreateScript
     /// </summary>
     public class FormChange : MonoBehaviour
     {
+        //状態数値
         [SerializeField]
         private int             stateCount = 3;
-
+        //ボス本体
         private BossSetup       boss;
-
+        //ボスの移動処理
         private BossMovement   movement;
-
+        //ボスの発射口
         private Launch[]        launches;
-
+        //弾のタイプ
         private EnemyBulletType bulletType;
         //状態が変化した時の移動スピードの値
         [SerializeField]

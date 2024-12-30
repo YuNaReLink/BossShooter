@@ -16,7 +16,7 @@ namespace CreateScript
             inputActionButton.OnInput.AddListener(SceneChanger.Instance.OnChangeScene);
         }
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             Destroy(this);
         }

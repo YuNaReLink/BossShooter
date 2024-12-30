@@ -9,26 +9,26 @@ namespace CreateScript
 
     public class PlayerController : MonoBehaviour,PlayerSetup
     {
-        [SerializeField]
-        private PlayerMovement              movement;
-
-
-        public GameObject                   GameObject => gameObject;
-        
+        //自分自身
+        //復活した時に必要になるもの
         private static PlayerController     player;
         public static PlayerController      Player => player;
-
+        //ゲームオブジェクト
+        public GameObject                   GameObject => gameObject;
+        //入力
         private PlayerInput                 input;
         public PlayerInput                  Input => input;
-
+        //HP処理
         private HP                          hp;
-
+        //エフェクト処理
         private EffectManager               effectManager;
-
+        //SE処理
         private SEManager                   seManager;
-
+        //アニメーション処理
         private Animator                    animator;
-
+        //移動処理
+        [SerializeField]
+        private PlayerMovement              movement;
 
         private void Awake()
         {
@@ -39,10 +39,8 @@ namespace CreateScript
             effectManager = GetComponent<EffectManager>();
             seManager = GetComponent<SEManager>();
             animator = GetComponent<Animator>();
-        }
 
-        private void Start()
-        {
+
             movement.Setup(this);
         }
     
@@ -57,7 +55,7 @@ namespace CreateScript
         {
             Damage(collision);
         }
-
+        //ダメージ処理
         private void Damage(Collider2D collision)
         {
             if (!NoActiveDamageCheck(collision)) { return; }
@@ -69,7 +67,8 @@ namespace CreateScript
                 Death();
             }
         }
-
+        //当たったものが何か調べる
+        //条件に当たるものならダメージを起こす
         private bool NoActiveDamageCheck(Collider2D collision)
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
@@ -78,7 +77,7 @@ namespace CreateScript
             return  ((bullet != null && bullet.ShopterType != ShopterType.Player)||
                     boss != null || parts != null);
         }
-
+        //死亡処理
         private void Death()
         {
             Destroy(gameObject);

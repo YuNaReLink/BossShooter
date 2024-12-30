@@ -8,22 +8,23 @@ namespace CreateScript
     [System.Serializable]
     public class BossMovement
     {
+        //ボスのトランスフォーム
         private Transform   transform;
-
+        //スピード
         [SerializeField]
         private float       speed = 2f;
-
+        //上下に移動するためのフラグ
         [SerializeField]
         private bool        reverse = false;
-
+        //画面の上下でどこまでの高さまで行くかを制限する数値
         [SerializeField]
         private float       height = 1f;
-
+        //状態が変わった時にスピードを変更する処理
         public void SetSpeed(float s)
         {
             speed = s;
         }
-
+        //Awake時に処理
         public void Setup(BossSetup actor)
         {
             transform = actor.GameObject.transform;
@@ -33,7 +34,7 @@ namespace CreateScript
         {
             reverse = false;
         }
-
+        //上下に移動する処理
         public void VerticalMove()
         {
             Vector2 pos = transform.position;

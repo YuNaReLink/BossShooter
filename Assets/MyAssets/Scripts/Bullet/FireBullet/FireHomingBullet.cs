@@ -12,10 +12,11 @@ namespace CreateScript
 
         private Timer       timer = new Timer();
 
-        private BulletData  bulletData;
+        //’e‚Ìƒf[ƒ^
+        private OffScreenObject bullet;
 
         private SEManager   seManager;
-
+        //”­ŽËŠÔŠu‚Ì”’l
         [SerializeField]
         private float       fireCoolDownCount = 0.1f;
         public float        MinFireCount => 0.25f;
@@ -31,7 +32,7 @@ namespace CreateScript
         public void Setup(IBaseLaunch launch)
         {
             transform = launch.GameObject.transform;
-            bulletData = launch.BulletData;
+            bullet = launch.BulletData[(int)EnemyBulletType.Homing];
             seManager = launch.SEManager;
         }
         public void DoUpdate(float time)
@@ -42,7 +43,7 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData[(int)EnemyBulletType.Homing].gameObject, transform.position, Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bullet.gameObject, transform.position, Quaternion.identity);
             HomingBullet homingBullet = g.GetComponent<HomingBullet>();
             if (homingBullet != null)
             {

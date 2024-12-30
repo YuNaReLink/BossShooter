@@ -10,7 +10,7 @@ namespace CreateScript
         private static GameController       instance;
         public static GameController        Instance => instance;
 
-
+        //プレイヤーの残機カウント
         [SerializeField]
         private int                         playerRemainingLives;
         public int                          PlayerLife => playerRemainingLives;
@@ -28,7 +28,7 @@ namespace CreateScript
         private Timer                       revivalTimer = new Timer();
         //ゲームを止めるフラグ
         private bool                        gameStop = false;
-        public bool                         IsGameStop => gameStop;
+        public bool                         IsGameStop => gameStop || Time.timeScale <= 0;
         //ボムのカウントを減らすメソッド
         public void DecreaseBombCount()
         {
@@ -69,14 +69,14 @@ namespace CreateScript
 
             PlayerCheck();
         }
-
+        //残機があり、プレイヤーが存在しなかったら復活カウント開始
         private void PlayerCheck()
         {
             if (currentPlayer != null||!revivalTimer.IsEnd()||
                 playerRemainingLives < 0) { return; }
             revivalTimer.Start(3f);
         }
-
+        //残機があれば復活、なければゲームオーバー
         public void RevivalPlayer()
         {
             playerRemainingLives--;

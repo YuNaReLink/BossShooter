@@ -26,19 +26,21 @@ namespace CreateScript
     /// </summary>
     public class Appearance : MonoBehaviour
     {
+        //どの方向から動かしたいかを決めるタグX
         [SerializeField]
         private AppearanceTypeX     appearanceTypeX;
+        //どの方向から動かしたいかを決めるタグY
         [SerializeField]
         private AppearanceTypeY     appearanceTypeY;
-
+        //カメラ
         private new Camera          camera;
-
+        //スクリーン内の数値
         private Vector2             screenBounds => camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, camera.transform.position.z));
-
+        //登場時に動くゴール地点
         private Vector2             goalPostion = Vector2.zero;
-
+        //動いてる間コライダーを非表示にするためのコライダー
         private new Collider2D      collider;
-
+        //登場中は無敵なのでカラー変更処理
         private ColorChanger        colorChanger;
 
         private void Awake()
