@@ -11,11 +11,11 @@ namespace CreateScript
         private Transform   transform;
 
         private Timer       timer = new Timer();
-
-        private BulletData  bulletData;
+        //弾のデータ
+        private OffScreenObject bullet;
 
         private SEManager   seManager;
-
+        //発射間隔のカウント
         [SerializeField]
         private float       fireCoolDownCount = 0.1f;
         public float        MinFireCount => 0.25f;
@@ -34,7 +34,7 @@ namespace CreateScript
         public void Setup(IBaseLaunch launch)
         {
             transform = launch.GameObject.transform;
-            bulletData = launch.BulletData;
+            bullet = launch.BulletData[(int)PlayerBulletType.Bomb];
             seManager = launch.SEManager;
         }
 
@@ -46,7 +46,7 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData[(int)PlayerBulletType.Bomb].gameObject, transform.position, Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bullet.gameObject, transform.position, Quaternion.identity);
             AllDestroyBomb bomb = g.GetComponent<AllDestroyBomb>();
             if (bomb != null)
             {

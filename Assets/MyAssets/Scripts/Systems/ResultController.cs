@@ -7,6 +7,7 @@ namespace CreateScript
     /// </summary>
     public class ResultController : MonoBehaviour
     {
+        //Over‚ÆClear‚ÌBGM‚ğ‚Á‚Ä‚¢‚é
         [SerializeField]
         private AudioClip   clearClip;
         [SerializeField]

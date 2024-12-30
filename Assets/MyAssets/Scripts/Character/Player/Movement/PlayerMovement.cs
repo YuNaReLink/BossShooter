@@ -8,19 +8,20 @@ namespace CreateScript
     [System.Serializable]
     public class PlayerMovement
     {
+        //プレイヤーのトランスフォーム
         private Transform   transform;
-
+        //プレイヤーの入力
         private PlayerInput Input;
-
+        //スピード
         [SerializeField]
         private float       speed = 5f;
-
+        //PlayerControllerのAwake時に処理
         public void Setup(PlayerSetup actor)
         {
             transform = actor.GameObject.transform;
             Input = actor.Input;
         }
-
+        //移動処理
         public void Move()
         {
             Vector3 pos = transform.position;

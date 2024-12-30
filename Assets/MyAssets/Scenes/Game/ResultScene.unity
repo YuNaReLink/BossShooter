@@ -1088,7 +1088,7 @@ MonoBehaviour:
   horizontal: 1
   selectImage: {fileID: 1044788513}
   buttons: []
-  selectImageOffsetX: 250
+  selectImageOffsetX: 300
 --- !u!114 &2061064234
 MonoBehaviour:
   m_ObjectHideFlags: 0

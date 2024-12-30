@@ -12,10 +12,11 @@ namespace CreateScript
 
         private Timer       timer = new Timer();
 
-        private BulletData  bulletData;
+        //íeÇÃÉfÅ[É^
+        private OffScreenObject bullet;
 
         private SEManager   seManager;
-
+        //î≠éÀä‘äuÇÃêîíl
         [SerializeField]
         private float       fireCoolDownCount = 0.1f;
         public float        MinFireCount => 0.25f;
@@ -33,7 +34,7 @@ namespace CreateScript
         public void Setup(IBaseLaunch launch)
         {
             transform = launch.GameObject.transform;
-            bulletData = launch.BulletData;
+            bullet = launch.BulletData[(int)EnemyBulletType.Random];
             seManager = launch.SEManager;
         }
         public void DoUpdate(float time)
@@ -51,9 +52,9 @@ namespace CreateScript
             Quaternion rotation = Quaternion.Euler(0, 0, randomAngle);
 
             // íeÇê∂ê¨
-            GameObject bullet = GameObject.Instantiate(bulletData[(int)EnemyBulletType.Random].gameObject, transform.position, transform.rotation * rotation);
+            GameObject b = GameObject.Instantiate(bullet.gameObject, transform.position, transform.rotation * rotation);
 
-            StraightBullet straightBullet = bullet.GetComponent<StraightBullet>();
+            StraightBullet straightBullet = b.GetComponent<StraightBullet>();
             if (straightBullet != null)
             {
                 straightBullet.SetExeclude(transform.gameObject.layer);

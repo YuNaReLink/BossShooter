@@ -14,7 +14,7 @@ namespace CreateScript
         private Transform               targetTransform;
 
         private Timer                   timer = new();
-
+        //誘導が切れるカウント
         [SerializeField]
         private float                   homingCount = 5.0f;
 
@@ -23,6 +23,7 @@ namespace CreateScript
         private float                   homingAngleLimit = 30f;
 
         protected override BulletType   BulletType => BulletType.Homing;
+        //発射時にスピードを1.0f～2.0fの間でランダムに決める処理
         public void SetHomingTarget(Transform t)
         {
             targetTransform = t;
@@ -52,7 +53,7 @@ namespace CreateScript
 
             Homing();
         }
-
+        //ホーミング中の処理
         private void Homing()
         {
             //弾から追いかける対象への方向を計算
@@ -69,7 +70,7 @@ namespace CreateScript
 
             bulletImage.SetRotation(rigidbody2D);
         }
-
+        //誘導可能かを判定するメソッド
         private bool NoHomingAngle()
         {
             Vector2 currentVelocity = rigidbody2D.velocity.normalized;

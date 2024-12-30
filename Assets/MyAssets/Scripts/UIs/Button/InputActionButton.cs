@@ -10,8 +10,6 @@ namespace CreateScript
     /// </summary>
     public class InputActionButton : MonoBehaviour
     {
-        private InputButtonController    inputButtons;
-
         private RectTransform   rectTransform;
         public RectTransform    RectTransform => rectTransform;
 
@@ -29,7 +27,6 @@ namespace CreateScript
 
         private void Awake()
         {
-            inputButtons = GetComponentInParent<InputButtonController>();
             rectTransform = GetComponent<RectTransform>();
             image = GetComponent<Image>();
         }

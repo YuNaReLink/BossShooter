@@ -8,22 +8,24 @@ namespace CreateScript
     /// </summary>
     public class BossController : MonoBehaviour,BossSetup
     {
+        //オブジェクト
         public GameObject           GameObject => gameObject;
 
+        //HP処理
+        private HP                  hp;
+        public HP                   HP => hp;
+        //エフェクト処理
+        private EffectManager       effectManager;
+        public EffectManager        EffectManager => effectManager;
+        //SE処理
+        private SEManager           seManager;
+        public SEManager            SEManager => seManager;
+        //カラー変更処理
+        private ColorChanger        colorChanger;
+        //移動処理
         [SerializeField]
         private BossMovement        movement;
         public BossMovement         Movement => movement;
-
-        private HP                  hp;
-        public HP                   HP => hp;
-
-        private EffectManager       effectManager;
-        public EffectManager        EffectManager => effectManager;
-
-        private SEManager           seManager;
-        public SEManager            SEManager => seManager;
-
-        private ColorChanger        colorChanger;
 
         private void Awake()
         {

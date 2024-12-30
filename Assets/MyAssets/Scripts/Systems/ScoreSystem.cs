@@ -57,7 +57,7 @@ namespace CreateScript
         {
             currentScoreLine = addScoreLine;
         }
-
+        //スコアを弾別に取得してる
         public void AddScore(BulletType type)
         {
             int count = 0;
@@ -77,7 +77,7 @@ namespace CreateScript
             currentCount += count;
             CurrentScoreCheck();
         }
-
+        //取得スコアが上限に到達してるか確認
         private void CurrentScoreCheck()
         {
             if (changePlayerBullet) { return; }

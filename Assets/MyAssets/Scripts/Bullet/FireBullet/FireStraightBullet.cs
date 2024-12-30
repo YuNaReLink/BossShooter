@@ -12,10 +12,11 @@ namespace CreateScript
 
         private Timer       timer = new Timer();
 
-        private BulletData  bulletData;
+        //íeÇÃÉfÅ[É^
+        private OffScreenObject bullet;
 
         private SEManager   seManager;
-
+        //î≠éÀä‘äuÇÃêîíl
         [SerializeField]
         private float       fireCoolDownCount = 0.1f;
         //íeî≠éÀä‘äuÇÃç≈í·ä‘äu
@@ -35,7 +36,7 @@ namespace CreateScript
         public void Setup(IBaseLaunch launch)
         {
             transform = launch.GameObject.transform;
-            bulletData = launch.BulletData;
+            bullet = launch.BulletData[(int)PlayerBulletType.Straight];
             seManager = launch.SEManager;
         }
 
@@ -47,7 +48,7 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData[(int)PlayerBulletType.Straight].gameObject, transform.position,Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bullet.gameObject, transform.position,Quaternion.identity);
             StraightBullet straightBullet = g.GetComponent<StraightBullet>();
             if(straightBullet != null)
             {

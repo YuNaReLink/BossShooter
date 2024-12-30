@@ -8,12 +8,12 @@ namespace CreateScript
     /// </summary>
     public class BossParts : MonoBehaviour
     {
-
+        //HP処理
         private HP              hp;
         public HP               HP => hp;
-
+        //ボス本体
         private BossController  boss;
-
+        //カラー変更処理
         private ColorChanger    colorChanger;
 
         private void Awake()
@@ -27,7 +27,7 @@ namespace CreateScript
         {
             Damage(collision);
         }
-
+        //ダメージ処理
         private void Damage(Collider2D collision)
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();

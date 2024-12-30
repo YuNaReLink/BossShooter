@@ -9,26 +9,26 @@ namespace CreateScript
     /// </summary>
     public class InputButtonController : MonoBehaviour
     {
-
-
         //選択してる場所が分かる画像を有効にするかしないかのフラグ
         [SerializeField]
         private bool                activateSelect = true;
         //ボタン操作が横方向か縦方向か設定するフラグ
         [SerializeField]
         private bool                horizontal;
-
+        //ボタンが複数あるか1つしかないか判定する
+        private bool                buttonIsArray = false;
+        //選択中の画像
         [SerializeField]
         private Image               selectImage;
-
+        //選択してる要素数
         private int                 selectIndex = 0;
-
-        [SerializeField]
-        private InputActionButton[] buttons;
-
+        //選択中の画像をボタン横のどれくらいの位置に設置するか
         [SerializeField]
         private float               selectImageOffsetX;
-
+        //子オブジェクトにボタン
+        [SerializeField]
+        private InputActionButton[] buttons;
+        //SE再生用クラス
         private SEManager           seManager;
 
         private void Awake()
@@ -40,6 +40,14 @@ namespace CreateScript
 
         private void Start()
         {
+            if(buttons.Length > 1)
+            {
+                buttonIsArray = true;
+            }
+            else
+            {
+                buttonIsArray = false;
+            }
             selectIndex = 0;
             SetSelectImagePosition(selectIndex);
         }
@@ -66,25 +74,28 @@ namespace CreateScript
 
         private void Input(float action)
         {
-            if (action < 0)
+            if (buttonIsArray)
             {
-                selectIndex--;
-                if (selectIndex < 0)
+                if (action < 0)
                 {
-                    selectIndex = 0;
+                    selectIndex--;
+                    if (selectIndex < 0)
+                    {
+                        selectIndex = 0;
+                    }
+                    SetSelectImagePosition(selectIndex);
+                    seManager.Play();
                 }
-                SetSelectImagePosition(selectIndex);
-                seManager.Play();
-            }
-            else if (action > 0)
-            {
-                selectIndex++;
-                if (selectIndex >= buttons.Length)
+                else if (action > 0)
                 {
-                    selectIndex = buttons.Length - 1;
+                    selectIndex++;
+                    if (selectIndex >= buttons.Length)
+                    {
+                        selectIndex = buttons.Length - 1;
+                    }
+                    SetSelectImagePosition(selectIndex);
+                    seManager.Play();
                 }
-                SetSelectImagePosition(selectIndex);
-                seManager.Play();
             }
 
             if (InputUIAction.Instance.Deside)

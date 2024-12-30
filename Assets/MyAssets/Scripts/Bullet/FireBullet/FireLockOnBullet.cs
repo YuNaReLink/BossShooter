@@ -12,10 +12,11 @@ namespace CreateScript
 
         private Timer       timer = new Timer();
 
-        private BulletData  bulletData;
+        //弾のデータ
+        private OffScreenObject bullet;
 
         private SEManager   seManager;
-
+        //発射間隔の数値
         [SerializeField]
         private float       fireCoolDownCount = 0.1f;
 
@@ -35,7 +36,7 @@ namespace CreateScript
         public void Setup(IBaseLaunch launch)
         {
             transform = launch.GameObject.transform;
-            bulletData = launch.BulletData;
+            bullet = launch.BulletData[(int)EnemyBulletType.LockOn];
             seManager = launch.SEManager;
         }
         public void DoUpdate(float time)
@@ -46,7 +47,7 @@ namespace CreateScript
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
-            GameObject g = GameObject.Instantiate(bulletData[(int)EnemyBulletType.LockOn].gameObject, transform.position, Quaternion.identity);
+            GameObject g = GameObject.Instantiate(bullet.gameObject, transform.position, Quaternion.identity);
             LockOnBullet lockOnBullet = g.GetComponent<LockOnBullet>();
             if (lockOnBullet != null)
             {

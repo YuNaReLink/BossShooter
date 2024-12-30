@@ -9,14 +9,15 @@ namespace CreateScript
     /// </summary>
     public class ScoreUI : MonoBehaviour
     {
+        //取得したスコア
         [SerializeField]
         private int         count;
-
+        //取得したスコアをUIとして表示する数値
         [SerializeField]
         private int         viewCount;
-
+        //テキスト
         private Text        text;
-
+        //数値以外に文字を書けば数値の前に表示させる
         [SerializeField]
         private string      baseText;
         //取得、表示できる最大のスコア数値
@@ -32,7 +33,7 @@ namespace CreateScript
             if(ScoreSystem.Instance == null) { return; }
             ScoreTextOutput(ScoreSystem.Instance.CurrentCount);
         }
-
+        //取得したスコアをテキストに出力
         private void ScoreTextOutput(int score)
         {
             if(score == viewCount) { return; }
