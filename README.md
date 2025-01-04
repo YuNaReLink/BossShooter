@@ -4,6 +4,7 @@ CodeからURLをコピーしてクローンをしてもらえれば中身を確�
 
 
 使用した素材のURL
+
 ・キャラクター、背景、弾、一部のBGM、一部のSE
 https://assetstore.unity.com/packages/2d/characters/warped-space-shooter-181590
 
