@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ゲームのUIを管理するクラス
-    /// </summary>
+    /*
+     * ゲームのUIを管理するクラス
+     */
     public class GameUIController : MonoBehaviour
     {
         private static GameUIController     instance;

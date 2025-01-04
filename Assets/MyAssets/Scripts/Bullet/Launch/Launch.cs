@@ -9,14 +9,15 @@ namespace CreateScript
         Random,
         Homing
     }
-    /// <summary>
-    /// 敵の発射口のクラス
-    /// 弾をタイプ別に発射する
-    /// </summary>
+    /*
+     * 敵の発射口のクラス
+     * 弾をタイプ別に発射する
+     */
     public class Launch : MonoBehaviour, IBaseLaunch
     {
+        //発射を止めるフラグ
         [SerializeField]
-        private bool launchOff;
+        private bool                launchOff;
 
         [SerializeField]
         private IFireBullet[]       fireBullets;
@@ -69,7 +70,7 @@ namespace CreateScript
         {
             if (launchOff) { return; }
             fireBullets[(int)bulletType].DoUpdate(Time.deltaTime);
-            if (GameController.Instance.IsGameStop) { return; }
+            if (GlobalManager.Instance.IsGameStop) { return; }
 
             FireBulletsUpdate();
         }

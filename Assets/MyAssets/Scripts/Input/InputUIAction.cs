@@ -3,10 +3,10 @@ using UnityEngine.InputSystem;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// UIのボタン入力を管理するクラス
-    /// シングルトンパターンでどこらでもアクセスが可能
-    /// </summary>
+    /*
+     * UIのボタン入力を管理するクラス
+     * シングルトンパターンでどこらでもアクセスが可能
+     */
     public class InputUIAction : MonoBehaviour
     {
 
@@ -20,10 +20,10 @@ namespace CreateScript
         private Vector2                 select;
         public Vector2                  Select => select;
         //*決定入力関係*//
-        private InputAction             desideAction;
+        private InputAction             decideAction;
         [SerializeField]
-        private bool                    deside;
-        public bool                     Deside => deside;
+        private bool                    decide;
+        public bool                     Decide => decide;
         //*ポーズ入力関係*//
         private InputAction             pauseAciton;
         [SerializeField]
@@ -46,26 +46,36 @@ namespace CreateScript
             {
                 select = inputActions.UI.Select.ReadValue<Vector2>();
             }
+            if (SelectAction.WasReleasedThisFrame())
+            {
+                select = Vector2.zero;
+            }
 
-            if (desideAction.IsPressed())
+            if (decideAction.IsPressed())
             {
-                deside = false;
+                decide = false;
             }
-            if (desideAction.WasPressedThisFrame())
+            if (decideAction.WasPressedThisFrame())
             {
-                deside = true;
+                decide = true;
             }
-        }
-        private void OnPause(InputAction.CallbackContext context)
-        {
-            pause = true;
-            // 一瞬だけtrueにして、次のフレームでfalseに戻す
-            StartCoroutine(PausePress());
-        }
-        private System.Collections.IEnumerator PausePress()
-        {
-            yield return null; // 1フレーム待つ
-            pause = false;
+            if (decideAction.WasReleasedThisFrame())
+            {
+                decide = false;
+            }
+
+            if (pauseAciton.IsPressed())
+            {
+                pause = false;
+            }
+            if (pauseAciton.WasPressedThisFrame())
+            {
+                pause = true;
+            }
+            if (pauseAciton.WasReleasedThisFrame())
+            {
+                pause = false;
+            }
         }
 
         private void OnEnable()
@@ -76,13 +86,11 @@ namespace CreateScript
 
             SelectAction.Enable();
 
-            desideAction = inputActions.UI.Deside;
+            decideAction = inputActions.UI.Decide;
 
-            desideAction.Enable();
+            decideAction.Enable();
 
             pauseAciton = inputActions.UI.Pause;
-
-            pauseAciton.performed += OnPause;
 
             pauseAciton.Enable();
         }
@@ -92,9 +100,7 @@ namespace CreateScript
 
             SelectAction.Disable();
 
-            desideAction.Disable();
-
-            pauseAciton.performed -= OnPause;
+            decideAction.Disable();
 
             pauseAciton.Disable();
 

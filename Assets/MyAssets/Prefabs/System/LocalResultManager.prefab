@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1232393076440076095}
   - component: {fileID: 2142760096162659504}
   - component: {fileID: 2167207366717729504}
-  - component: {fileID: 2501457017415131636}
+  - component: {fileID: -2840363463763416082}
   m_Layer: 0
   m_Name: LocalResultManager
   m_TagString: Untagged
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clearClip: {fileID: 8300000, guid: bd04c1fab6cb15341a282207a935641e, type: 3}
   overClip: {fileID: 8300000, guid: 4afb1131c2633244abc49237c325fbc5, type: 3}
---- !u!114 &2501457017415131636
+--- !u!114 &-2840363463763416082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,3 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b699b715cb7008d47952d5aaa4605fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  select: {x: 0, y: 0}
+  decide: 0
+  pause: 0

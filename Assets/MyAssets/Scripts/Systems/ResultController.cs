@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 結果シーンの管理を行うクラス
-    /// </summary>
+    /*
+     * 結果シーンの管理を行うクラス
+     */
     public class ResultController : MonoBehaviour
     {
         //OverとClear時のBGMを持っている
@@ -13,11 +13,12 @@ namespace CreateScript
         [SerializeField]
         private AudioClip   overClip;
 
-        private void Awake()
+        private void Start()
         {
+            GlobalManager.Instance.SetGameMode(GameMode.Result);
+
             //空のオブジェクトを生成する。
             GameObject o = new("BGM");
-
             //コンポーネントを括り付ける。
             BGMChanger bgm = o.AddComponent<BGMChanger>();
             AudioClip clip = null;
@@ -34,11 +35,6 @@ namespace CreateScript
                     break;
             }
             bgm.SetClip(clip);
-        }
-
-        private void Start()
-        {
-            GlobalManager.Instance.SetGameMode(GameMode.Result);
         }
     }
 }

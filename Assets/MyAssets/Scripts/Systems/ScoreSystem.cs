@@ -15,9 +15,6 @@ namespace CreateScript
         [SerializeField]
         private int                 currentCount;
         public int                  CurrentCount => currentCount;
-        //プレイヤーの弾の発射間隔を変更していいかのフラグ
-        private bool                changePlayerBullet;
-        public bool                 ChangePlayerBullet => changePlayerBullet;
         //プレイヤーの攻撃間隔を上げるかどうかラインの数値
         [SerializeField]
         private int                 currentScoreLine;
@@ -32,10 +29,6 @@ namespace CreateScript
         private int                 middleScore;
         [SerializeField]
         private int                 bigScore;
-        public void NoActivateChangeAttack()
-        {
-            changePlayerBullet = false;
-        }
 
         public void ResetScore()
         {
@@ -75,17 +68,16 @@ namespace CreateScript
                     break;
             }
             currentCount += count;
-            CurrentScoreCheck();
         }
         //取得スコアが上限に到達してるか確認
-        private void CurrentScoreCheck()
+        public bool IsScoreLine()
         {
-            if (changePlayerBullet) { return; }
             if(currentCount >= currentScoreLine)
             {
-                changePlayerBullet = true;
                 currentScoreLine += addScoreLine;
+                return true;
             }
+            return false;
         }
     }
 

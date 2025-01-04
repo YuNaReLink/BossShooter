@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ホーミング弾本体の処理を行うクラス
-    /// </summary>
+    /*
+     * ホーミング弾本体の処理を行うクラス
+     */
     public class HomingBullet : BaseBullet
     {
         //弾の制限速度
@@ -24,7 +24,7 @@ namespace CreateScript
 
         protected override BulletType   BulletType => BulletType.Homing;
         //発射時にスピードを1.0f～2.0fの間でランダムに決める処理
-        public void SetHomingTarget(Transform t)
+        public void InitHomingSetting(Transform t)
         {
             targetTransform = t;
             timer.Start(homingCount);

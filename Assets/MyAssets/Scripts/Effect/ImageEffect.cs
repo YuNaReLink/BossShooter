@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 画像で作成されたアニメーションエフェクトが
-    /// 最後まで再生されたら処理を行うクラス
-    /// </summary>
+    /*
+     * 画像で作成されたアニメーションエフェクトが
+     * 最後まで再生されたら処理を行うクラス
+     */
     public class ImageEffect : MonoBehaviour
     {
         [SerializeField]

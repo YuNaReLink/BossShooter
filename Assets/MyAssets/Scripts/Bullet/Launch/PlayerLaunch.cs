@@ -8,9 +8,9 @@ namespace CreateScript
         Straight,
         Bomb
     }
-    /// <summary>
-    /// プレイヤーの発射口のクラス
-    /// </summary>
+    /*
+     * プレイヤーの発射口のクラス
+     */
     public class PlayerLaunch : MonoBehaviour,IBaseLaunch
     {
         [SerializeField]
@@ -67,7 +67,7 @@ namespace CreateScript
             {
                 fireBullets[i].DoUpdate(Time.deltaTime);
             }
-            if (GameController.Instance.IsGameStop) { return; }
+            if (GlobalManager.Instance.IsGameStop) { return; }
 
             BulletFire();
             ChangeBulletCoolTimeByCurrentScore();
@@ -89,14 +89,13 @@ namespace CreateScript
 
         private void ChangeBulletCoolTimeByCurrentScore()
         {
-            if (!ScoreSystem.Instance.ChangePlayerBullet) { return; }
+            if (!ScoreSystem.Instance.IsScoreLine()) {  return; }
             Change();
         }
 
         private void Change()
         {
             fireBullets[(int)bulletType].DecreaseFireCountCoolDown(0.05f);
-            ScoreSystem.Instance.NoActivateChangeAttack();
         }
     }
 }

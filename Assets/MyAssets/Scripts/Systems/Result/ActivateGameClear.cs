@@ -2,10 +2,8 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 撃破タイプのゲームオーバー判定を行うクラス
-    /// アタッチしたオブジェクトが非表示になった時に処理を行う
-    /// </summary>
+    //撃破タイプのゲームオーバー判定を行うクラス
+    //アタッチしたオブジェクトが非表示になった時に処理を行う
     public class ActivateGameClear : MonoBehaviour
     {
 

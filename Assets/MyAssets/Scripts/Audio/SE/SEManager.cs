@@ -4,6 +4,7 @@ namespace CreateScript
 {
     /// <summary>
     /// SEをオブジェクトとして生成するクラス
+    /// オブジェクトにアタッチして使う
     /// </summary>
     public class SEManager : MonoBehaviour
     {

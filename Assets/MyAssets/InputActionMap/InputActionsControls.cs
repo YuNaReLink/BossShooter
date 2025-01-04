@@ -257,7 +257,7 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Deside"",
+                    ""name"": ""Decide"",
                     ""type"": ""Value"",
                     ""id"": ""cbf80cea-a632-4323-864e-c35d5589caf4"",
                     ""expectedControlType"": """",
@@ -393,7 +393,7 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyBoard&Mouse"",
-                    ""action"": ""Deside"",
+                    ""action"": ""Decide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -404,7 +404,7 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""GamePad"",
-                    ""action"": ""Deside"",
+                    ""action"": ""Decide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -455,7 +455,7 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
-        m_UI_Deside = m_UI.FindAction("Deside", throwIfNotFound: true);
+        m_UI_Decide = m_UI.FindAction("Decide", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
     }
 
@@ -589,14 +589,14 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Select;
-    private readonly InputAction m_UI_Deside;
+    private readonly InputAction m_UI_Decide;
     private readonly InputAction m_UI_Pause;
     public struct UIActions
     {
         private @InputActionsControls m_Wrapper;
         public UIActions(@InputActionsControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Select => m_Wrapper.m_UI_Select;
-        public InputAction @Deside => m_Wrapper.m_UI_Deside;
+        public InputAction @Decide => m_Wrapper.m_UI_Decide;
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
@@ -610,9 +610,9 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
-            @Deside.started += instance.OnDeside;
-            @Deside.performed += instance.OnDeside;
-            @Deside.canceled += instance.OnDeside;
+            @Decide.started += instance.OnDecide;
+            @Decide.performed += instance.OnDecide;
+            @Decide.canceled += instance.OnDecide;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
@@ -623,9 +623,9 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
-            @Deside.started -= instance.OnDeside;
-            @Deside.performed -= instance.OnDeside;
-            @Deside.canceled -= instance.OnDeside;
+            @Decide.started -= instance.OnDecide;
+            @Decide.performed -= instance.OnDecide;
+            @Decide.canceled -= instance.OnDecide;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
@@ -674,7 +674,7 @@ public partial class @InputActionsControls: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnSelect(InputAction.CallbackContext context);
-        void OnDeside(InputAction.CallbackContext context);
+        void OnDecide(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
     }
 }

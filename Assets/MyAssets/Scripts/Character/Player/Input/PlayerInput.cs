@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// プレイヤーの入力をまとめて処理してるクラス
-    /// </summary>
+    /*
+     * プレイヤーの入力をまとめて処理してるクラス
+     */
     public class PlayerInput : MonoBehaviour
     {
         private InputActionsControls    inputActions;
@@ -38,7 +38,7 @@ namespace CreateScript
 
         private void Update()
         {
-            if (GameController.Instance.IsGameStop) { return; }
+            if (GlobalManager.Instance.IsGameStop) { return; }
 
             var value = inputActions.Player.Move.ReadValue<Vector2>();
             move.x = value.x;

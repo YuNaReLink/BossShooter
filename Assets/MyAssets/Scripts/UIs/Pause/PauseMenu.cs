@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ポーズを有効、無効にする処理を行うクラス
-    /// SEや時間を止める処理もここで行う
-    /// </summary>
+    /*
+     * ポーズを有効、無効にする処理を行うクラス
+     * SEや時間を止める処理もここで行う
+     */
     [RequireComponent(typeof(Pause))]
     public class PauseMenu : MonoBehaviour
     {

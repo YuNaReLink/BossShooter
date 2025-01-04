@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ターゲットに向かって飛ぶ弾本体のクラス
-    /// </summary>
+    /*
+     * ターゲットに向かって飛ぶ弾本体のクラス
+     */
     public class LockOnBullet : BaseBullet
     {
 
@@ -18,8 +18,8 @@ namespace CreateScript
         private void Start()
         {
             direction = playerTransform.position - transform.position;
-            GetComponent<Rigidbody2D>().AddForce(direction.normalized * bulletSpeed, ForceMode2D.Impulse);
-            bulletImage.SetRotation(GetComponent<Rigidbody2D>());
+            rigidbody2D.AddForce(direction.normalized * bulletSpeed, ForceMode2D.Impulse);
+            bulletImage.SetRotation(rigidbody2D);
         }
         //ターゲットを設定
         public void SetPlayerTransform(Transform transform)

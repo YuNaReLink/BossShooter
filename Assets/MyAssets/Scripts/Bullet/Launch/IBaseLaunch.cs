@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 発射オブジェクトのインタフェース
-    /// </summary>
+    /*
+     * 発射オブジェクトのインタフェース
+     */
     public interface IBaseLaunch
     {
         BulletData BulletData { get; }

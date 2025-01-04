@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 弾発射クラスのインタフェース
-    /// </summary>
+    /*
+     * 弾発射クラスのインタフェース
+     */
     public interface IFireBullet
     {
         void Setup(IBaseLaunch launch);

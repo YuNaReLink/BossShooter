@@ -2,13 +2,12 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// バックグランドのスクロールを行うクラス
-    /// backGroundsにセットした画像を右から左へスクロールする
-    /// </summary>
+    /*
+     * バックグランドのスクロールを行うクラス
+     * backGroundsにセットした画像を右から左へスクロールする
+     */
     public class BGScroll : MonoBehaviour
     {
-        /*SerializeField*/
         //背景をスクロールさせるスピード
         [SerializeField] 
         private float           scrollSpeed; 

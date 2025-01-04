@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2033961993887562887}
   - component: {fileID: 3168938854081988664}
   - component: {fileID: 6063615081863177165}
-  - component: {fileID: 3276171140603283310}
   m_Layer: 5
   m_Name: EndButton
   m_TagString: Untagged
@@ -121,19 +120,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3276171140603283310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100650820980084318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cf7bf5ff59013e4e8ef67e2a7841330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputActionButton: {fileID: 0}
 --- !u!1 &417065205684300411
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,8 +175,9 @@ MonoBehaviour:
   activateSelect: 1
   horizontal: 0
   selectImage: {fileID: 6124139539359687847}
-  buttons: []
   selectImageOffsetX: 250
+  buttons: []
+  buttonStop: 0
 --- !u!114 &7325812367664704782
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// シーン内にInputButtonControllerが二つあった場合
-    /// 自分のとは違うInputButtonControllerをオフにする
-    /// これならこのコンポーネントをつけたメニューを二つ、三つと付けても
-    /// その開いたメニューだけ選択できる
-    /// </summary>
+    /*
+     * シーン内にInputButtonControllerが二つあった場合
+     *自分のとは違うInputButtonControllerをオフにする
+     *これならこのコンポーネントをつけたメニューを二つ、三つと付けても
+     *その開いたメニューだけ選択できる
+     */
     public class ActivateInputButtonController : MonoBehaviour
     {
         private InputButtonController    thisInputButtonController;

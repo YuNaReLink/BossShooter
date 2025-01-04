@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// プレイヤーの残機を表示するUI
-    /// </summary>
+    /*
+     * プレイヤーの残機を表示するUI
+     */
     public class PlayerLifeUI : MonoBehaviour
     {
 

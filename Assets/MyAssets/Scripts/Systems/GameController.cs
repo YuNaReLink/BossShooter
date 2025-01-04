@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ゲームシーンで全体的に使う処理を行うクラス
-    /// </summary>
+    /*
+     * ゲームシーンで全体的に使う処理を行うクラス
+     */
     public class GameController : MonoBehaviour
     {
         private static GameController       instance;
@@ -14,7 +14,7 @@ namespace CreateScript
         [SerializeField]
         private int                         playerRemainingLives;
         public int                          PlayerLife => playerRemainingLives;
-
+        //ボムのカウントを行う変数
         [SerializeField]
         private int                         bombCount;
         public int                          BombCount => bombCount;
@@ -26,9 +26,7 @@ namespace CreateScript
         private PlayerController            currentPlayer;
         //プレイヤーが復帰出来るまでのタイマー
         private Timer                       revivalTimer = new Timer();
-        //ゲームを止めるフラグ
-        private bool                        gameStop = false;
-        public bool                         IsGameStop => gameStop || Time.timeScale <= 0;
+
         //ボムのカウントを減らすメソッド
         public void DecreaseBombCount()
         {
@@ -38,8 +36,6 @@ namespace CreateScript
                 bombCount = 0;
             }
         }
-        //ゲームを止めるbool型を外部から設定するメソッド
-        public void SetGameStop(bool b) { gameStop = b; }
 
         public void Awake()
         {
@@ -57,8 +53,6 @@ namespace CreateScript
 
         private void Start()
         {
-            gameStop = true;
-
             GlobalManager.Instance.SetGameMode(GameMode.Game);
         }
 
@@ -88,7 +82,6 @@ namespace CreateScript
             {
                 GameObject g = Instantiate(playerController.gameObject,playerController.gameObject.transform.position,Quaternion.identity);
                 currentPlayer = g.GetComponent<PlayerController>();
-                gameStop = true;
             }
         }
 
@@ -110,9 +103,8 @@ namespace CreateScript
         {
             GlobalManager.Instance.SetResultType(type);
             GameUIController.Instance.CreateResultText(SetGameResult());
-            SceneChanger.Instance?.SetNextScene(SceneList.Result);
-            SceneChanger.Instance?.SetChangeCount(5f);
-            SceneChanger.Instance?.OnChangeScene();
+            SceneChanger.Instance?.SlowSceneChange(SceneList.Result,2f);
+            BGMManager.Stop();
         }
     }
 }

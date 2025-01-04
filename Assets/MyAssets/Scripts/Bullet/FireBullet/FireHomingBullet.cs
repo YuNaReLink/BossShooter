@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ターゲットに向かってホーミングの"発射"を行う処理を実行するクラス
-    /// </summary>
+    /*
+     * ターゲットに向かってホーミングの"発射"を行う処理を実行するクラス
+     */
     [System.Serializable]
     public class FireHomingBullet : IFireBullet
     {
@@ -49,7 +49,7 @@ namespace CreateScript
             {
                 homingBullet.SetShooterType(ShopterType.Enemy);
                 homingBullet.SetExeclude(transform.gameObject.layer);
-                homingBullet.SetHomingTarget(target);
+                homingBullet.InitHomingSetting(target);
             }
             seManager.Play(1);
             timer.Start(fireCoolDownCount);

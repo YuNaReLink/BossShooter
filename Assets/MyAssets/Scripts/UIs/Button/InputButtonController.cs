@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 複数あるボタンのオブジェクトをまとめて管理するクラス
-    /// ボタンの親オブジェクトにアタッチする想定
-    /// </summary>
+    /*
+     * 複数あるボタンのオブジェクトをまとめて管理するクラス
+     * ボタンの親オブジェクトにアタッチする想定
+     */
     public class InputButtonController : MonoBehaviour
     {
         //選択してる場所が分かる画像を有効にするかしないかのフラグ
@@ -31,10 +31,12 @@ namespace CreateScript
         //SE再生用クラス
         private SEManager           seManager;
 
+        [SerializeField]
+        private bool                buttonStop;
+
         private void Awake()
         {
-            InputActionButton[] b = GetComponentsInChildren<InputActionButton>();
-            buttons = b;
+            buttons = GetComponentsInChildren<InputActionButton>();
             seManager = GetComponent<SEManager>();
         }
 
@@ -60,6 +62,7 @@ namespace CreateScript
         }
         private void Update()
         {
+            //if (GlobalManager.Instance.IsGameStop && buttonStop) { return; }
             float select;
             if (horizontal)
             {
@@ -98,7 +101,7 @@ namespace CreateScript
                 }
             }
 
-            if (InputUIAction.Instance.Deside)
+            if (InputUIAction.Instance.Decide)
             {
                 buttons[selectIndex].OnButtonInput();
                 seManager.Play(1);

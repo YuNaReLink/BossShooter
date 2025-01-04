@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 画面外に出られないようにするクラス
-    /// これをセットしたオブジェクトは画面外に出られないようになる
-    /// </summary>
+    /*
+     * 画面外に出られないようにするクラス
+     * これをセットしたオブジェクトは画面外に出られないようになる
+     */
     public class OnScreenMove : MonoBehaviour
     {
         private new Camera      camera;

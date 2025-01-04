@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ターゲットに向かって弾を発射する処理を実行するクラス
-    /// </summary>
+    /*
+     * ターゲットに向かって弾を発射する処理を実行するクラス
+     */
     [System.Serializable ]
     public class FireLockOnBullet : IFireBullet
     {

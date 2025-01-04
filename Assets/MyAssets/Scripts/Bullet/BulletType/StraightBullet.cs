@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 真っすぐ進む弾本体のクラス
-    /// </summary>
+    /*
+     * 真っすぐ進む弾本体のクラス
+     */
     public class StraightBullet : BaseBullet
     {
 
@@ -13,8 +13,8 @@ namespace CreateScript
         protected override BulletType   BulletType => BulletType.Straight;
         private void Start()
         {
-            GetComponent<Rigidbody2D>().AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
-            bulletImage.SetRotation(GetComponent<Rigidbody2D>());
+            rigidbody2D.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
+            bulletImage.SetRotation(rigidbody2D);
         }
 
         public void SetDirection(Vector2 dir)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7391619420382265641}
   - component: {fileID: 6670224178014402201}
   m_Layer: 5
-  m_Name: ButtonWest
+  m_Name: BoxButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,8 +207,9 @@ MonoBehaviour:
   activateSelect: 1
   horizontal: 0
   selectImage: {fileID: 6124139539359687847}
-  buttons: []
   selectImageOffsetX: 250
+  buttons: []
+  buttonStop: 0
 --- !u!114 &7325812367664704782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: Option
 --- !u!1 &587935679372398975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1019,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 1100}
+  m_SizeDelta: {x: 2500, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &416339113928302548
 CanvasRenderer:
@@ -1070,7 +1071,7 @@ GameObject:
   - component: {fileID: 4883284753380184972}
   - component: {fileID: 3253509884713219291}
   m_Layer: 5
-  m_Name: ButtonEast
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1192,7 +1193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1201,18 +1202,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
-    m_FontSize: 42
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 42
+    m_MaxSize: 56
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ButtonEast
+  m_Text: "\u3007"
 --- !u!1 &3605872350677786439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1606,7 @@ GameObject:
   - component: {fileID: 3947537715497346657}
   - component: {fileID: 5426041920965226082}
   m_Layer: 5
-  m_Name: Start
+  m_Name: Option
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2161,7 +2162,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
-    m_FontSize: 42
+    m_FontSize: 28
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -2172,7 +2173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: D-Pad
+  m_Text: "\u5341\u5B57\u30DC\u30BF\u30F3"
 --- !u!1 &5628652385828525531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3574,7 +3575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 13}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &489571948372639116
@@ -3598,7 +3599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.80645657, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3607,18 +3608,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
-    m_FontSize: 42
-    m_FontStyle: 0
+    m_FontSize: 80
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 42
-    m_Alignment: 4
+    m_MinSize: 0
+    m_MaxSize: 84
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ButtonWest
+  m_Text: "\u25A1"
 --- !u!1 &7703049894597012415
 GameObject:
   m_ObjectHideFlags: 0
@@ -3668,7 +3669,7 @@ GameObject:
   - component: {fileID: 6209569191083652476}
   - component: {fileID: 2431494223042092148}
   m_Layer: 5
-  m_Name: D-Pad
+  m_Name: TenKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4179,7 +4180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4188,18 +4189,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
-    m_FontSize: 42
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 42
+    m_MaxSize: 56
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ButtonEast
+  m_Text: "\u3007"
 --- !u!1 &8354834502537651963
 GameObject:
   m_ObjectHideFlags: 0
@@ -4553,7 +4554,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: L-Trigger
+  m_Text: L2
 --- !u!1 &8873575061402409853
 GameObject:
   m_ObjectHideFlags: 0
@@ -4603,7 +4604,7 @@ GameObject:
   - component: {fileID: 8373793576534763880}
   - component: {fileID: 2247764781713276895}
   m_Layer: 5
-  m_Name: ButtonEast
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4869,7 +4870,7 @@ GameObject:
   - component: {fileID: 6414575395647891466}
   - component: {fileID: 602785597041281987}
   m_Layer: 5
-  m_Name: L-Trigger
+  m_Name: L2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -235,7 +235,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Deside",
+                    "name": "Decide",
                     "type": "Value",
                     "id": "cbf80cea-a632-4323-864e-c35d5589caf4",
                     "expectedControlType": "",
@@ -371,7 +371,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard&Mouse",
-                    "action": "Deside",
+                    "action": "Decide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -382,7 +382,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
-                    "action": "Deside",
+                    "action": "Decide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

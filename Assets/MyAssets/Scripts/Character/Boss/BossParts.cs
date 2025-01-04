@@ -2,25 +2,30 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ボスのパーツ部分の管理を行うクラス
-    /// 主にHP処理とダメージ処理のみ
-    /// </summary>
+    /*
+     * ボスのパーツ部分の管理を行うクラス
+     * 主にHP処理とダメージ処理のみ
+     */
     public class BossParts : MonoBehaviour
     {
         //HP処理
         private HP              hp;
         public HP               HP => hp;
-        //ボス本体
-        private BossController  boss;
         //カラー変更処理
         private ColorChanger    colorChanger;
 
+        private EffectManager   effectManager;
+
+        private Vector3         effectScale = new Vector3(10f,10f,10f);
+
+        private SEManager       seManager;
+
         private void Awake()
         {
-            boss = GetComponentInParent<BossController>();
             hp = GetComponent<HP>();
             colorChanger = GetComponent<ColorChanger>();
+            effectManager = GetComponent<EffectManager>();
+            seManager = GetComponent<SEManager>();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -31,13 +36,13 @@ namespace CreateScript
         private void Damage(Collider2D collision)
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
-            if (bullet == null || bullet.ShopterType == ShopterType.Enemy) { return; }
+            if (bullet == null || bullet.ShooterType == ShopterType.Enemy) { return; }
             hp.DecreaseHP();
             colorChanger.ColorChangeStart();
             if (hp.Death())
             {
-                boss.SEManager.Play();
-                boss.EffectManager.Create(transform.position, boss.transform.localScale);
+                seManager.Play();
+                effectManager.Create(transform.position, effectScale);
                 Death();
             }
         }

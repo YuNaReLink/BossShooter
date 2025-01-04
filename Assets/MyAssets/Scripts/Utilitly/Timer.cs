@@ -2,9 +2,9 @@ using System;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 全クラスで生成して共通で使えるタイマークラス
-    /// </summary>
+    /*
+     * 全クラスで生成して共通で使えるタイマークラス
+     */
     [System.Serializable]
     public class Timer
     {

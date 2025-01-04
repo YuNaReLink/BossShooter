@@ -4,6 +4,8 @@ namespace CreateScript
 {
     /// <summary>
     /// BGMの再生＆停止の処理を行う
+    /// BGMChangerから使うクラス
+    /// 直接使うものではない
     /// </summary>
     public class BGMManager
     {

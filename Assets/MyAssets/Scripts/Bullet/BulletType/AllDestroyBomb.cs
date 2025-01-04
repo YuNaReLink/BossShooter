@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// “G‚Ì’e‚ð‘S‚Ä”j‰ó‚·‚éƒ{ƒ€–{‘Ì‚ÌƒNƒ‰ƒX
-    /// </summary>
+    /*
+     * “G‚Ì’e‚ð‘S‚Ä”j‰ó‚·‚éƒ{ƒ€–{‘Ì‚ÌƒNƒ‰ƒX
+     */
     public class AllDestroyBomb : BaseBullet
     {
         private Vector2                 direction = Vector2.zero;
@@ -17,8 +17,8 @@ namespace CreateScript
         protected override BulletType   BulletType => BulletType.Bomb;
         private void Start()
         {
-            GetComponent<Rigidbody2D>().AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
-            bulletImage.SetRotation(GetComponent<Rigidbody2D>());
+            rigidbody2D.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
+            bulletImage.SetRotation(rigidbody2D);
 
             explosionTimer.Start(explosionCount);
             explosionTimer.OnEnd += Explosion;
@@ -45,7 +45,7 @@ namespace CreateScript
             BaseBullet[] baseBullets = FindObjectsOfType<BaseBullet>();
             foreach (BaseBullet bullet in baseBullets)
             {
-                if (bullet.ShopterType == ShopterType.Enemy)
+                if (bullet.ShooterType == ShopterType.Enemy)
                 {
                     bullet.AddScore();
                     Instantiate(effect.gameObject, bullet.transform.position, Quaternion.identity);
