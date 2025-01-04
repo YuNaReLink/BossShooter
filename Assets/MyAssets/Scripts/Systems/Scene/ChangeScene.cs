@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 遷移するシーンを設定するクラス
-    /// ボタンに設定して押されたときにシーンを設定
-    /// </summary>
+    /*
+     * 遷移するシーンを設定するクラス
+     * ボタンに設定して押されたときにシーンを設定
+     */
     public class ChangeScene : MonoBehaviour
     {
         //ここに設定したシーンをSceneChangerに設定

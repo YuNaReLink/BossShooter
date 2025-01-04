@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// プレイヤー処理を管理するクラス
-    /// 主にHP、移動、アニメーション、当たり判定を行う
-    /// </summary>
+    /*
+     * プレイヤー処理を管理するクラス
+     * 主にHP、移動、アニメーション、当たり判定を行う
+     */
 
     public class PlayerController : MonoBehaviour,PlayerSetup
     {
@@ -30,10 +30,18 @@ namespace CreateScript
         [SerializeField]
         private PlayerMovement              movement;
 
-        private void Awake()
+        private void OnEnable()
         {
             player = this;
+        }
 
+        private void OnDisable()
+        {
+            player = null;
+        }
+
+        private void Awake()
+        {
             input = GetComponent<PlayerInput>();
             hp = GetComponent<HP>();
             effectManager = GetComponent<EffectManager>();
@@ -46,7 +54,7 @@ namespace CreateScript
     
         private void Update()
         {
-            if (GameController.Instance.IsGameStop) { return; }
+            if (GlobalManager.Instance.IsGameStop) { return; }
             movement.Move();
             animator.SetFloat("Vertical",input.Move.y);
         }
@@ -74,7 +82,7 @@ namespace CreateScript
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
             BossController boss = collision.GetComponent<BossController>();
             BossParts parts = collision.GetComponent<BossParts>();
-            return  ((bullet != null && bullet.ShopterType != ShopterType.Player)||
+            return  ((bullet != null && bullet.ShooterType != ShopterType.Player)||
                     boss != null || parts != null);
         }
         //死亡処理

@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 乱射弾を"発射"する処理を行うクラス
-    /// </summary>
+    /*
+     * 乱射弾を"発射"する処理を行うクラス
+     */
     [System.Serializable]
     public class FireRandomBullet : IFireBullet
     {

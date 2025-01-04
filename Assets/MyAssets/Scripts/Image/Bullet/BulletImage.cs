@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 弾の画像オブジェクトにアタッチするもの
-    /// Bulletクラスで指定されてる方向を元に
-    /// オブジェクトの向きを変更する処理
-    /// </summary>
+    /*
+     * 弾の画像オブジェクトにアタッチするもの
+     * Bulletクラスで指定されてる方向を元に
+     * オブジェクトの向きを変更する処理
+     */
     public class BulletImage : MonoBehaviour
     {
         public void SetRotation(Rigidbody2D rigidbody2D)

@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 各シーンのリスト
-    /// </summary>
+    /*
+     * 各シーンのリスト
+     */
     public enum SceneList
     {
         Title,
@@ -15,38 +15,52 @@ namespace CreateScript
         Count
     }
 
-    /// <summary>
-    /// シーン遷移の処理を行うシングルトンパターンのクラス
-    /// </summary>
+    /*
+     * シーン遷移の処理を行うシングルトンパターンのクラス
+     */
     public class SceneChanger : MonoBehaviour
     {
         private static SceneChanger     instance;
         public static SceneChanger      Instance => instance;
 
+        private bool                    isTransitioning = false;
+        public bool                     IsTransitioning => isTransitioning;
+
         private SceneList               nextScene;
+
 
         public void SetNextScene(SceneList scene)
         {
             nextScene = scene;
+            isTransitioning = true;
+            GlobalManager.Instance.CreateFadePanel(false);
         }
 
         [SerializeField]
         private float                   changeCount = 3f;
 
-        public void SetChangeCount(float count)
+        public void SlowSceneChange(SceneList scene,float count)
         {
             changeCount = count;
+            nextScene = scene;
+            StartCoroutine(SlowFade());
+        }
+
+        private System.Collections.IEnumerator SlowFade()
+        {
+            yield return new WaitForSecondsRealtime(changeCount); // 1フレーム待つ
+            GlobalManager.Instance.CreateFadePanel(false);
+            isTransitioning = true;
         }
 
         private void Awake()
         {
             instance = this;
         }
-        /// <summary>
-        /// ここで各シーンの名前をリスト別に取得
-        /// </summary>
-        /// <param name="scene"></param>
-        /// <returns></returns>
+        /*
+         * ここで各シーンの名前をリスト別に取得
+         * 引数１：SceneList scene 取得したシーンの名前を取得
+         */
         private string GetSceneName(SceneList scene)
         {
             string temp;
@@ -79,6 +93,7 @@ namespace CreateScript
         {
             if(instance == null) { return; }
             StartCoroutine(ChangeStart());
+            //isTransitioning = false;
         }
         //指定したcount後にシーンを遷移するメソッド
         private System.Collections.IEnumerator ChangeStart()

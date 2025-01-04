@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ボタン単体にアタッチするクラス
-    /// キーとパッドだけの操作を行えるようにするクラス
-    /// </summary>
+    /*
+     * ボタン単体にアタッチするクラス
+     * キーとパッドだけの操作を行えるようにするクラス
+     */
     public class InputActionButton : MonoBehaviour
     {
         private RectTransform   rectTransform;

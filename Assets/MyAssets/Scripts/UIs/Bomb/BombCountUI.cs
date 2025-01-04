@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ボムのカウント数を表示するクラス
-    /// </summary>
+    /*
+     * ボムのカウント数を表示するクラス
+     */
     public class BombCountUI : MonoBehaviour
     {
         //数値の前に出力する文字列

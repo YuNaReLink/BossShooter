@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ポーズした時にゲーム時間を止める＆進める処理を行うクラス
-    /// </summary>
+    /*
+     * ポーズした時にゲーム時間を止める＆進める処理を行うクラス
+     */
     public class Pause : MonoBehaviour
     {
 

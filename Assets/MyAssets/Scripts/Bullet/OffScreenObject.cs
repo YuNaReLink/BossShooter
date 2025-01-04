@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 弾が画面外に出たら削除するクラス
-    /// </summary>
+    /*
+     * 弾が画面外に出たら削除するクラス
+     */
     public class OffScreenObject : MonoBehaviour
     {
         private new Camera camera;

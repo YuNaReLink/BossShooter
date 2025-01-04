@@ -4,24 +4,25 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// スコアUIの表示を行うクラス
-    /// </summary>
+    /*
+     * スコアUIの表示を行うクラス
+     */
     public class ScoreUI : MonoBehaviour
     {
         //取得したスコア
         [SerializeField]
-        private int         count;
+        private int             count;
         //取得したスコアをUIとして表示する数値
         [SerializeField]
-        private int         viewCount;
+        private float           viewCount;
+        private float           countSpeed = 100f;
         //テキスト
-        private Text        text;
+        private Text            text;
         //数値以外に文字を書けば数値の前に表示させる
         [SerializeField]
-        private string      baseText;
+        private string          baseText;
         //取得、表示できる最大のスコア数値
-        private int         maxViewScore = 999999;
+        private int             maxViewScore = 999999;
 
         private void Awake()
         {
@@ -47,14 +48,14 @@ namespace CreateScript
             //取得スコア分1ずつ加算する
             if(count >= viewCount) 
             {
-                viewCount++;
+                viewCount+= countSpeed * Time.deltaTime;
                 if(count < viewCount)
                 {
                     viewCount = count;
                 }
             }
             //テキストに出力
-            text.text = baseText + String.Format("{0:D6}", viewCount);
+            text.text = baseText + String.Format("{0:D6}", (int)viewCount);
         }
 
         private void Update()

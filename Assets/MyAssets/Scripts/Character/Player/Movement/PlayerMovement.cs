@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// プレイヤーの移動処理を行うクラス
-    /// </summary>
+    /*
+     * プレイヤーの移動処理を行うクラス
+     */
     [System.Serializable]
     public class PlayerMovement
     {

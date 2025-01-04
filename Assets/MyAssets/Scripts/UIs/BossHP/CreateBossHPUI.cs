@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ボスのHPUIを生成するクラス
-    /// ボス本体のオブジェクトにアタッチし生成し
-    /// 終わったら削除
-    /// </summary>
+    /*
+     * ボスのHPUIを生成するクラス
+     * ボス本体のオブジェクトにアタッチし生成し
+     * 終わったら削除
+     */
     public class CreateBossHPUI : MonoBehaviour
     {
         private BossController  boss;
@@ -19,14 +19,15 @@ namespace CreateScript
         private void Awake()
         {
             boss = GetComponent<BossController>();
-            BossParts[] bossParts = GetComponentsInChildren<BossParts>();
-            if(bossParts != null)
-            {
-                parts = bossParts;
-            }
+
+            parts = GetComponentsInChildren<BossParts>();
 
             Canvas canvas = FindObjectOfType<Canvas>();
-            if(canvas != null)
+            if(canvas == null)
+            {
+                Debug.LogError("Canvasがありません!");
+            }
+            else
             {
                 BossHPUI hp = Instantiate(bossHPUI, canvas.transform);
                 hp.SetBoss(boss, parts);

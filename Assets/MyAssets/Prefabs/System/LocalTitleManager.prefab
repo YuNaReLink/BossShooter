@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1232393076440076095}
   - component: {fileID: 4067788031844921728}
   - component: {fileID: 2142760096162659504}
-  - component: {fileID: 7405448549932753042}
+  - component: {fileID: -1872803232006223264}
   m_Layer: 0
   m_Name: LocalTitleManager
   m_TagString: Untagged
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeCount: 0.5
---- !u!114 &7405448549932753042
+--- !u!114 &-1872803232006223264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,3 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b699b715cb7008d47952d5aaa4605fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  select: {x: 0, y: 0}
+  decide: 0
+  pause: 0

@@ -2,28 +2,28 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 動かしたいX方向を決めるタグ
-    /// </summary>
+    /*
+     * 動かしたいX方向を決めるタグ
+     */
     public enum AppearanceTypeX
     {
         Null = -1,
         Left,
         Right
     }
-    /// <summary>
-    /// 動かしたいY方向を決めるタグ
-    /// </summary>
+    /*
+     * 動かしたいY方向を決めるタグ
+     */
     public enum AppearanceTypeY
     {
         Null = -1,
         Up,
         Down
     }
-    /// <summary>
-    /// オブジェクトをカメラの大きさを元にした上下左右に動かして登場させる
-    /// 処理を行うクラス
-    /// </summary>
+    /*
+     *オブジェクトをカメラの大きさを元にした上下左右に動かして登場させる
+     *処理を行うクラス
+     */
     public class Appearance : MonoBehaviour
     {
         //どの方向から動かしたいかを決めるタグX
@@ -43,12 +43,30 @@ namespace CreateScript
         //登場中は無敵なのでカラー変更処理
         private ColorChanger        colorChanger;
 
+        //登場中に不要な処理をオフにするためのPlayerController宣言
+        private PlayerController    player;
+        //こちらも同じ宣言
+        private OnScreenMove        onScreenMove;
+
+        private PlayerLaunch        playerLaunch;
         private void Awake()
         {
             camera = Camera.main;
             collider = GetComponent<Collider2D>();
             collider.enabled = false;
             colorChanger = GetComponent<ColorChanger>();
+            SetCharacterInformation();
+        }
+        //プレイヤー独自の情報取得はこの中で行う
+        //プレイヤー独自の物なので継承なり実装した時の管理を考えたメソッド
+        private void SetCharacterInformation()
+        {
+            player = GetComponent<PlayerController>();
+            onScreenMove = GetComponent<OnScreenMove>();
+            playerLaunch = GetComponentInChildren<PlayerLaunch>();
+            player.enabled = false;
+            onScreenMove.enabled = false;
+            playerLaunch.enabled = false;
         }
 
         private void Start()
@@ -83,6 +101,7 @@ namespace CreateScript
 
         private void Update()
         {
+            if (GlobalManager.Instance.IsGameStop) { return; }
             transform.position = Vector2.Lerp(transform.position, goalPostion, Time.deltaTime * 5f);
             Vector2 sub = (Vector2)transform.position - goalPostion;
             colorChanger.LoopColorChangeStart();
@@ -90,10 +109,19 @@ namespace CreateScript
             {
                 colorChanger.Finsh();
                 collider.enabled = true;
-                GameController.Instance.SetGameStop(false);
+                ActivateCharacterInformation();
                 Destroy(colorChanger);
                 Destroy(this);
             }
+        }   
+
+        //取得した情報を有効にする
+        //プレイヤー独自の物なので継承なり実装した時の管理を考えたメソッド
+        private void ActivateCharacterInformation()
+        {
+            player.enabled = true;
+            onScreenMove.enabled = true;
+            playerLaunch.enabled = true;
         }
     }
 }

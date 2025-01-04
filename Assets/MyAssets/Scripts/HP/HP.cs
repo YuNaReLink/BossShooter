@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// PlayerやBossの体力を管理するクラス
-    /// </summary>
+    /*
+     * PlayerやBossの体力を管理するクラス
+     */
     public class HP : MonoBehaviour
     {
         [SerializeField]

@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ボス本体の管理クラス
-    /// </summary>
+    /*
+     * ボス本体の管理クラス
+     */
     public class BossController : MonoBehaviour,BossSetup
     {
         //オブジェクト
@@ -16,10 +16,8 @@ namespace CreateScript
         public HP                   HP => hp;
         //エフェクト処理
         private EffectManager       effectManager;
-        public EffectManager        EffectManager => effectManager;
         //SE処理
         private SEManager           seManager;
-        public SEManager            SEManager => seManager;
         //カラー変更処理
         private ColorChanger        colorChanger;
         //移動処理
@@ -49,7 +47,6 @@ namespace CreateScript
         private void Update()
         {
             movement.VerticalMove();
-            if (GameController.Instance.IsGameStop) { return; }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -60,7 +57,7 @@ namespace CreateScript
         private void Damage(Collider2D collision)
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
-            if (bullet == null || bullet.ShopterType == ShopterType.Enemy) { return; }
+            if (bullet == null || bullet.ShooterType == ShopterType.Enemy) { return; }
             hp.DecreaseHP();
             colorChanger.ColorChangeStart();
             if (hp.Death())

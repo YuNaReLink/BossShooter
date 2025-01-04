@@ -2,7 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    //’e‚ÌŒ‚‚¿å‚ğŒˆ‚ß‚é‚½‚ß‚Ìenum
+    /*
+     * ’e‚ÌŒ‚‚¿å‚ğŒˆ‚ß‚é‚½‚ß‚Ìenum
+     */
     public enum ShopterType
     {
         Player,
@@ -18,10 +20,10 @@ namespace CreateScript
         Homing,
         Bomb
     }
-    /// <summary>
-    /// ƒQ[ƒ€‚É“oê‚·‚é’e‚·‚×‚Ä‚ªŒp³‚µ‚Ä‚éƒx[ƒX‚ÌƒNƒ‰ƒX
-    /// ‘S’e‚É‹¤’Ê‚·‚éˆ—A•Ï”‚ğ‚Á‚Ä‚¢‚é
-    /// </summary>
+    /*
+     * ƒQ[ƒ€‚É“oê‚·‚é’e‚·‚×‚Ä‚ªŒp³‚µ‚Ä‚éƒx[ƒX‚ÌƒNƒ‰ƒX
+     * ‘S’e‚É‹¤’Ê‚·‚éˆ—A•Ï”‚ğ‚Á‚Ä‚¢‚é
+     */
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CircleCollider2D))]
     public class BaseBullet : MonoBehaviour
@@ -40,8 +42,8 @@ namespace CreateScript
 
         protected BulletImage           bulletImage;
 
-        protected ShopterType           shopterType;
-        public ShopterType              ShopterType => shopterType;
+        protected ShopterType           shooterType;
+        public ShopterType              ShooterType => shooterType;
 
         protected virtual BulletType    BulletType => BulletType.Null;
 
@@ -49,7 +51,7 @@ namespace CreateScript
 
         public void SetShooterType(ShopterType s)
         {
-            shopterType = s;
+            shooterType = s;
         }
 
         protected virtual void Awake()
@@ -63,10 +65,7 @@ namespace CreateScript
         {
             gameObject.layer = layer;
         }
-        /// <summary>
-        /// ’e‚Ì“–‚½‚è”»’è
-        /// </summary>
-        /// <param name="collision"></param>
+        // ’e‚Ì“–‚½‚è”»’è
         protected void OnTriggerEnter2D(Collider2D collision)
         {
             CharacterHit(collision);
@@ -84,7 +83,7 @@ namespace CreateScript
         {
             OffScreenObject bullet = collision.GetComponent<OffScreenObject>();
             if (bullet == null || collision.transform.gameObject.layer == gameObject.layer) { return; }
-            if(ShopterType == ShopterType.Player)
+            if(ShooterType == ShopterType.Player)
             {
                 AddScore();
             }

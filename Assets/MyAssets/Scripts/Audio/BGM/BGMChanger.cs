@@ -5,6 +5,8 @@ namespace CreateScript
     /// <summary>
     /// オブジェクトにアタッチしてセットしたBGMに変更するクラス
     /// Start時にBGMManagerでBGMPlayerが呼び出される
+    /// オブジェクトにアタッチして使うもの
+    /// BGMを再生するならこのクラスアタッチ
     /// </summary>
     public class BGMChanger : MonoBehaviour
     {

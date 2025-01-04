@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// キャラクター全体で共通するインタフェース
-    /// </summary>
+    /*
+     * キャラクター全体で共通するインタフェース
+     */
     public interface CharacterSetup
     {
         GameObject GameObject { get; }

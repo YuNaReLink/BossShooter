@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMode: -1
   resultType: 0
+  fadePanel: {fileID: 8471572931998853478, guid: 4378abfd85eebdb448997a6d2b13edda, type: 3}
 --- !u!114 &-3288226369169715914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCount: 0
-  scoreLine: 100
+  currentScoreLine: 0
   addScoreLine: 100
   smallScore: 10
   middleScore: 15

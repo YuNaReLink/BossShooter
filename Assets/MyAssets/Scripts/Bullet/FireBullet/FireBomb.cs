@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 敵の弾をすべて消すボムの"発射"を行うクラス
-    /// </summary>
+    /*
+     * 敵の弾をすべて消すボムの"発射"を行うクラス
+     */
     [System.Serializable]
     public class FireBomb : IFireBullet
     {

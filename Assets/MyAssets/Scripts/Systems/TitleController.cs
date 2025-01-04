@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// タイトルシーンの管理をするクラス
-    /// 現在はスコアのリセットとゲームモードを変更してるだけ
-    /// </summary>
+    /*
+     * タイトルシーンの管理をするクラス
+     * 現在はスコアのリセットとゲームモードを変更してるだけ
+     */
     public class TitleController : MonoBehaviour
     {
 

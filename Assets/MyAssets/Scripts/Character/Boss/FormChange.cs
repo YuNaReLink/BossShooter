@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 敵の状態を変更するクラス
-    /// 主に敵の弾の状態を変更している
-    /// </summary>
+    /*
+     * 敵の状態を変更するクラス
+     * 主に敵の弾の状態を変更している
+     */
     public class FormChange : MonoBehaviour
     {
         //状態数値

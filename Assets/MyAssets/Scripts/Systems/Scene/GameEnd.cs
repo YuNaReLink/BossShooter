@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ゲームの実行を終了させる処理を行うクラス
-    /// </summary>
+    /*
+     * ゲームの実行を終了させる処理を行うクラス
+     */
     public class GameEnd : MonoBehaviour
     {
 

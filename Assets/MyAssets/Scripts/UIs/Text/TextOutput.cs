@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// Textオブジェクトにアタッチするオブジェクト
-    /// 主に結果画面で使用
-    /// 他のTextオブジェクトでも使用可
-    /// </summary>
+    /*
+     * Textオブジェクトにアタッチするオブジェクト
+     * 主に結果画面で使用
+     * 他のTextオブジェクトでも使用可
+     */
     public class TextOutput : MonoBehaviour
     {
         [SerializeField]

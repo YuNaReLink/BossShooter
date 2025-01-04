@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// 指定した方向に真っすぐ飛ぶ弾を"発射"する処理を行うクラス
-    /// </summary>
+    /*
+     * 指定した方向に真っすぐ飛ぶ弾を"発射"する処理を行うクラス
+     */
     [System.Serializable]
     public class FireStraightBullet : IFireBullet
     {

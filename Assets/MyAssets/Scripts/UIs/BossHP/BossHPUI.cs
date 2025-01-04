@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ボスとパーツ2つのHPをまとめて表示するクラス
-    /// </summary>
+    /*
+     * ボスとパーツ2つのHPをまとめて表示するクラス
+     */
     public class BossHPUI : MonoBehaviour
     {
         //ボス本体

@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
-    /// <summary>
-    /// ボスの移動処理クラス
-    /// </summary>
+    /*
+     * ボスの移動処理クラス
+     */
     [System.Serializable]
     public class BossMovement
     {
