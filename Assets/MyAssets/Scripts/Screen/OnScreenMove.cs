@@ -19,7 +19,7 @@ namespace CreateScript
         {
             camera = Camera.main;
         }
-
+        //‰æ–ÊŠO‚Éo‚æ‚¤‚Æ‚µ‚½‚çˆÚ“®”ÍˆÍ‚ğ•â³‚·‚éˆ—
 
         private void Update()
         {

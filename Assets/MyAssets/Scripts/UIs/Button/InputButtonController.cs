@@ -29,7 +29,7 @@ namespace CreateScript
         [SerializeField]
         private InputActionButton[] buttons;
         //SEçƒê∂ópÉNÉâÉX
-        private SEManager           seManager;
+        private SEHandler           seHandler;
 
         [SerializeField]
         private bool                buttonStop;
@@ -37,7 +37,7 @@ namespace CreateScript
         private void Awake()
         {
             buttons = GetComponentsInChildren<InputActionButton>();
-            seManager = GetComponent<SEManager>();
+            seHandler = GetComponent<SEHandler>();
         }
 
         private void Start()
@@ -62,7 +62,6 @@ namespace CreateScript
         }
         private void Update()
         {
-            //if (GlobalManager.Instance.IsGameStop && buttonStop) { return; }
             float select;
             if (horizontal)
             {
@@ -87,7 +86,7 @@ namespace CreateScript
                         selectIndex = 0;
                     }
                     SetSelectImagePosition(selectIndex);
-                    seManager.Play();
+                    seHandler.Play((int)ButtonSETag.Select);
                 }
                 else if (action > 0)
                 {
@@ -97,14 +96,14 @@ namespace CreateScript
                         selectIndex = buttons.Length - 1;
                     }
                     SetSelectImagePosition(selectIndex);
-                    seManager.Play();
+                    seHandler.Play((int)ButtonSETag.Select);
                 }
             }
 
             if (InputUIAction.Instance.Decide)
             {
                 buttons[selectIndex].OnButtonInput();
-                seManager.Play(1);
+                seHandler.Play((int)ButtonSETag.Decide);
             }
         }
     }

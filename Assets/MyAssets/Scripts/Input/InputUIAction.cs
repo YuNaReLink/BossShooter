@@ -36,6 +36,11 @@ namespace CreateScript
 
             inputActions = new InputActionsControls();
         }
+
+        /*
+         * ボタン入力だとコルーチンではただしく押した瞬間を判定出来なかったので
+         * Update内で判定
+         */
         private void Update()
         {
             if (SelectAction.IsPressed())

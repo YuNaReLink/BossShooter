@@ -39,7 +39,7 @@ namespace CreateScript
                 Scroll(i);
             }
         }
-
+        //Update‚ÅƒXƒNƒ[ƒ‹ˆ—
         public void Scroll(int i)
         {
             float speed = scrollSpeed * Time.deltaTime;

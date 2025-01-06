@@ -10,7 +10,9 @@ namespace CreateScript
         Player,
         Enemy
     }
-
+    /*
+     * 弾の種類を決めるタグ
+     */
     public enum BulletType
     {
         Null = -1,
@@ -26,28 +28,29 @@ namespace CreateScript
      */
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CircleCollider2D))]
+    [RequireComponent(typeof(EffectHandler))]
     public class BaseBullet : MonoBehaviour
     {
+        //弾のスピード
         [SerializeField]
         protected float                 bulletSpeed;
-
+        //エフェクト処理
         [SerializeField]
-        protected ImageEffect           effect;
-
+        protected EffectHandler         effectManager;
+        //エフェクトのサイズの比率
         [SerializeField]
-        private int power = 1;
-        public int Power => power;
-
+        protected float                 effectScaleRatio = 5f;
+        
         protected new Rigidbody2D       rigidbody2D;
-
+        //弾のイメージクラス
         protected BulletImage           bulletImage;
-
+        //誰が撃ったのかを差別化するための宣言
         protected ShopterType           shooterType;
         public ShopterType              ShooterType => shooterType;
-
+        //弾のタイプを記録する変数
         protected virtual BulletType    BulletType => BulletType.Null;
-
-        protected SEManager             seManager;
+        //SE処理
+        protected SEHandler             seHandler;
 
         public void SetShooterType(ShopterType s)
         {
@@ -58,7 +61,8 @@ namespace CreateScript
         {
             rigidbody2D = GetComponent<Rigidbody2D>();
             bulletImage = GetComponentInChildren<BulletImage>();
-            seManager = GetComponent<SEManager>();
+            effectManager = GetComponent<EffectHandler>();
+            seHandler = GetComponent<SEHandler>();
         }
 
         public void SetExeclude(int layer)
@@ -93,8 +97,8 @@ namespace CreateScript
         protected virtual void Erase(Vector2 pos)
         {
             Destroy(gameObject);
-            Instantiate(effect.gameObject, pos, Quaternion.identity);
-            seManager.Play();
+            effectManager.Create(pos, transform.localScale * effectScaleRatio, (int)EffectTag.Hit);
+            seHandler.Play();
         }
         //スコアを加算
         //弾のタイプによって値が変化

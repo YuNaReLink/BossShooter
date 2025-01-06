@@ -8,18 +8,20 @@ namespace CreateScript
     [System.Serializable]
     public class FireHomingBullet : IFireBullet
     {
-        private Transform   transform;
+        private Transform       transform;
 
-        private Timer       timer = new Timer();
+        private Timer           timer = new Timer();
 
         //弾のデータ
         private OffScreenObject bullet;
 
-        private SEManager   seManager;
+        private SEHandler       seHandler;
         //発射間隔の数値
         [SerializeField]
-        private float       fireCoolDownCount = 0.1f;
-        public float        MinFireCount => 0.25f;
+        private float           fireCoolDownCount = 0.1f;
+        public float            MinFireCount => 0.25f;
+
+        //発射間隔を減らす関数
         public void DecreaseFireCountCoolDown(float count)
         {
             fireCoolDownCount -= count;
@@ -33,13 +35,13 @@ namespace CreateScript
         {
             transform = launch.GameObject.transform;
             bullet = launch.BulletData[(int)EnemyBulletType.Homing];
-            seManager = launch.SEManager;
+            seHandler = launch.SEHandler;
         }
         public void DoUpdate(float time)
         {
             timer.Update(Time.deltaTime);
         }
-
+        //ホーミング発射を行う関数
         public void Fire(Transform target)
         {
             if (!timer.IsEnd()) { return; }
@@ -47,11 +49,12 @@ namespace CreateScript
             HomingBullet homingBullet = g.GetComponent<HomingBullet>();
             if (homingBullet != null)
             {
+                //発射に必要な処理を行う
                 homingBullet.SetShooterType(ShopterType.Enemy);
                 homingBullet.SetExeclude(transform.gameObject.layer);
                 homingBullet.InitHomingSetting(target);
             }
-            seManager.Play(1);
+            seHandler.Play((int)ShotSETag.Shot2);
             timer.Start(fireCoolDownCount);
         }
     }

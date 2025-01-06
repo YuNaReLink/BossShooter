@@ -1,10 +1,9 @@
-using Unity.Collections;
 using UnityEngine;
 
 namespace CreateScript
 {
     //現在がどのシーンなのかを各シーンの管理クラスで設定するもの
-    public enum GameMode
+    public enum GameScene
     {
         Null = -1,
         Title,
@@ -23,51 +22,51 @@ namespace CreateScript
      */
     public class GlobalManager : MonoBehaviour
     {
-        private static GlobalManager    instance;
-        public static GlobalManager     Instance => instance;
+        private static GlobalManager        instance;
+        public static GlobalManager         Instance => instance;
 
         [SerializeField]
-        [ReadOnly]
-        private GameMode                gameMode;
-        public GameMode                 GameMode => gameMode;
+        private GameScene                   gameScene;
 
         //ゲームを止めるフラグ
-        private bool gameStop = false;
-        public bool IsGameStop => gameStop || Time.timeScale <= 0;
+        private bool                        gameStop = false;
+        public bool                         IsGameStop => gameStop || Time.timeScale <= 0;
+
+
+        [SerializeField]
+        private ResultType                  resultType;
+        public ResultType                   ResultType => resultType;
+
+        private Canvas                      canvas;
+
+        [SerializeField]
+        private FadePanel                   fadePanel;
 
         //ゲームを止めるbool型を外部から設定するメソッド
         public void SetGameStop(bool b) { gameStop = b; }
 
-        public void SetGameMode(GameMode mode)
+        public void SetGameMode(GameScene mode)
         {
-            gameMode = mode;
+            gameScene = mode;
         }
-
-        [SerializeField]
-        private ResultType              resultType;
-        public ResultType               ResultType => resultType;
 
         public void SetResultType(ResultType type)
         {
             resultType = type;
         }
-
-        private Canvas canvas;
+        //キャンバスを取得するpublic関数
+        //キャンバスがない場合は自動で取得する
         public Canvas Canvas
         {
-            get 
+            get
             {
-                if(canvas == null)
+                if (canvas == null)
                 {
                     canvas = FindObjectOfType<Canvas>();
                 }
                 return canvas;
             }
         }
-
-        [SerializeField]
-        private FadePanel fadePanel;
-
         private void Awake()
         {
             if (instance != null)
@@ -78,7 +77,8 @@ namespace CreateScript
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
+        //フェードパネルを作成する関数
+        //引数のbool型によってゴールalpha値を代入
         public void CreateFadePanel(bool fadein)
         {
             FadePanel panel = Instantiate(fadePanel, Canvas.transform);

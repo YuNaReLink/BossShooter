@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CreateScript
 {
+    /*
+     * メニューの開閉入力を行うクラス
+     */
     public class InputMenu : MonoBehaviour
     {
         private bool open;
@@ -22,11 +23,13 @@ namespace CreateScript
             caller.Close();
         }
 
+        //メニューの更新
         private void Update()
         {
             if (!InputUIAction.Instance.Pause) { return; }
             open = !open;
 
+            //フラグよって開閉を決める
             if (open)
             {
                 caller.Call();

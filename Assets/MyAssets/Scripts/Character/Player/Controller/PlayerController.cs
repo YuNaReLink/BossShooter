@@ -7,7 +7,7 @@ namespace CreateScript
      * 主にHP、移動、アニメーション、当たり判定を行う
      */
 
-    public class PlayerController : MonoBehaviour,PlayerSetup
+    public class PlayerController : MonoBehaviour,PlayerSetup,PlayerDamager
     {
         //自分自身
         //復活した時に必要になるもの
@@ -21,9 +21,9 @@ namespace CreateScript
         //HP処理
         private HP                          hp;
         //エフェクト処理
-        private EffectManager               effectManager;
+        private EffectHandler               effectManager;
         //SE処理
-        private SEManager                   seManager;
+        private SEHandler                   seHandler;
         //アニメーション処理
         private Animator                    animator;
         //移動処理
@@ -44,8 +44,8 @@ namespace CreateScript
         {
             input = GetComponent<PlayerInput>();
             hp = GetComponent<HP>();
-            effectManager = GetComponent<EffectManager>();
-            seManager = GetComponent<SEManager>();
+            effectManager = GetComponent<EffectHandler>();
+            seHandler = GetComponent<SEHandler>();
             animator = GetComponent<Animator>();
 
 
@@ -70,7 +70,7 @@ namespace CreateScript
             hp.DecreaseHP();
             if (hp.Death())
             {
-                seManager.Play();
+                seHandler.Play();
                 effectManager.Create(transform.position,transform.localScale);
                 Death();
             }
@@ -80,10 +80,9 @@ namespace CreateScript
         private bool NoActiveDamageCheck(Collider2D collision)
         {
             BaseBullet bullet = collision.GetComponent<BaseBullet>();
-            BossController boss = collision.GetComponent<BossController>();
-            BossParts parts = collision.GetComponent<BossParts>();
+            BossDamager bossDamager = collision.GetComponent<BossDamager>();
             return  ((bullet != null && bullet.ShooterType != ShopterType.Player)||
-                    boss != null || parts != null);
+                    bossDamager != null );
         }
         //死亡処理
         private void Death()

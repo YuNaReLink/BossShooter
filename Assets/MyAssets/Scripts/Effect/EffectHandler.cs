@@ -2,10 +2,16 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    public enum EffectTag
+    {
+        Explosion,
+        Hit
+    }
+
     /*
      * Sprite型のエフェクトをオブジェクトとして生成するクラス
      */
-    public class EffectManager : MonoBehaviour
+    public class EffectHandler : MonoBehaviour
     {
         [SerializeField]
         private EffectLedger ledger;

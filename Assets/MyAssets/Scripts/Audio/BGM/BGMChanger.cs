@@ -10,9 +10,9 @@ namespace CreateScript
     /// </summary>
     public class BGMChanger : MonoBehaviour
     {
+        //‚±‚±‚Éclip‚ð’Ç‰Á
         [SerializeField]
         private AudioClip clip = null;
-        public void SetClip(AudioClip c) { clip = c; } 
 
         private void Start()
         {

@@ -8,9 +8,8 @@ namespace CreateScript
      */
     public class ImageEffect : MonoBehaviour
     {
-        [SerializeField]
         private Animator            animator;
-
+        //アニメーションの詳細な情報を取得するための宣言
         private AnimatorStateInfo   animInfo => animator.GetCurrentAnimatorStateInfo(0);
 
         private void Awake()
@@ -23,10 +22,11 @@ namespace CreateScript
         {
             if (AnimationEndChack())
             {
+                //終わっていたら削除
                 Destroy(gameObject);
             }
         }
-
+        //アニメーションが終わってるかを判定
         private bool AnimationEndChack()
         {
             if(animInfo.normalizedTime >= 1.0f)

@@ -6,12 +6,14 @@ namespace CreateScript
     /// SEをオブジェクトとして生成するクラス
     /// オブジェクトにアタッチして使う
     /// </summary>
-    public class SEManager : MonoBehaviour
+    public class SEHandler : MonoBehaviour
     {
+        //SEのスクリプタブルオブジェクトをアタッチ
         [SerializeField]
         private AudioLedger     ledger;
-
+        //SEのボリューム変更
         [SerializeField]
+        [Range(0,1)]
         private float           volum = 1.0f;
 
 

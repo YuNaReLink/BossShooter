@@ -10,7 +10,7 @@ namespace CreateScript
     {
         //‚±‚±‚Éİ’è‚µ‚½ƒV[ƒ“‚ğSceneChanger‚Éİ’è
         [SerializeField]
-        private SceneList nextScene;
+        private GameScene nextScene;
 
         public void SetNextScene()
         {

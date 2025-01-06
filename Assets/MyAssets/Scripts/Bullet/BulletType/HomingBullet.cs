@@ -46,11 +46,11 @@ namespace CreateScript
         private void FixedUpdate()
         {
             if (timer.IsEnd()) { return; }
-
+            //ターゲットが存在するか
             if(targetTransform == null) { return; }
+            //ホーミング出来る状態か
             if (NoHomingAngle()) { return; }
-
-
+            //ホーミング
             Homing();
         }
         //ホーミング中の処理

@@ -33,7 +33,7 @@ namespace CreateScript
         {
             BombCountTextOutput(GameController.Instance.BombCount);
         }
-
+        //ボムのUIカウントを変更する処理
         private void BombCountTextOutput(int count)
         {
             if (this.count == count) { return; }

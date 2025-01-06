@@ -35,7 +35,7 @@ namespace CreateScript
             stateCount = 0;
             SetForm(0);
         }
-
+        //”j‰ó‚³‚ê‚½‰ñ”‚É‚æ‚Á‚Äƒ{ƒX‚Ìó‘Ô‚ğ•Ï‚¦‚é
         public void SetForm(int count)
         {
             stateCount += count;

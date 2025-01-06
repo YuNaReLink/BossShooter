@@ -15,12 +15,8 @@ namespace CreateScript
 
         private void Start()
         {
-            GlobalManager.Instance.SetGameMode(GameMode.Result);
+            GlobalManager.Instance.SetGameMode(GameScene.Result);
 
-            //空のオブジェクトを生成する。
-            GameObject o = new("BGM");
-            //コンポーネントを括り付ける。
-            BGMChanger bgm = o.AddComponent<BGMChanger>();
             AudioClip clip = null;
             switch (GlobalManager.Instance.ResultType)
             {
@@ -34,7 +30,8 @@ namespace CreateScript
                     clip = overClip;
                     break;
             }
-            bgm.SetClip(clip);
+            BGMManager.Play(clip);
+            BGMManager.SetLoop(false);
         }
     }
 }
