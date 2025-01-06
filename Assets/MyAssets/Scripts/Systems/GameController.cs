@@ -53,7 +53,7 @@ namespace CreateScript
 
         private void Start()
         {
-            GlobalManager.Instance.SetGameMode(GameMode.Game);
+            GlobalManager.Instance.SetGameMode(GameScene.Game);
         }
 
 
@@ -85,25 +85,12 @@ namespace CreateScript
             }
         }
 
-        private string SetGameResult()
-        {
-            string result = "";
-            if (playerRemainingLives >= 0)
-            {
-                result = "GAMECLEAR";
-            }
-            else
-            {
-                result = "GAMEOVER";
-            }
-            return result;
-        }
         //Œ‹‰Ê‚Ìenum•Ê‚ÉŒ‹‰Ê‰æ–Ê‚É‘JˆÚ‚³‚¹‚é
         public void SetResult(ResultType type)
         {
             GlobalManager.Instance.SetResultType(type);
-            GameUIController.Instance.CreateResultText(SetGameResult());
-            SceneChanger.Instance?.SlowSceneChange(SceneList.Result,2f);
+            GameUIController.Instance.CreateResultText();
+            SceneChanger.Instance?.SlowSceneChange(GameScene.Result,2f);
             BGMManager.Stop();
         }
     }

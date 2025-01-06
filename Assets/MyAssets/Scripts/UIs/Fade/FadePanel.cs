@@ -1,10 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CreateScript
 {
+    /*
+     * シーン遷移時にフェード処理を行うクラス
+     * フェードパネルにアタッチして使う
+     */
     public class FadePanel : MonoBehaviour
     {
         private Image panel;
@@ -13,7 +16,7 @@ namespace CreateScript
         private float speed = 1.0f;
         [SerializeField]
         private float targetAlpha = 0.0f;
-
+        //フェード時のalphaの最終ゴール値を決める
         public void SetTargetAlpha(float alpha) { targetAlpha = alpha; }
 
         private void Awake()
@@ -34,7 +37,8 @@ namespace CreateScript
             GlobalManager.Instance.SetGameStop(true);
             StartCoroutine(FadeStart());
         }
-
+        //Time.timeScaleが0でも動くようにするために
+        //非同期で処理を行う
         private IEnumerator FadeStart()
         {
             // フェードイン

@@ -3,17 +3,6 @@ using UnityEngine.SceneManagement;
 
 namespace CreateScript
 {
-    /*
-     * 各シーンのリスト
-     */
-    public enum SceneList
-    {
-        Title,
-        Game,
-        Result,
-
-        Count
-    }
 
     /*
      * シーン遷移の処理を行うシングルトンパターンのクラス
@@ -22,58 +11,38 @@ namespace CreateScript
     {
         private static SceneChanger     instance;
         public static SceneChanger      Instance => instance;
-
+        //遷移中かのフラグ
         private bool                    isTransitioning = false;
         public bool                     IsTransitioning => isTransitioning;
-
-        private SceneList               nextScene;
-
-
-        public void SetNextScene(SceneList scene)
-        {
-            nextScene = scene;
-            isTransitioning = true;
-            GlobalManager.Instance.CreateFadePanel(false);
-        }
-
+        //遷移先のシーンを保持する変数
+        private GameScene               nextScene;
+        //遷移するまでのカウント
         [SerializeField]
         private float                   changeCount = 3f;
 
-        public void SlowSceneChange(SceneList scene,float count)
-        {
-            changeCount = count;
-            nextScene = scene;
-            StartCoroutine(SlowFade());
-        }
-
-        private System.Collections.IEnumerator SlowFade()
-        {
-            yield return new WaitForSecondsRealtime(changeCount); // 1フレーム待つ
-            GlobalManager.Instance.CreateFadePanel(false);
-            isTransitioning = true;
-        }
 
         private void Awake()
         {
             instance = this;
         }
+
         /*
          * ここで各シーンの名前をリスト別に取得
          * 引数１：SceneList scene 取得したシーンの名前を取得
          */
-        private string GetSceneName(SceneList scene)
+        private string GetSceneName(GameScene scene)
         {
             string temp;
 
             switch (scene)
             {
-                case SceneList.Title:
+                case GameScene.Title:
                     temp = "TitleScene";
                     break;
-                case SceneList.Game:
+                case GameScene.Game:
                     temp = "GameScene";
                     break;
-                case SceneList.Result:
+                case GameScene.Result:
                     temp = "ResultScene";
                     break;
                 default:
@@ -100,6 +69,28 @@ namespace CreateScript
         {
             yield return new WaitForSecondsRealtime(changeCount); // 1フレーム待つ
             ChangeScene();
+        }
+        //シーン遷移を行う処理
+        public void SetNextScene(GameScene scene)
+        {
+            nextScene = scene;
+            isTransitioning = true;
+            GlobalManager.Instance.CreateFadePanel(false);
+        }
+
+        //ゆっくりとシーン遷移をする処理
+        public void SlowSceneChange(GameScene scene, float count)
+        {
+            changeCount = count;
+            nextScene = scene;
+            StartCoroutine(SlowFade());
+        }
+
+        private System.Collections.IEnumerator SlowFade()
+        {
+            yield return new WaitForSecondsRealtime(changeCount); // 1フレーム待つ
+            GlobalManager.Instance.CreateFadePanel(false);
+            isTransitioning = true;
         }
     }
 }

@@ -18,10 +18,10 @@ namespace CreateScript
         //発射を止めるフラグ
         [SerializeField]
         private bool                launchOff;
-
+        //複数ある発射クラスをまとめて処理するもの
         [SerializeField]
         private IFireBullet[]       fireBullets;
-
+        //下記は各別々の弾を発射するクラス
         [SerializeField]
         private FireLockOnBullet    fireLockOnBullet;
 
@@ -30,16 +30,16 @@ namespace CreateScript
 
         [SerializeField]
         private FireHomingBullet    fireHomingBullet;
-
+        //弾の種類を決めるためのタグ
         [SerializeField]
         private EnemyBulletType     bulletType;
-
+        //弾のデータをまとめて取得してるもの
         [SerializeField]
-        private BulletData          bulletData;
-        public BulletData           BulletData => bulletData;
+        private BulletLedger          bulletData;
+        public BulletLedger           BulletData => bulletData;
 
-        private SEManager           seManager;
-        public SEManager            SEManager => seManager;
+        private SEHandler           seHandler;
+        public SEHandler            SEHandler => seHandler;
 
         public GameObject           GameObject => gameObject;
 
@@ -51,7 +51,7 @@ namespace CreateScript
         private void Awake()
         {
 
-            seManager = GetComponent<SEManager>();
+            seHandler = GetComponent<SEHandler>();
 
             IFireBullet[] bullets = new IFireBullet[]{
                 fireLockOnBullet,
@@ -74,7 +74,7 @@ namespace CreateScript
 
             FireBulletsUpdate();
         }
-
+        //ターゲットがいるなら発射を行う関数
         private void FireBulletsUpdate()
         {
             if (PlayerController.Player == null) { return; }

@@ -15,7 +15,7 @@ namespace CreateScript
         //取得したスコアをUIとして表示する数値
         [SerializeField]
         private float           viewCount;
-        private float           countSpeed = 100f;
+        private float           countSpeed = 1000f;
         //テキスト
         private Text            text;
         //数値以外に文字を書けば数値の前に表示させる

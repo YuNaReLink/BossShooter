@@ -28,12 +28,19 @@ namespace CreateScript
 
             //再生開始
             player.Play(clip);
+            SetLoop(true);
         }
 
         //BGMの停止
         public static void Stop()
         {
             BGMPlayer.Instance?.Stop();
+        }
+
+        //BGMのループを設定する関数
+        public static void SetLoop(bool loop)
+        {
+            BGMPlayer.Instance?.SetLoop(loop);
         }
     }
 }

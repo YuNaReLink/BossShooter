@@ -11,7 +11,7 @@ namespace CreateScript
 
         private void Start()
         {
-            GlobalManager.Instance.SetGameMode(GameMode.Title);
+            GlobalManager.Instance.SetGameMode(GameScene.Title);
             ScoreSystem.Instance.ResetScore();
         }
     }

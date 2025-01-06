@@ -75,7 +75,7 @@ namespace CreateScript
         {
             inputActions.Dispose();
         }
-
+        //ボムの発射を行うために押した瞬間を判定するためのコルーチン
         private void OnBomb(InputAction.CallbackContext context)
         {
             bomb = true;

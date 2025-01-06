@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 8697706793826013050}
   - component: {fileID: 3107387393701981998}
   - component: {fileID: 837338183207669785}
+  - component: {fileID: 6851662765109502588}
   m_Layer: 0
   m_Name: RandomBullet
   m_TagString: Untagged
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 10
-  effect: {fileID: 2527986827875602783, guid: e6a96269b644ca440a18dd9149edb4bc, type: 3}
+  effectManager: {fileID: 0}
   power: 1
 --- !u!114 &837338183207669785
 MonoBehaviour:
@@ -259,3 +260,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ledger: {fileID: 11400000, guid: c9ae230253818d0459be6b4cbc40ec3e, type: 2}
   volum: 1
+--- !u!114 &6851662765109502588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725390795946585385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93937d2e717b44a49a7cf2b35667c181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ledger: {fileID: 11400000, guid: 491747c5a9f7ec6449ab2e1641123f78, type: 2}

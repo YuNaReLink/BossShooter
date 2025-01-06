@@ -29,6 +29,7 @@ namespace CreateScript
             }
             else
             {
+                //生成する時にボスとパーツのHPを参照する
                 BossHPUI hp = Instantiate(bossHPUI, canvas.transform);
                 hp.SetBoss(boss, parts);
             }

@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace CreateScript
 {
+    /*
+     * 弾やエフェクト、SEなどで使ってる台帳のベース台帳
+     */
     public class LedgerBase<T> : ScriptableObject
     {
         [SerializeField]

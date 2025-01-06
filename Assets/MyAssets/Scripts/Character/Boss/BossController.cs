@@ -6,18 +6,19 @@ namespace CreateScript
     /*
      * ボス本体の管理クラス
      */
-    public class BossController : MonoBehaviour,BossSetup
+    public class BossController : MonoBehaviour,BossSetup,BossDamager
     {
         //オブジェクト
         public GameObject           GameObject => gameObject;
 
         //HP処理
         private HP                  hp;
+        //ボスのHPをUIで表示するためのpublic関数
         public HP                   HP => hp;
         //エフェクト処理
-        private EffectManager       effectManager;
+        private EffectHandler       effectManager;
         //SE処理
-        private SEManager           seManager;
+        private SEHandler           seHandler;
         //カラー変更処理
         private ColorChanger        colorChanger;
         //移動処理
@@ -31,9 +32,9 @@ namespace CreateScript
 
             hp = GetComponent<HP>();
 
-            effectManager = GetComponent<EffectManager>();
+            effectManager = GetComponent<EffectHandler>();
 
-            seManager = GetComponent<SEManager>();
+            seHandler = GetComponent<SEHandler>();
 
             colorChanger = GetComponent<ColorChanger>();
         }
@@ -62,7 +63,7 @@ namespace CreateScript
             colorChanger.ColorChangeStart();
             if (hp.Death())
             {
-                seManager.Play();
+                seHandler.Play();
                 effectManager.Create(transform.position, transform.localScale);
                 Death();
             }

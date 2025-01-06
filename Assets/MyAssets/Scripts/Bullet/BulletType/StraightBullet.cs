@@ -16,7 +16,7 @@ namespace CreateScript
             rigidbody2D.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
             bulletImage.SetRotation(rigidbody2D);
         }
-
+        //”ò‚Ô•ûŒü‚ðŒˆ’è
         public void SetDirection(Vector2 dir)
         {
             direction = dir;

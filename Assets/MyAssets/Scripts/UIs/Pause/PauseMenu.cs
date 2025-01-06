@@ -19,7 +19,7 @@ namespace CreateScript
 
         //効果音再生用のコンポーネント
         [SerializeField]
-        private SEManager seManager;
+        private SEHandler seHandler;
 
         private void Awake()
         {
@@ -28,14 +28,14 @@ namespace CreateScript
 
 
 
-            seManager = GetComponent<SEManager>();
+            seHandler = GetComponent<SEHandler>();
             pause = GetComponent<Pause>();
         }
 
         private void Start()
         {
             //開始時に音を鳴らす。
-            seManager.Play(1);
+            seHandler.Play((int)ButtonSETag.Select);
 
             //ポーズを有効化する。
             pause.Enable();
@@ -58,7 +58,7 @@ namespace CreateScript
         {
 
             //効果音の再生
-            seManager.Play(1);
+            seHandler.Play((int)ButtonSETag.Select);
 
             //オブジェクトの破棄
             Destroy(gameObject);

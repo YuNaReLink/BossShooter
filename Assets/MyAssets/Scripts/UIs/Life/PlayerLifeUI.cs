@@ -8,14 +8,14 @@ namespace CreateScript
      */
     public class PlayerLifeUI : MonoBehaviour
     {
-
+        //表示するライフのカウントを行う
         private int     life = 0;
-
+        //表示するテキスト
         private Text    text;
-
+        //countとは別に表示する文字を指定するstring型
         [SerializeField]
         private string  baseText;
-
+        //カウントしない値の最低ライン
         private int     noActivateLife = -1;
 
         private void Awake()

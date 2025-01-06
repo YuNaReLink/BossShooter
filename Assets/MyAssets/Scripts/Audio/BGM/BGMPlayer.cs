@@ -68,6 +68,11 @@ namespace CreateScript
             audio.Play();
         }
 
+        public void SetLoop(bool loop)
+        {
+            audio.loop = loop;
+        }
+
         //ƒNƒŠƒbƒv‚ÌŽæ“¾
         public AudioClip GetClip() { return audio.clip; }
     }

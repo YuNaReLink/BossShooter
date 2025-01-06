@@ -31,12 +31,12 @@ namespace CreateScript
             maxHP = GetMaxHP();
             currentHP = GetCurrentHP();
         }
-
+        //現在のHPから最大HPの割合を出す
         private float GetHPProgress()
         {
             return (float)currentHP / maxHP;
         }
-
+        //本体とパーツ2つの体力を合わせて最大の体力を出す関数
         private int GetMaxHP()
         {
             int max = 0;
@@ -47,7 +47,7 @@ namespace CreateScript
             max += boss.HP.Max;
             return max;
         }
-
+        //本体とパーツ2つの体力を合わせて現在の体力を出す関数
         private int GetCurrentHP()
         {
             int max = 0;
@@ -63,7 +63,7 @@ namespace CreateScript
         {
             UIUpdate();
         }
-
+        //ボスのHPを更新
         private void UIUpdate()
         {
             if(currentHP == GetCurrentHP()) { return; }

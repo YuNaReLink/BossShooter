@@ -2,6 +2,7 @@
 
 using UnityEngine;
 
+
 namespace CreateScript
 {
     /*
@@ -9,10 +10,11 @@ namespace CreateScript
      */
     public interface IBaseLaunch
     {
-        BulletData BulletData { get; }
-
-        SEManager   SEManager { get; }
-
+        //弾のデータをまとめたもの
+        BulletLedger BulletData { get; }
+        //SEのデータをまとめたもの
+        SEHandler   SEHandler { get; }
+        //自分のオブジェクトをpublicで取得したもの
         GameObject GameObject { get; }
     }
 

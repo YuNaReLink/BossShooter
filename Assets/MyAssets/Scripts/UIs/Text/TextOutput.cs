@@ -13,7 +13,7 @@ namespace CreateScript
         [SerializeField]
         private Text text;
 
-
+        //出力するテキストの内容を指定
         public void SetText(string t)
         {
             text.text = t;

@@ -10,7 +10,7 @@ namespace CreateScript
         private Vector2                 direction = Vector2.zero;
 
         private Timer                   explosionTimer = new Timer();
-
+        //爆発するまでのカウント
         [SerializeField]
         private float                   explosionCount;
 
@@ -38,7 +38,7 @@ namespace CreateScript
         {
             Erase(transform.position);
         }
-
+        //爆発した時にゲームに存在する敵の弾をすべて削除する処理
         protected override void Erase(Vector2 pos)
         {
             GameController.Instance.DecreaseBombCount();
@@ -47,8 +47,10 @@ namespace CreateScript
             {
                 if (bullet.ShooterType == ShopterType.Enemy)
                 {
+                    //消した時に弾別にスコアを加算
                     bullet.AddScore();
-                    Instantiate(effect.gameObject, bullet.transform.position, Quaternion.identity);
+                    //エフェクト処理
+                    effectManager.Create(bullet.transform.position, transform.localScale * effectScaleRatio);
                     Destroy(bullet.gameObject);
                 }
             }
