@@ -22,7 +22,7 @@ namespace CreateScript
         [SerializeField]
         private float                   homingAngleLimit = 30f;
 
-        protected override BulletType   BulletType => BulletType.Homing;
+        public override BulletType   BulletType => BulletType.Homing;
         //発射時にスピードを1.0f～2.0fの間でランダムに決める処理
         public void InitHomingSetting(Transform t)
         {

@@ -12,7 +12,7 @@ namespace CreateScript
 
         private Transform               target;
 
-        protected override BulletType   BulletType => BulletType.LockOn;
+        public override BulletType   BulletType => BulletType.LockOn;
 
         //Start時にターゲットと自分の座標を使ってターゲットまで飛ばす処理を行う
         private void Start()
