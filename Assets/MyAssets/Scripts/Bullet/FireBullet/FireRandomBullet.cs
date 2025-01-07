@@ -57,13 +57,13 @@ namespace CreateScript
             // íeÇê∂ê¨
             GameObject b = GameObject.Instantiate(bullet.gameObject, transform.position, transform.rotation * rotation);
 
-            StraightBullet straightBullet = b.GetComponent<StraightBullet>();
-            if (straightBullet != null)
+            RandomBullet randomBullet = b.GetComponent<RandomBullet>();
+            if (randomBullet != null)
             {
                 //íeî≠éÀÇ…ïKóvÇ»èàóùÇçsÇ§
-                straightBullet.SetExeclude(transform.gameObject.layer);
-                straightBullet.SetShooterType(ShopterType.Enemy);
-                straightBullet.SetDirection(rotation * Vector2.left);
+                randomBullet.SetExeclude(transform.gameObject.layer);
+                randomBullet.SetShooterType(ShopterType.Enemy);
+                randomBullet.SetDirection(rotation * Vector2.left);
             }
             seHandler.Play((int)ShotSETag.Shot2);
             timer.Start(fireCoolDownCount);

@@ -14,7 +14,7 @@ namespace CreateScript
         [SerializeField]
         private float                   explosionCount;
 
-        protected override BulletType   BulletType => BulletType.Bomb;
+        public override BulletType   BulletType => BulletType.Bomb;
         private void Start()
         {
             rigidbody2D.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
@@ -48,7 +48,7 @@ namespace CreateScript
                 if (bullet.ShooterType == ShopterType.Enemy)
                 {
                     //消した時に弾別にスコアを加算
-                    bullet.AddScore();
+                    ScoreSystem.Instance.AddScore(bullet.BulletType);
                     //エフェクト処理
                     effectManager.Create(bullet.transform.position, transform.localScale * effectScaleRatio);
                     Destroy(bullet.gameObject);

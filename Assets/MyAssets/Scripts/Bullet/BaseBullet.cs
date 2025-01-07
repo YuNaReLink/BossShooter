@@ -48,7 +48,7 @@ namespace CreateScript
         protected ShopterType           shooterType;
         public ShopterType              ShooterType => shooterType;
         //弾のタイプを記録する変数
-        protected virtual BulletType    BulletType => BulletType.Null;
+        public virtual BulletType    BulletType => BulletType.Null;
         //SE処理
         protected SEHandler             seHandler;
 
@@ -87,9 +87,12 @@ namespace CreateScript
         {
             OffScreenObject bullet = collision.GetComponent<OffScreenObject>();
             if (bullet == null || collision.transform.gameObject.layer == gameObject.layer) { return; }
-            if(ShooterType == ShopterType.Player)
+            BaseBullet baseBullet = collision.GetComponent<BaseBullet>();
+            if(baseBullet.ShooterType == ShopterType.Enemy)
             {
-                AddScore();
+                //スコアを加算
+                //弾のタイプによって値が変化
+                ScoreSystem.Instance.AddScore(baseBullet.BulletType);
             }
             Erase(collision.ClosestPoint(transform.position));
         }
@@ -99,12 +102,6 @@ namespace CreateScript
             Destroy(gameObject);
             effectManager.Create(pos, transform.localScale * effectScaleRatio, (int)EffectTag.Hit);
             seHandler.Play();
-        }
-        //スコアを加算
-        //弾のタイプによって値が変化
-        public void AddScore()
-        {
-            ScoreSystem.Instance.AddScore(BulletType);
         }
     }
 
